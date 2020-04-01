@@ -1,0 +1,135 @@
+    footer {
+    color: white;
+}
+            header {
+    background-image: none !important;
+}
+        header {background-attachment: scroll !important; }
+        #target h3,#target h2,#target h4, #target p {
+    color: white !important;
+        }
+a.page-scroll.btn.btn-xl {
+    margin-bottom: 16px;
+}
+footer {
+    height: 14vh !important;
+}
+* {
+    overflow: hidden;
+}
+.container {
+    height: 86vh !important;
+}
+input[type="text"] {
+    height: 65px;
+    font-size: xx-large;
+        width: 225px;
+        border-radius: 4px;
+        padding: 10px;
+        margin-bottom: 10px;
+    color: #333333;
+    margin: auto;
+    display: block;
+    }
+       #how {
+    background-color: #1A1B1E;
+   // background: url(../images/header-bg.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: .8;
+}
+nav#mainNav { display: none !important; }
+a.page-scroll.btn.btn-xl {
+    margin-bottom: 16px !important;
+    margin-top: 16px !important;
+}
+    .member { max-width: 350px;}
+    .timeline-panel {
+}
+        .navbar>.container .navbar-brand { float: left; }
+        .navbar-header.page-scroll {
+    width: 100%;
+}
+html, header, body {
+    height: 90vh;
+}
+        ul.nav.navbar-nav.navbar-right { display: none; }
+        button.navbar-toggle {
+    display: block;
+}
+        ul.nav.navbar-nav.navbar-right {
+    width: 22% !important;
+    float: left !important;
+    display: block;
+}
+.btn-xl, li.active a {background-color: #269052 !important;}
+span.statcounter {
+    display: none;
+}
+        h4.subheading {
+    text-align: center;
+}
+::-webkit-input-placeholder {
+   color: gray !important;
+}
+section#services {
+    background-color: #eeeeee !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: gray !important;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: gray !important;
+}
+ .timeline>li .timeline-image, .navbar-custom .navbar-toggle{
+            background: #269052 !important;
+        }
+.fa-inverse {
+    background: #269052;
+    border-radius: 100%;
+}
+:-ms-input-placeholder {
+   color: gray !important;
+}
+.timeline:before { background-color: #4e81ce !important; }
+    a.navbar-brand.page-scroll {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #269052;
+    text-transform: uppercase;
+    }
+    div#products, div#born, div#service, div#expansion {
+    outline: 7px solid #ffffff;
+}
+  .client {  max-height: 50px; }
+        a.page-scroll.btn.btn-xl {
+            margin-bottom: 16px !important;
+            margin-top: 16px !important;
+        }
+        a.page-scroll.btn.btn-xl, input[type="text"] {
+    width: 300px;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 200;
+    font-family: sans-serif;
+    padding: 14px;
+}
+	    * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Disable selection/copy in UIWebView */
+}
+    header .intro-text {
+        padding-top: 100px;
+        padding-bottom: 25px !important;
+    }
+    div#dialogPage { background: darkgrey; z-index: 500; height: 100%; } .ui-content { margin: 0 15%; height: 80%; max-width: 70%; zoom: 130%; } div#dialogPage { background: darkgrey; z-index: 500; height: 100%; zoom: 70%; overflow: scroll;} button.ui-button.ui-btn.ui-shadow.ui-corner-all { position: fixed; margin-bottom: 0px !important; height: 5%; }
+#load{
+            width:100%;
+            height:100%;
+            position:fixed;
+            z-index:9999;
+            zoom: 5%;
+            background:url(",./images/green.png") no-repeat center center rgba(0,0,0,1);
+                        display: none;
+        }

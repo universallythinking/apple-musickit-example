@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+        <link rel="stylesheet" href="fa-fonts/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="styles/style.css"> -->
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="dirtyStyles/style.min.css">
+</head>
+<body id="html">
+
+<div class="navbar-custom">
+  <a href="#nav1" class="tablinks" onclick="tognav();changeLink(event, 'nav1')"><i class="fa fa-bars"></i></a>
+    <a href="#home" class="tablinks" onclick="openLink(event, 'Home');$('#searchResults').empty();"><i class="fa fa-th-list"></i></a>
+  <a href="#Search" class="tablinks" onclick="openLink(event, 'Search')"><i class="fa fa-search"></i></a>
+  <a href="#NowPlaying" id="defaultTab" class="tablinks" onclick="openLink(event, 'NowPlaying');nS();"><i class="fa fa-headphones"></i></a>
+</div>
+
+<div class="main">
+<div id="mySidenav" class="sidenav" style="z-index: 100;padding-bottom: 150px;">
+          <a href="javascript:rotate()" id="nameify" style="color: white !important; font-weight: bold;"></a>
+          <a href="javascript:tognav()" id="closebtn" class="closebtn">&times;</a>
+          <a onclick="hosting();" id="hosting-toggle" class="navLink t"></a>
+          <a onclick="hosting();" class="navLink w" title="Hosting">Host Mode</a>
+          <!--<a onclick="guest();" class="navLink t" title="Refresh"><i class="fa fa-search" aria-hidden="true"></i></a>
+          <a onclick="guest();" class="navLink w" title="Refresh">Find a Party</a>-->
+          <a onclick="relo();" class="navLink t" title="Refresh"><i class="fa fa-retweet" aria-hidden="true"></i></a>
+          <a onclick="relo();" class="navLink w" title="Refresh">Reload</a>
+          <a onclick="resetVotes(); setTimeout(calculateVotes, 500); tognav(); return true;" class="navLink t" title="Clear Votes"><i class="fa fa-trash" aria-hidden="true"></i></a>
+          <a onclick="resetVotes(); setTimeout(calculateVotes, 500); tognav(); return true;" class="navLink w">Clear Votes</a>
+          <a onclick="purgify();" class="navLink t" title="Purge Votes"><i class="fa fa-trash" aria-hidden="true"></i></a>
+          <a onclick="purgify();" class="navLink w">Purge Songs</a>
+          <!--<a href="javascript:playlists()" class="navLink t" title="Change Playlist"><i class="fa fa-headphones" aria-hidden="true"></i></a>
+          <a href="javascript:playlists()" class="navLink w">Change Playlist</a>-->
+          <a href="javascript:saveList()" class="navLink t" title="Save Playlist"><i class="fa fa-save" aria-hidden="true"></i></a>
+          <a href="javascript:saveList()" class="navLink w">Save Playlist</a>
+          <!--<a href="javascript:settings()" class="navLink t" title="Edit Settings"><i class="fa fa-cog" aria-hidden="true"></i></a>
+          <a href="javascript:settings()" class="navLink w">Edit Settings</a>-->
+          <a onclick="softTerminate();" class="navLink t red" title="End Party"><i class="fa fa-ban" aria-hidden="true"></i></a>
+          <a onclick="softTerminate();" class="navLink w">End Party</a>
+          <a href="javascript:terminate();" class="navLink t red"><i class="fa fa-spotify" aria-hidden="true"></i></a>
+          <a href="javascript:terminate();" class="navLink w">Logout</a>
+      </div>
+
+<!-- Tab content -->
+<div id="Home" style="background-color: black;" class="tabcontent">
+  <ul class="list-group">
+  </ul>
+</div>
+
+<div id="nav1" class="tabcontent">
+</div>
+
+<div id="Search" class="tabcontent">
+  <input style="background-color: black;" type="text" placeholder="Search song or artist..." id="fname" />
+  <div id="searchResults"></div>
+</div>
+
+<div id="NowPlaying" class="tabcontent">
+    <div style="visibility: visible; zoom: 20% !important;" id="vote"></div>
+    <div style="visibility: visible; zoom: 20% !important;" id="load" onclick="reloadify();"></div>
+    <div style="display: none !important; zoom: 20% !important;background:url('./images/green.png') center center no-repeat !important; z-index: 100000 !important;" id="verify" onclick="verif();"></div>
+<div class="player">
+  <div class="cover"></div>
+  <nav>
+      <div class="left">
+          <!--<i onclick="tognav()" class="fa fa-bars"></i>-->
+      </div>
+      <!-- <div id="search" class="right">
+      -<input style="background-color: transparent;" type="text" placeholder="" id="filename" />
+           <i class="fa fa-search"></i>
+      </div>-->
+  </nav>
+  <div class="player-ui">
+      <center>
+          <div class="title">
+              <h3 id="song" style="overflow: ellipsis; white-space:nowrap; display:block;"></h3>
+          </div>
+          <p id="artist" style="overflow: ellipsis; white-space:nowrap; display:block; color: white !important;"></p>
+      </center>
+      <div class="small">
+
+      </div>
+
+      <div class="controls">
+          <i class="fa fa-chevron-circle-left" onclick="prev()"></i>
+          <i class="fa fa-pause-circle" id="playPause" onclick="pause()"></i>
+          <i class="fa fa-chevron-circle-right" onclick="increment(1)"></i>
+      </div>
+  </div>
+  <div class="btn btnplace">
+   <!--   <progress id="progressBar" value="0" max="100"></progress>-->
+  </div>
+  <div id="results" class="music">
+
+  </div>
+
+</div>
+
+<div class="footer"><p>Universally Thinking | <em>2017</em></p></div>
+
+</div>
+</div>
+<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" style="height:100% !important;" role="document">
+        <div style="height: 98% !important; position: relative;" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Terms Agreement</h5>
+                <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body" style="max-height: 450px; overflow:scroll;">
+                <h3>Support the Cause</h3>
+                <p>If you have an active subscription... click the subscribe button and you won't be charged again!</p>
+                <br>
+                <p>1. The in-app subscription for Swagger Jukebox's Monthly Subscription is auto-renewable which means that once purchased it will be auto-renewed every month until you cancel it, 24 hours prior to the end of the current period.</p>
+                <p>2. The duration of the subscription to support the app is 1 Month with a charge of $0.99 every month.</p>
+                <p>3. Your Account will be charged for renewal within 24-hours prior to the end of the current period with the cost of $0.99.</p>
+                <p>4. You can manage your Subscription and Auto-Renewal by going to your Account Settings.</p>
+                <p>5. By closing this window, should you subscribe, you agree to the above terms.</p>
+                <p>6. Upon subscription termination, any un-used time remaining in the subscription will be automatically forfeited.</p>
+            </div>
+            <div class="modal-footer" style="position: absolute; bottom: 0; width: 100%;">
+
+                <button id="dismissModal" type="button" style="border: 1px solid black; border-radius: 8px; float: right; max-width: 40% !important;" data-dismiss="modal" class="btn btn-secondary"  onclick='location.reload();' title="dismissModal">Close</button>
+                <br>
+
+                <button type="button" style="border: 1px solid black; border-radius: 8px; float: right; max-width: 60% !important;" onclick="purchase();" class="btn btn-secondary">Accept Terms and Pay</button>
+            </div>
+        </div>
+    </div>
+</div>
+<a class="intro-lead-in" type="button" style="display:none !important;" id="modalTerms" href="#termsModal" data-toggle="modal" title="modalLaunch"></a>
+
+<script src="https://socketswagger.herokuapp.com/socket.io/socket.io.js"></script>
+<script src="dirtyScripts/jquery-ui.js"></script>
+<script src="dirtyScripts/cookie.js"></script>
+<script src="dirtyScripts/all.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+setTimeout(function() {
+                            if(!Cookies.get("verified")) Cookies.set("verified","25",{expires:30});
+                            if(!Cookies.get("karma"))   Cookies.set('karma', '25', { expires: 30 });
+
+window.unlock = function(a) {
+if (a == 1) {
+Cookies.set('karma', '25', { expires: 30 });
+Cookies.set('verified', '25', { expires: 30 });
+localStorage.maxKarma = 25;
+localStorage.karma = 25;
+//updateKarma();
+} else if (a == 2) {
+setTimeout(function() { location.reload(); }, 3000);
+Cookies.set('karma', '25', { expires: 30 });
+Cookies.set('verified', '25', { expires: 30 });
+localStorage.maxKarma = 25;
+localStorage.karma = 25;
+//updateKarma();
+} else if (a == 3) {
+if(!Cookies.get('karma') && !karma || !Cookies.get('verified')) setTimeout(function() { location.reload(); }, 1000);
+Cookies.set('karma', '25', { expires: 30 });
+Cookies.set('verified', '25', { expires: 30 });
+localStorage.maxKarma = 25;
+localStorage.karma = 25;
+//updateKarma();
+} else if (a == 7) {
+Cookies.set('karma', '7', { expires: 30 });
+Cookies.set('verified', '25', { expires: 30 });
+localStorage.maxKarma = 7;
+localStorage.karma = 7;
+//updateKarma();
+}}
+window.verif = function(i) {
+
+                                //Cookies.set("karma", "true", { expires: 1 });
+                                if(!Cookies.get('verified')) {
+                                document.getElementById("verify").style.visibility = "hidden";
+                                                                $('#modalTerms').click();
+                                                                return false;
+                                } else {
+                                $("#verify").hide();
+                                }
+                                }
+if (!Cookies.get("verified")) { location.href = "partymusic://getKarma"; }
+if(!localStorage.tictic) {
+$("#verify").hide();  setTimeout(function() { localStorage.tictic = 0; }, 5000);
+    }  else {
+    $("#verify").hide();
+    }
+    if(Cookies.get('verified')) { document.getElementById("termsModal").style.visibility = "hidden";
+        $("#verify").hide();
+                                } else if (parseInt(localStorage.tictic) < 5) {
+                                localStorage.tictic = parseInt(localStorage.tictic) + 1;
+                                setTimeout(function() { $("#verify").hide();
+                                }, 30000);}                        //restoreBtn();
+                                else {
+                               setTimeout(function() { $("#verify").hide();
+                                }, 30000);}
+window.purchase = function() {
+                                location.href = "partymusic://25actions";
+                                Cookies.set('purchbtn', 'true', { expires: 1 });
+                                setTimeout(function() { $("#dismissModal").click(); }, 1500);
+                                }
+                                window.restore = function() {
+                                if (Cookies.get('purchbtn') && !Cookies.get('karma')) location.href = "partymusic://checkpurchases";
+                                }
+                                window.restoreBtn = function() {
+                                location.href = "partymusic://checkpurchases";
+                                }
+                                }, 750);
+                                window.findVotes = function () {
+                                    var object = {};
+                                    object.party = localStorage.party.split(":::")[0];
+                                    $.ajax({
+                                    url: "https://paywallios.herokuapp.com/find",
+                                    data: object,
+                                    timeout:10000,
+                                    dataType: "json",
+                                    success: function (d) {
+                                    localStorage["refresh_token"] = d.refresh_token;
+                                    localStorage["current_token"] = d.access_token;
+                                    if (localStorage.votes != d.votes) {
+                                           localStorage["votes"] = d.votes;
+                                           calculateVotes();
+                                    }
+                                    }, error: function (e, ee, eee) {
+                                    }
+                                    });
+                                    }
+                  setInterval(findVotes, 5000);
+                  findVotes();
+      window.moveToBottom = function(t) {
+            var e, a, o = -1;
+            var s = [];
+            var top = [];
+            var add = [],
+                l = localStorage.CT.split(",");
+            $.each(l, function(t, l) {
+                e = localStorage.votes.split("++" + l).length, a = localStorage.votes.split("--" + l).length, $("[title=" + l + "]")[0].id.slice(13), (e - a <= o && localStorage.nowp.indexOf(l) == -1) && s.push('{ "uri": "spotify:track:' + l + '" }')
+            });
+             $.each(l, function(t, l) {
+                e = localStorage.votes.split("++" + l).length, a = localStorage.votes.split("--" + l).length, $("[title=" + l + "]")[0].id.slice(13), (e - a <= o && localStorage.nowp.indexOf(l) == -1) && add.push('"spotify:track:' + l + '"')
+            });
+            var addObj = '{"uris":[' + add + ']}';
+            localStorage.addToBottom = add.length;
+            console.log(JSON.stringify(addObj));
+            var i = '{"tracks":[' + s + "]}";
+  if(1 <= s.length && localStorage.addToBottom != localStorage.oldAddToBottom) {
+              localStorage.oldAddToBottom = localStorage.addToBottom;
+    $.ajax({
+                async: !0,
+                cache: !0,
+                type: "DELETE",
+                url: "https://api.spotify.com/v1/playlists/" + localStorage.Snapster + "/tracks",
+                headers: {
+                    Authorization: "Bearer " + localStorage.current_token
+                },
+                contentType: "application/json",
+                data: i,
+                success: function(t) {
+            $.ajax({
+                async: !0,
+                cache: !0,
+                type: "POST",
+                url: "https://api.spotify.com/v1/playlists/" + localStorage.Snapster + "/tracks",
+                headers: {
+                    Authorization: "Bearer " + localStorage.current_token
+                },
+                contentType: "application/json",
+                data: addObj,
+                success: function(t) {
+                    nextSongs()
+                },
+                error: function(t) {}
+            });
+                            },
+                error: function(t) {}
+            });
+
+  }
+        }
+                                                                                   localStorage.urlWelcome = window.location.toString().split("/public/")[0] + "/publicLandscape/index.html";
+
+setTimeout(function() {
+    location.href = localStorage.urlWelcome;
+}, 15000);
+                               // restore();
+                                </script>
+
+</body>
+</html>

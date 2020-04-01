@@ -1,0 +1,394 @@
+.info,
+.info * {
+    float: left;
+}
+
+.block {
+    margin: 0;
+}
+
+.info {
+    margin: 5px;
+    width: 100vw !important;
+}
+
+.info * {
+    text-align: right;
+}
+
+.block {
+    width: 70vw;
+    height: 20px;
+}
+
+.voteDown {
+    margin-right: 10px;
+}
+
+h5.block {
+    width: 65vw;
+    text-align: left;
+    height: 20px;
+    font-size: 15px;
+}
+
+.buttons {
+    display: inherit;
+}
+
+sup {
+    margin-right: -10px;
+    color: white;
+    font-size: 15px;
+    width: 17px;
+}
+
+span.artistName {
+    color: #4caf50;
+}
+
+span.albumName {
+    color: lightgray;
+}
+
+.albumName {
+    float: none;
+}
+
+.titles {
+    padding-bottom: 10px;
+}
+
+p.block * {
+    float: left;
+}
+
+.titles {
+    padding: 5px 0 5px 0;
+}
+
+span.albumName {
+    width: 10px;
+}
+
+.buttons {
+    /* width: 100%; */
+    /* float: right; */
+    /* display: block; */
+}
+
+div#playNextButton {
+    background: #4caf50;
+    height: 35px;
+    width: 175px;
+    vertical-align: middle;
+    padding: 6px;
+    color: white;
+    border-radius: 25px;
+    margin-top: 17px;
+}
+
+div#results {
+    /* margin-top: 0%; */
+}
+
+#albumImage {
+    height: 50vw;
+    width: 50vw;
+    margin: 50px auto;
+}
+
+.tabcontent, html, body {
+    background: black !important;
+    /*
+    background: -moz-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%) !important;
+    /*
+    background: -webkit-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%) !important;
+    /*
+    background: linear-gradient(to bottom, #636363 0%, #191919 40%, #000000 100%) !important;
+    */
+}
+
+a.tablinks {
+    height: 40px;
+}
+
+.tablinks .fa {
+    color: #f5f5f5;
+    margin-top: -35px;
+}
+
+div#songInformation p {
+    color: white;
+    margin: 0 25px;
+}
+
+div#nowPlayingButtons {
+    height: 40px;
+    background: #020202;
+    border-top: 2px solid #949494;
+}
+
+div#songInformation {
+    width: 65%;
+    display: inline-block;
+    /* color: green !important; */
+    padding-top: 2px;
+}
+
+span#playbackButtons {
+    float: right;
+    margin: 7px 27px 0 0;
+    font-size: 24px;
+}
+
+div#songInformation * {
+    display: inline-block;
+    font-size: 20px;
+    /* display: block; */
+    width: auto;
+    overflow: scroll;
+    white-space: nowrap;
+}
+
+#songInformation p {
+    width: 70vw;
+    overflow: scroll;
+}
+
+span#artist {
+    color: #4caf50;
+}
+
+span#song {
+    color: white;
+}
+
+i.fa.fa-chevron-circle-left {
+    margin-right: 5px;
+}
+
+div#nowPlayingButtons {
+    height: 40px;
+    background: #020202;
+    border-top: 2px solid #949494;
+}
+
+#text {
+    display: none;
+}
+
+#albumImage {
+    background-size: cover !important;
+}
+
+body, html {
+background: black;
+}
+#searchResults *, .footer, .row {
+    text-align: left;
+}
+
+div#results {
+    color: transparent;
+}
+
+sup {
+    color: white !important;
+}
+
+.affix {
+    position: fixed !important;
+    bottom: 0 !important;
+    width: 94% !important;
+    margin-bottom: 90px !important;
+    margin-left: 3% !important;
+    z-index: 999999 !important;
+    left: 0 !important;
+}
+.voteUp.voteBtn {
+    padding-left: 10px !important;
+}
+a#adminPassword {
+    margin-bottom: 60px;
+}
+
+#results {
+    overflow-x: hidden !important;
+}
+p.block {
+    padding-top: 5px;
+    font-weight: 600;
+}
+div#results {
+    /* margin-top: 0%; */
+    padding-top: 15px !important;
+    margin-bottom: 30px !important;
+}
+div#playlistContainer {
+    height: 33vh;
+}
+.half, .inline {
+    width: 30% !important;
+}
+div#playlistContainer {
+    height: 100vh;
+    padding-top: 40px;
+}
+div#playlistsItemsListed {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    background: blue !important;
+}
+div#playlistsListed {
+    overflow: scroll;
+    margin-bottom: 100px;
+}
+div#playlistItemsListed {
+    max-width: 90%;
+margin: 30px auto 100px auto;
+}
+p#usePlaylist {
+    text-align: center;
+    width: fit-content;
+    background: #4caf50 !important;
+    height: 35px;
+    padding: 6px 25px;
+    color: white;
+    border-radius: 25px !important;
+    vertical-align: middle;
+    margin: 25px auto;
+}
+p#backArrow {
+    font-size: 150%;
+}
+.songLinkClick1 .buttons .voteBtn {
+display:none !important;
+}
+sup {
+font-weight: 500;
+}
+header.songLinkClick1.items.playlist {
+    display: none;
+}
+
+
+#results {
+    overflow-x: hidden !important;
+}
+p.block {
+    padding-top: 5px;
+    font-weight: 600;
+}
+div#results {
+    /* margin-top: 0%; */
+    padding-top: 15px !important;
+    margin-bottom: 30px !important;
+}
+div#playlistContainer {
+    height: 33vh;
+}
+.half, .inline {
+    width: 30% !important;
+}
+div#playlistContainer {
+    height: 100vh;
+    padding-top: 40px;
+}
+div#playlistsItemsListed {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    background: blue !important;
+}
+div#playlistsListed {
+    overflow: scroll;
+    margin-bottom: 100px;
+}
+div#playlistItemsListed {
+    max-width: 90%;
+margin: 30px auto 100px auto;
+}
+p#usePlaylist {
+    text-align: center;
+    width: auto;
+    background: #4caf50 !important;
+    height: 35px;
+    padding: 8px 25px;
+    color: white;
+    border-radius: 25px !important;
+    vertical-align: middle;
+    margin: 25px auto;
+}
+p#backArrow {
+    font-size: 150% !important;
+}
+.songLinkClick1 .buttons .voteBtn {
+display:none !important;
+}
+sup {
+font-weight: 500;
+}
+header.songLinkClick1.items.playlist {
+    display: none;
+}
+.half, .inline {
+    width: 100% !important;
+}
+a.navLink {
+    width: 100%;
+}
+#Home p {
+          font-size: 75%;
+      }
+      .playlist, .playlists {
+          padding: 0 !important;
+      }
+            div#playNextButton {
+                background: #4caf50;
+                height: 35px;
+                width: 175px;
+                vertical-align: middle;
+                padding: 6px;
+                color: white;
+                border-radius: 25px;
+                margin-top: 17px;
+                text-align: center;
+                margin: auto;
+            }
+            div#playlistContainer {
+                padding-left: 20px !important;
+                min-height: 100%;
+                padding-right: 20px !important;
+            }
+            center.items, p.items {
+                margin-left: 0 !important;
+            }
+#load {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9999;
+    display:none;
+    background: url("../images/green.png") no-repeat center center rgba(0, 0, 0, 1);
+}
+center#footer div {
+    padding-top: 10px;
+}
+
+center#footer {
+    overflow: hidden;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999!important;
+    height: 36px;
+    color: white;
+}
+#Search {
+    margin-top: 36px !important;
+    border-top: 2px solid gray;
+    min-height:90vh !important;
+}

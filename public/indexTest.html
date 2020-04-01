@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spotify Web Playback SDK Quick Start Tutorial</title>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <h1>Spotify Web Playback SDK Quick Start Tutorial</h1>
+  <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
+
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script>
+    if (localStorage.current_token && localStorage.nowp) {
+const access_token = localStorage.current_token;
+const play = function(id, spotify_uri) {
+    fetch(`https://api.spotify.com/v1/me/player/play?device_id=${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ uris: [spotify_uri] }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${access_token}`
+      },
+    });
+  };
+    window.onSpotifyWebPlaybackSDKReady = () => {
+      const token = localStorage.current_token;
+      const player = new Spotify.Player({
+        name: 'Web Playback SDK Quick Start Player',
+        getOAuthToken: cb => { cb(token); }
+      });
+      
+      // Error handling
+      player.addListener('initialization_error', ({ message }) => { console.error(message); });
+      player.addListener('authentication_error', ({ message }) => { console.error(message); });
+      player.addListener('account_error', ({ message }) => { console.error(message); });
+      player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+      // Playback status updates
+      player.addListener('player_state_changed', state => { console.log(state); localStorage.state = state.paused.toString(); });
+
+      // Ready
+      player.addListener('ready', ({ device_id }) => {
+        localStorage.device_id = device_id;
+        console.log('Ready with Device ID', device_id);
+        player.resume().then(() => {
+          console.log('Resumed!');
+        });
+        play(localStorage.device_id, 'spotify:track:' + localStorage.nowp);
+      });
+      setInterval(function() {
+        player.getCurrentState().then(state => {
+            if (!state) {
+                console.error('User is not playing music through the Web Playback SDK');
+                return;
+            }
+
+            let {
+                current_track,
+                next_tracks: [next_track]
+            } = state.track_window;
+
+            let position = (state.duration - state.position) / 1000;
+            localStorage.position = position.toString();
+            console.log(position.toString());
+        });
+      }, 1000);
+
+      // Not Ready
+      player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+      });
+
+      // Connect to the player!
+      player.connect();
+    };
+  } else {
+    setTimeout(location.reload, 10000);
+  }
+  </script>
+</body>
+</html>

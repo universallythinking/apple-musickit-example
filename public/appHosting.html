@@ -1,0 +1,245 @@
+<html>
+
+<head>
+<meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="js/cookie.js"></script>
+<title>Swagger Jukebox</title>
+<style>
+.card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+margin: auto;
+text-align: center;
+font-family: arial;
+height: 100vh;
+}
+
+* {
+font-family: arial;
+}
+
+html {
+background: black;
+color: white;
+}
+
+body {
+margin: 0;
+}
+
+.price {
+color: white;
+font-size: 20px;
+}
+
+p button {
+border: none;
+outline: 0;
+padding: 12px;
+color: white;
+background-color: #30b63f;
+text-align: center;
+cursor: pointer;
+width: 100%;
+font-size: 20px;
+bottom: 0;
+position: fixed;
+height: 50px;
+}
+
+a {
+color: white;
+position: fixed;
+width: 100%;
+text-align: center;
+text-decoration: none;
+}
+
+a.first {
+color: white;
+bottom: 120;
+position: fixed;
+width: 100%;
+}
+
+a.second {
+color: white;
+bottom: 100;
+position: fixed;
+width: 100%;
+}
+
+a.third {
+color: white;
+bottom: 80;
+position: fixed;
+width: 100%;
+}
+a.fourth {
+color: white;
+bottom: 60;
+font-weight: bold;
+position: fixed;
+width: 100%;
+}
+
+a:hover {
+color: #30b63f;
+}
+
+p button:hover {
+background-color: #888c89;
+}
+
+h1 {
+font-size: 25px;
+}
+
+p.desc {
+font-size: 12px;
+}
+p#close {
+text-align: right;
+font-size: 25px;
+padding: 20px;
+font-family: sans-serif !important;
+}
+</style>
+<script>
+$(".link").on("click", function() {
+setTimeout(function() {
+$(".link").css("color", "white");
+}, 500);
+});
+window.purchase = function() {
+location.href = "partymusic://25actions";
+Cookies.set('purchbtn', 'true', { expires: 1 });
+setTimeout(function(){
+$("button").css("background-color","#30b63f");
+}, 500);
+}
+window.restore = function() {
+if (Cookies.get('verified') && !Cookies.get('karma'))location.href = "partymusic://getKarma";
+}
+window.restoreBtn = function() {
+if (Cookies.get('verified') && !Cookies.get('karma')) location.href = "partymusic://getKarma";
+}
+restore();
+localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
+window.shareSMS = function() {
+$.ajax({
+type: "GET",
+url: "https://swaggersender.herokuapp.com/shareSMS",
+success: function(res) {
+},
+error: function(res) {
+}
+});
+}
+window.unlock = function() {
+localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
+shareSMS();
+Cookies.set("bought", "25", {
+expires: 30
+});
+Cookies.set("verified", "25", {
+expires: 1
+});
+Cookies.set("karma", "15", {
+expires: 1
+});
+setTimeout(function() {
+location.href = localStorage.urlParts + "/index.html";
+}, 1000);
+}
+window.actions = function(a) {
+localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
+Cookies.set("verified", "25", {
+expires: 30
+});
+Cookies.set("bought", "25", {
+expires: 30
+});
+Cookies.set("karma", "15", {
+expires: 30
+});
+setTimeout(function() {
+location.href = localStorage.urlParts + "/index.html";
+}, 1000);
+if (a == 1) {
+Cookies.set('karma', '25', {
+expires: 30
+});
+localStorage.maxKarma = 25;
+localStorage.karma = 25;
+
+//updateKarma();
+} else if (a == 2) {
+Cookies.set('karma', '25', {
+expires: 30
+});
+localStorage.maxKarma = 25;
+localStorage.karma = 25;
+//updateKarma();
+} else if (a == 3) {
+if (!Cookies.get('karma') && !karma) setTimeout(function() {
+location.reload();
+}, 10000);
+Cookies.set('karma', '25', {
+expires: 30
+});
+localStorage.maxKarma = 25;
+localStorage.karma = 25;
+//updateKarma();
+} else if (a == 7) {
+Cookies.set('karma', '7', {
+expires: 30
+});
+localStorage.maxKarma = 7;
+localStorage.karma = 7;
+//updateKarma();
+}
+}
+window.russianRoulette = function() {
+var date = new Date();
+var minutes = date.getMinutes();
+if (minutes % 3 === 0) {
+//history.replaceState("/index.html", document.title, "Swagger Jukebox");
+alert("You won!!  Enjoy free access for a day!");
+unlock();
+shareSMS();
+} else if (Cookies.get("russianRoulette")) {
+//history.replaceState("/index.html", document.title, "Swagger Jukebox");
+alert("You have already played.  Try again tomorrow... Or after reinstalling the app :) .  Hint: you have a 1 in 3 chance of winning free access for a day!");
+} else {
+//history.replaceState("/index.html", document.title, "Swagger Jukebox");
+alert("You lost.  Try again tomorrow...  Or after reinstalling the app :) .  Hint: you have a 1 in 3 chance of winning free access for a day!");
+shareSMS();
+}
+Cookies.set('russianRoulette', '25', { expires: 1 });
+}
+window.backHome = function() {
+setTimeout(function() {
+location.href = localStorage.urlParts + "/index.html";
+}, 1000);
+}
+</script>
+</head>
+
+<body>
+<div class="card">
+<p onclick="backHome();" id="close">X</p>
+<center><img src="images/green.png" alt="Swagger" style="width:50%; margin-top: 5%;"></center>
+<h1>Unlimited Access</h1>
+<p class="price">$1.99</p>
+<p class="desc">Unlock the Whole App</p>
+</div>
+<!--<a class="first link" href="javascript:location.href='partymusic://terms';">Terms of Use</a>
+<a class="second link" href="javascript:location.href='partymusic://privacy';">Privacy Policy</a>-->
+<a class="fourth link" href="javascript:restoreBtn();">Restore Purchase</a>
+<!--<a class="fourth link" href="javascript:russianRoulette();">Get Free Access, Play Russian Roulette</a>-->
+
+<p><button onclick="purchase();">Pay & Continue</button></p>
+</body>
+
+</html>

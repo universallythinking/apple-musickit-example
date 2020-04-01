@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="js/create.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        
+        <script>
+            $("document").ready(function() {
+                localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
+                location.href = localStorage.urlParts + "/app4.html";
+
+            });
+        </script>
+    </head>
+    <body style="background: black !important;">
+    </body>
+    
+</html>

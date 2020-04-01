@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="js/create.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+        <script>
+            $("document").ready(function() {
+                                var karma = false;
+                                if(localStorage.karma) karma = true;
+                                var clicks = localStorage.clicks;
+                                localStorage.clear();
+                                if(clicks)localStorage.clicks = clicks;
+                                localStorage.removeItem("pauseBtn");
+                                localStorage.removeItem("nowp");
+                                localStorage.removeItem("i");
+                                localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
+                                localStorage.urlGuest = window.location.toString().split("/public/")[0] + "/guest";
+                                
+                                if (!localStorage.locked && localStorage.locked == "yes"){
+                                //location.href = "/app.html";
+                                }
+                                //localStorage.clear();
+                                localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
+                                localStorage.urlGuest = window.location.toString().split("/public/")[0] + "/guest";
+                                window.checkReceipt = function(a, b) {
+                                window.receiptData = {};
+                                receiptData["receipt-data"] = b;
+                                receiptData.password = a;
+                                $.ajax({
+                                       type: "POST",
+                                       url: "https://buy.itunes.apple.com/verifyReceipt",
+                                       data: JSON.stringify(receiptData),
+                                       success: function(res){
+                                       res = JSON.parse(res);
+                                       if(res.status == 0) {
+                                       actions('3');
+                                       } else if (res.status == 21007) {
+                                       $.ajax({
+                                              type: "POST",
+                                              url: "https://sandbox.itunes.apple.com/verifyReceipt",
+                                              data: JSON.stringify(receiptData),
+                                              success: function(res2){
+                                              res2 = JSON.parse(res2);
+                                              if(res2.status == 0) {
+                                              actions('3');
+                                              } else if (Cookies.get('karma')){
+                                              //Cookies.remove('karma');
+                                              }
+                                              }, error: function(res2) {
+                                              
+                                              }
+                                              });
+                                       } else if (Cookies.get('karma')){
+                                       //Cookies.remove('karma');
+                                       }
+                                       }, error: function(res) {
+                                       
+                                       }
+                                       });
+                                       //actions('3');
+                                }
+                                window.createCookie = function(name,value,days) {
+                                var expires = "";
+                                if (days) {
+                                var date = new Date();
+                                date.setTime(date.getTime() + (days*24*60*30*1000));
+                                expires = "; expires=" + date.toUTCString();
+                                }
+                                document.cookie = name + "=" + value + expires + "; path=/";
+                                }
+                                createCookie('logged','logcookie',30);
+                                localStorage.willywonka = true;
+                                //localStorage.removeItem("Snapster");
+                                
+                                window.login = function () {
+                                location.href = "https://paywallios.herokuapp.com/authIOS.html";
+                                //location.href='partymusic://login';
+                                }
+                                window.index = function () {
+                                var indexUrl = window.location.toString().split("/public/")[0] + "/public/index.html";
+                                location.href = indexUrl;
+                                //location.href='partymusic://login';
+                                }
+                                //setTimeout(function() { if(!Cookies.get('karma')) { $('#modalTerms').click(); } }, 0);
+                                window.log = function(i) {
+                                if(!Cookies.get('karma') && 2 == 1) { $('#modalTerms').click(); }
+                                else {
+                                    location.href = "partymusic://register/";
+                                }
+                                }
+          localStorage.urlGuest = window.location.toString().split("/public/")[0] + "/guest";
+                                window.resumeSession = function(i) {
+                                if(i==1) {
+                                setTimeout(function() {
+                                                 location.href = "partymusic://loginToSpot";
+                                                 setTimeout(login, 500);
+                                                 },500);
+                                }
+                                else if(Cookies.get("locStore") || Cookies.get("locStore2") && i==0) {
+                                Cookies.set("locStore", Cookies.get("locStore2"));
+                                var locStore = JSON.parse(Cookies.get("locStore"));
+                                    Object.keys(locStore).forEach(function(key,index) {
+                                        //if (locStore.hasOwnProperty(property)) {
+                                            localStorage.setItem(key, locStore[key]);
+                                        //}
+                                    });
+                                    location.href = "partymusic://authSpot";
+                                    setTimeout(function() {
+                                                 index();
+                                                 },50);
+                                }
+                                }
+                                window.loader = function() {
+                                if(Cookies.get("locStore") || Cookies.get("locStore2")) {
+                                location.href = "partymusic://authSpot";
+                                Cookies.set("locStore", Cookies.get("locStore2"));
+                                var locStore = JSON.parse(Cookies.get("locStore"));
+                                    Object.keys(locStore).forEach(function(key,index) {
+                                        //if (locStore.hasOwnProperty(property)) {
+                                            localStorage.setItem(key, locStore[key]);
+                                        //}
+                                    });
+                                    setTimeout(index,50);
+                                } else if(!Cookies.get("locStore") && !Cookies.get("locStore2")) {
+                                setTimeout(function() {
+                                                 location.href = "partymusic://loginToSpot";
+                                                 login();
+                                                 },500);
+                                }
+                                }
+                                if(Cookies.get("justClicked")) {
+                                loader();
+                                }
+                                localStorage.urlGuest = window.location.toString().split("/public/")[0] + "/guest";
+                                window.guest = function() {
+                                if (!Cookies.get('karma') && 1==2) { $('#modalTerms').click(); }
+                                else { location.href = localStorage.urlGuest + "/app.html"; }
+                                }
+                                window.purchase = function() {
+                                location.href = "partymusic://25actions";
+                                Cookies.set('purchbtn', 'true', { expires: 1 });
+                                setTimeout(function() { $("#dismissModal").click(); }, 1500);
+                                }
+                                window.restore = function() {
+                                //if (Cookies.get('purchbtn') && !Cookies.get('karma')) location.href = "partymusic://checkpurchases";
+                                }
+                                window.restoreBtn = function() {
+                                //location.href = "partymusic://checkpurchases";
+                                setTimeout(function() {
+                                           location.reload();
+                                           },5000);
+                                }
+                                //restore();
+                                $("ul.nav.navbar-nav.navbar-right").css("display", "none");
+                                $("#menu-t").on("click", function() {
+                                                $("ul.nav.navbar-nav.navbar-right").toggle();
+                                                });
+                                $(".revert").on("click", function() {
+                                                $("ul.nav.navbar-nav.navbar-right").css("display", "none");
+                                                });
+                                $(window).on('resize', function(){
+                                             $("#target").css("height", "auto");
+                                             $("#target").css("height", $("#target").height() + 200);
+                                             });
+                                $("#target").css("height", "auto");
+                                $("#target").css("height", $("#target").height() + 200);
+                                //if (localStorage.current_token) { window.location.href = "https://paywallios.herokuapp.com/authIOS"; }
+                                
+                                // }, 3000);
+                                localStorage.setItem("app", "true");
+                                localStorage.setItem("signedIn", "true");
+                                window.sendMessage = function(i, name, user, num) {
+                                var obj = {}; /*new object to write to server...
+                                               Use DOT notation to add values: dataBody.recipients = ["5135453118", "5135683374"]; dataBody.message = "This is my message"; etc.
+                                               */
+                                var requestUrl = "https://swaggersender.herokuapp.com/shareSMS";
+                                if(i==1) {
+                                requestUrl = "https://swaggersender.herokuapp.com/shareEmail";
+                                obj.recipients = ["universallythinking@gmail.com"];
+                                confirmSend(requestUrl, obj);
+                                } else {
+                                obj.recipients = num;
+                                obj.name = name;
+                                obj.user = user;
+                                confirmSend(requestUrl, obj);
+                                }
+                                }
+                                window.confirmSend = function(url, obj){
+                                if(numberCount >= 1) {
+                                $.ajax({
+                                       type: "GET",
+                                       url: url,
+                                       data: obj,
+                                       success: function(res){
+                                       console.log(res);
+                                       localStorage.unlock = true;
+                                       //unlock access to the app
+                                       }, error: function(res) {
+                                       console.log(res);
+                                       //display an error message to the user
+                                       },complete: function(data) {
+                                       numberCount--;
+                                       if (numberCount <= 1) {
+                                       ajaxDone();
+                                       }
+                                       }
+                                       });
+                                }
+                                }
+                                window.ajaxDone = function() {
+                                $(document).ajaxComplete(function() {
+                                                         if (numberCount >= 0) {
+                                                         location.href = "partymusic://alertThanks/";
+                                                         localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
+                                                         createCookie('logged','logcookie',30);
+                                                         localStorage.removeItem("numbers");
+                                                         setTimeout(function() {
+                                                                    location.href = "partymusic://unlockapp";
+                                                                    location.href = localStorage.urlParts + "/app3.html";
+                                                                    }, 500);
+                                                         }
+                                                         });
+                                }
+                                var flagger = false;
+                                var numberCount, int, numbers;
+                                window.parseNumbers = function() {
+                                numberCount = 0;
+                                var strToSplit = decodeURIComponent(localStorage.numbers);
+                                console.log(strToSplit);
+                                var arr = strToSplit.split(",");
+                                numbers = {};
+                                var flag = false;
+                                if(typeof localStorage.myName == 'undefined' || localStorage.myName == null) {
+                                localStorage.myName = "Robbie";
+                                }
+                                var ban = ["+15135166516", "+15139436266", "+15138001305", "+15132055156", "+15133076145", "+15135607071", "+15133328868", "+15135025937", "15136008322", "+15133386164", "+15136008322", "+15132356494"];
+                                $.each(arr, function(index) {
+                                       if(arr[index].split("::")[1]) {
+                                       var number = "123";
+                                       var num = arr[index].split("::")[1].replace(/[^1234567890]/g,'');
+                                       if(num.length==10) {
+                                       number = "+1" + num;
+                                       } else if(num.length==11 && num.charAt(0) == "1") {
+                                       number = "+" + num;
+                                       } else if (num.length==12 && num.charAt(0) == "+") {
+                                       number = num;
+                                       }
+                                       var name = arr[index].split("::")[0].split(" ")[0];
+                                       name = "there";
+                                       if(number.length == 12 && name.length >1 && number.indexOf("+1513")>=-1 && numbers.toString().indexOf(number) ==-1 && ban.toString().indexOf(number)==-1) {
+                                       numberCount++;
+                                       numbers[numberCount.toString()] = number+":::"+name;
+                                       }
+                                       }
+                                       });
+                                setTimeout(function() {
+                                           //alert(numberCount);
+                                           //location.href = "partymusic://alertTotal/" + numbers.length;
+                                           int = numberCount;
+                                           if(flagger == false) { flagger = true; sendEm(); }
+                                           }, 500);
+                                }
+                                if(!Cookies.get("karma") || !Cookies.get("verified")) location.href = "partymusic://getKarma";
+                                window.sendEm = function() {
+                                $.ajax({
+                                       type: "POST",
+                                       url: "https://swaggersender.herokuapp.com/shareInBulk",
+                                       data: numbers,
+                                       success: function(res){
+                                       //sendMessage(1, 0, 0, 0);
+                                       console.log(res);
+                                       //unlock access to the app
+                                       }, error: function(res) {
+                                       console.log(res);
+                                       //display an error message to the user
+                                       },complete: function(data) {
+                                       ajaxDone();
+                                       }
+                                       });
+                                }
+                                if (Cookies.get('karma')) {
+                                localStorage.maxKarma = Cookies.get('karma');
+                                } else {
+                                //location.href = "partymusic://35actions";
+                                }
+                                window.unlock = function(a) {
+                                Cookies.set("verified","25",{expires:30});
+                                Cookies.set('karma', '25', { expires: 30 });
+                                setTimeout(function() {
+                                           //location.reload();
+                                           },1000);
+                                if (a >= 1) {
+                                localStorage.maxKarma = 25;
+                                localStorage.karma = 25;
+                                
+                                //updateKarma();
+                                } else if (a == 2) {
+                                Cookies.set('karma', '25', { expires: 30 });
+                                localStorage.maxKarma = 25;
+                                localStorage.karma = 25;
+                                //updateKarma();
+                                } else if (a == 3) {
+                                if(!Cookies.get('karma') && !karma) setTimeout(function() { location.reload(); }, 1000);
+                                Cookies.set('karma', '25', { expires: 30 });
+                                localStorage.maxKarma = 25;
+                                localStorage.karma = 25;
+                                //updateKarma();
+                                } else if (a == 7) {
+                                Cookies.set('karma', '7', { expires: 30 });
+                                localStorage.maxKarma = 7;
+                                localStorage.karma = 7;
+                                //updateKarma();
+                                }
+                                }
+                                unlock();
+                                if(!localStorage.clicks)localStorage.clicks = 0;
+                                window.checkLog = function() {
+                                if((!Cookies.get('karma') || !Cookies.get('verified')) && parseInt(localStorage.clicks) < 5) {
+                                $('#modalTerms').click();
+                                } else {
+                                log(1);
+                                }
+                                }
+                                //if(!Cookies.get("karma"))unlock(1);
+                                window.checkGuest = function() {
+                                if((!Cookies.get('karma') || !Cookies.get('verified')) && parseInt(localStorage.clicks) < 5) {
+                                $('#modalTerms').click();
+                                } else {
+                                guest();
+                                }
+                                }
+                                window.noPurchase = function() {
+                                localStorage.clicks+=1;
+                                location.reload();
+                                }
+                                if (!Cookies.get('karma')) {
+                                $("#hostBtn").text("Host a Party!");
+                                $("#guestBtn").text("Enter as Guest!");
+                                }
+                                $("#welcome").fadeOut(1000); setTimeout(function() { $("#welcome").fadeIn(1000); }, 1000);
+                                setTimeout(function() { $("#welcome").fadeOut(1000); }, 2000);
+                                setTimeout(function() { $("#welcome").fadeIn(1000); }, 3000);
+                                setTimeout(function() { $("#welcome").hide(); $("#all").show(); }, 3100);
+                                //if (localStorage.current_token) { window.location.href = "https://paywallios.herokuapp.com/authIOS"; }
+                                
+                                });
+                                
+            </script>
+        <style>
+            div#dialogPage { background: darkgrey; z-index: 500; height: 100%; } .ui-content { margin: 0 15%; height: 80%; max-width: 70%; zoom: 130%; } div#dialogPage { background: darkgrey; z-index: 500; height: 100%; zoom: 70%; overflow: scroll;} button.ui-button.ui-btn.ui-shadow.ui-corner-all { position: fixed; margin-bottom: 0px !important; height: 5%; }
+            #welcome {
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                z-index: 9999;
+                background: url("images/green.png") no-repeat center center rgba(0, 0, 0, 1); //0.7
+            }
+            </style>
+        <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
+                <meta name="description" content="">
+                    <meta name="author" content="">
+                        
+                        <title>Swagger</title>
+                        
+                        <!-- Bootstrap Core CSS -->
+                        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+                            
+                            <!-- Custom Fonts -->
+                            <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+                                <!--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+                                 <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+                                 <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+                                 <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>-->
+                                
+                                <!-- Theme CSS -->
+                                <link href="stylesheets/agency.min.css" rel="stylesheet">
+                                    <script src="js/cookie.js"></script>
+                                    
+                                    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                                    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                                    <!--[if lt IE 9]>
+                                     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                                     <script src="https://oss.maxcdn.com/libs/respond.javascripts/1.4.2/respond.min.js"></script>
+                                     <![endif]-->
+                                    
+                                    <head>
+                                        <title>Swagger</title>
+                                        <meta charset="UTF-8">
+                                            <meta name="viewport" content="width=device-width, initial-scale=1">
+                                                <!--===============================================================================================-->
+                                                <link rel="icon" type="image/png" href="swagger/images/icons/favicon.ico" />
+                                                <!--===============================================================================================-->
+                                                <link rel="stylesheet" type="text/css" href="swagger/vendor/bootstrap/css/bootstrap.min.css">
+                                                    <!--===============================================================================================-->
+                                                    <link rel="stylesheet" type="text/css" href="swagger/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+                                                        <!--===============================================================================================-->
+                                                        <link rel="stylesheet" type="text/css" href="swagger/fonts/iconic/css/material-design-iconic-font.min.css">
+                                                            <!--===============================================================================================-->
+                                                            <link rel="stylesheet" type="text/css" href="swagger/vendor/animate/animate.css">
+                                                                <!--===============================================================================================-->
+                                                                <link rel="stylesheet" type="text/css" href="swagger/vendor/css-hamburgers/hamburgers.min.css">
+                                                                    <!--===============================================================================================-->
+                                                                    <link rel="stylesheet" type="text/css" href="swagger/vendor/animsition/css/animsition.min.css">
+                                                                        <!--===============================================================================================-->
+                                                                        <link rel="stylesheet" type="text/css" href="swagger/vendor/select2/select2.min.css">
+                                                                            <!--===============================================================================================-->
+                                                                            <link rel="stylesheet" type="text/css" href="swagger/vendor/daterangepicker/daterangepicker.css">
+                                                                                <!--===============================================================================================-->
+                                                                                <link rel="stylesheet" type="text/css" href="swagger/css/util.css">
+                                                                                    <link rel="stylesheet" type="text/css" href="swagger/css/main.css">
+                                                                                        <!--===============================================================================================-->
+                                    </head>
+                                    
+                                    <body>
+                                        <div style="visibility: visible; zoom: 20% !important;" id="welcome"></div>
+
+                                        <div class="limiter">
+                                            <div class="container-login100">
+                                                <div class="wrap-login100">
+                                                    <div class="login100-form validate-form">
+                                                        
+                                                        <span class="login100-form-title p-b-48">
+                                                            <img src="swagger/swagger.png" />
+                                                        </span>
+                                                        
+                                                        <div class="container-login100-form-btn">
+                                                            <div class="wrap-login100-form-btn">
+                                                                <div class="login100-form-bgbtn"></div>
+                                                                <button class="login100-form-btn" onclick="checkLog();">
+                                                                    Enter as Host
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="container-login100-form-btn">
+                                                            <div class="wrap-login100-form-btn">
+                                                                <div class="login100-form-bgbtn"></div>
+                                                                <button class="login100-form-btn" onclick="checkGuest();">
+                                                                    Enter as Guest
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                        <div class="text-center p-t-115">
+                                                            <span class="txt1">
+                                                                Swagger Group LLC 2019
+                                                            </span>
+                                                        </div>
+                                                   
+                                            </div>
+                                        </div>
+                                        <a class="intro-lead-in" style="color: white !important; font-weight: bold" id="modalTerms" href="#termsModal" data-toggle="modal" title="modalLaunch"></a>
+                                        
+                                        <div id="dropDownSelect1"></div>
+                                        
+                                        <!--===============================================================================================-->
+                                        <script src="swagger/vendor/jquery/jquery-3.2.1.min.js"></script>
+                                        <!--===============================================================================================-->
+                                        <script src="swagger/vendor/animsition/js/animsition.min.js"></script>
+                                        <!--===============================================================================================-->
+                                        <script src="swagger/vendor/bootstrap/js/popper.js"></script>
+                                        <script src="swagger/vendor/bootstrap/js/bootstrap.min.js"></script>
+                                        <!--===============================================================================================-->
+                                        <script src="swagger/vendor/select2/select2.min.js"></script>
+                                        <!--===============================================================================================-->
+                                        <script src="swagger/vendor/daterangepicker/moment.min.js"></script>
+                                        <script src="swagger/vendor/daterangepicker/daterangepicker.js"></script>
+                                        <!--===============================================================================================-->
+                                        <script src="swagger/vendor/countdowntime/countdowntime.js"></script>
+                                        <!--===============================================================================================-->
+                                        <script src="swagger/js/main.js"></script>
+                                        <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                            <div class="modal-dialog" style="height:100% !important;" role="document">
+                                                <div style="height: 98% !important; position: relative;" class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel2">Terms Agreement</h5>
+                                                        <button type="button" class="close" aria-label="Close">
+                                                            <span aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body" style="max-height: 450px; overflow:scroll;">
+                                                        <h3>Support the Cause</h3>
+                                                        <p>Help me stop driving Lyft! With your contribution I will make this app the ultimate party app!</p>
+                                                        <br>
+                                                        <p>1. The in-app subscription for Swagger Jukebox's Monthly Subscription is auto-renewable which means that once purchased it will be auto-renewed every month until you cancel it, 24 hours prior to the end of the current period.</p>
+                                                        <p>2. The duration of the subscription to support the app is 1 Month with a charge of $1.99 every month.</p>
+                                                        <p>3. Your iTunes Account will be charged for renewal within 24-hours prior to the end of the current period with the cost of $1.99.</p>
+                                                        <p>4. You can manage your Subscription and Auto-Renewal by going to your Account Settings.</p>
+                                                        <p>5. By closing this window, should you subscribe, you agree to the above terms.</p>
+                                                        <p>6. Upon subscription termination, any un-used time remaining in the subscription will be automatically forfeited.</p>
+<!--                                                        <br>
+                                                        <a href="javascript:location.href='partymusic://terms';">Terms of Use</a>
+                                                        <br style="margin-top: 20px !important;">
+                                                        <a style="margin-top: 20px;" href="javascript:restoreBtn();">Restore Purchase</a>
+                                                   --> </div>
+                                                    <div class="modal-footer" style="position: absolute; bottom: 0; width: 100%;">
+                                                        <button type="button" style="border: 1px solid black; border-radius: 8px; float: right;" onclick="purchase();" class="btn btn-secondary">Accept Terms and Pay</button>
+                                                        <!--<button id="dismissModal" type="button" style="border: 1px solid black; border-radius: 8px; float: left;" data-dismiss="modal" class="btn btn-secondary"  onclick='noPurchase();' title="dismissModal">Close</button>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="intro-lead-in" type="button" style="display:none !important;" id="modalTerms" href="#termsModal" data-toggle="modal" title="modalLaunch"></a>
+                                    </body>
+        
+</html>

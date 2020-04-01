@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <style>#load { padding: 0 0 0 0; margin: 0 0 0 0; zoom: 20%; visibility: visible; width:100%; height:100%; position:fixed; z-index:9999; background:url("dirtyStyles/images/green.png") no-repeat center center rgba(0,0,0,1); }</style>
+  </head>
+  <body style="background: rgba(0,0,0,1); padding: 0 0 0 0; margin: 0 0 0 0;">
+  <div id="load" onclick="relo();"></div>
+  <script>
+    var flag = 0;
+    if (parseInt(localStorage.hosting) == 1) {
+      flag = 0;
+    }
+window.findParty = function (a) {
+                    var object = {};
+                      object.party = a;
+    $.ajax({
+           url: "https://paywallios.herokuapp.com/find",
+           data: object,
+           dataType: "json",
+           success: function (d) {
+           var plist = d.playlist;
+           localStorage["complete_access"] = true;
+           localStorage["password"] = d.superpowers;
+           localStorage["explicit"] = d.explicit;
+           localStorage["Snapster"] = plist.split(":::")[0];
+           localStorage["Snapster2"] = plist.split(":::")[1];
+           localStorage["party"] = d.party;
+           localStorage["url"] = d.access_token;
+           localStorage["userID"] = d.username.split(":::")[0];
+           localStorage["username"] = d.username;
+           localStorage["refresh_token"] = d.refresh_token;
+           localStorage["current_token"] = d.access_token;
+           location.href = "partymusic://first/";
+                            var urlP = window.location.toString().split("/public/")[0] + "/public";
+                            setTimeout(function () { location.href = urlP + "/indexOld.html"; }, 500);
+                        }, error: function (e, ee, eee) {
+                            //findParty(a);
+                            //console.log(JSON.stringify(e));
+                            //console.log(JSON.stringify(ee));
+                            //console.log(JSON.stringify(eee));
+                        }
+                    });
+                }
+                //localStorage.clear();
+                localStorage.superHost = 1;
+                setTimeout(function() {
+                if(!localStorage.party) { localStorage.party = window.location.toString().split("#")[1]; }
+                if(localStorage.party.indexOf(":::")>-1) { localStorage.party = localStorage.party.split(":::")[0]; }
+                setTimeout(function() { findParty(localStorage.party); }, 100);
+                  setInterval(function() {
+                    findParty(localStorage.party);
+                  }, 1000);
+                }, 100);
+                window.updateLSSong = function() { return; }
+                window.updateNowSong = function() { return; }
+                window.relo = function() { location.href='partymusic://problems'; }
+</script>
+  </body>
+</html>

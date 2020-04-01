@@ -21,6 +21,7 @@
   "homepage": "https://github.com/KoleMyers/apple-musickit-example",
   "license": "MIT",
   "dependencies": {
+    "apple-music-jwt": "^0.2.0",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0"
   }

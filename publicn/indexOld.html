@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Swagger Jukebox</title>
+    <link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0"/>
+    <link rel="stylesheet" href="fa-fonts/css/font-awesome.min.css">
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/create.js"></script>
+    <script src="js/upcomingSongs.js"></script>
+    <script src="dirtyScripts/index.js"></script>
+    <script src="https://socketswagger.herokuapp.com/socket.io/socket.io.js"></script>
+    <script src="dirtyScripts/newSong.js"></script>
+    <script>
+        window.findParty = function (a) {
+                          var object = {}
+                          object.party = localStorage.party.split(":::")[0];
+                          $.ajax({
+                          url: "https://paywallios.herokuapp.com/find",
+                          data: object,
+                          timeout:10000,
+                          dataType: "json",
+                          success: function (d) {
+                          localStorage["nowp"] = d.song;
+                          localStorage["votes"] = d.votes;
+                          if(localStorage.Snapster != d.playlist.split(":::")[0]) {
+                            localStorage["Snapster"] = d.playlist.split(":::")[0];
+                            localStorage.removeItem("songList");
+                            nextSongs();
+                          } else {
+                            nextSongs();
+                          }
+                            //console.log(localStorage.nowp);
+                          }, error: function (e, ee, eee) {
+                          }
+                          });
+                          }
+                          setTimeout(function() { findParty(1); }, 1000);
+    </script>
+</head>
+
+<body>
+<div class="player">
+    <div class="cover"></div>
+    <nav>
+        <div class="left">
+        </div>
+        <div id="search" class="right">
+            <input style="background-color: transparent;" type="text" placeholder="" id="filename" />
+            <i class="fa fa-search"></i>
+        </div>
+    </nav>
+    <div class="player-ui">
+        <center>
+            <div class="title">
+                <h3 id="song" style="overflow: ellipsis; white-space:nowrap; display:block;"></h3>
+            </div>
+            <p id="artist" style="overflow: ellipsis; white-space:nowrap; display:block; color: white !important;"></p>
+        </center>
+        <div class="small">
+
+        </div>
+
+        <div class="controls">
+            <i class="fa fa-chevron-circle-left" onclick="prev()"></i>
+            <i id="playpause" class="fa fa-play-circle" onclick="pause()"></i>
+            <i class="fa fa-chevron-circle-right" onclick="increment(1)"></i>
+        </div>
+    </div>
+    <div class="btn">
+        <progress id="progressBar" value="100" max="100"></progress>
+    </div>
+    <div id="results" class="music">
+
+    </div>
+
+</div>
+<div class="footer"><p>Universally Thinking | <em>2017</em></p></div>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/create.js"></script>
+    <link href="dirtyStyles/app2.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <title>Swagger</title>
+
+
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/agency.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="dirtyStyles/bootstrap.min.css">
+
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="dirtyScripts/cookie.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+            html {background: black !important; }
+            footer {
+                background: black;
+                color: white;
+            }
+        header {
+            background: black;
+            background-image: none !important;
+        }
+        header {background-attachment: scroll !important; }
+        #target h3,#target h2,#target h4, #target p {
+            color: white !important;
+        }
+        a.page-scroll.btn.btn-xl {
+            margin-bottom: 16px;
+        }
+        footer {
+            height: 14vh !important;
+        }
+        * {
+            overflow: hidden;
+        }
+        .container {
+            height: 86vh !important;
+        }
+        input[type="text"] {
+            height: 65px;
+            font-size: xx-large;
+            width: 225px;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            color: #333333;
+            margin: auto;
+            display: block;
+        }
+        #how {
+            background-color: black;
+            // background: url(../images/header-bg.jpg);
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: .8;
+        }
+        nav#mainNav { display: none !important; }
+        a.page-scroll.btn.btn-xl {
+            margin-bottom: 16px !important;
+            margin-top: 16px !important;
+        }
+        .member { max-width: 350px;}
+        .timeline-panel {
+        }
+        .navbar>.container .navbar-brand { float: left; }
+        .navbar-header.page-scroll {
+            width: 100%;
+        }
+        html, header, body {
+            height: 100vh;
+        }
+        ul.nav.navbar-nav.navbar-right { display: none; }
+        button.navbar-toggle {
+            display: block;
+        }
+        ul.nav.navbar-nav.navbar-right {
+            width: 22% !important;
+            float: left !important;
+            display: block;
+        }
+        .btn-xl, li.active a {background-color: #269052 !important;}
+        span.statcounter {
+            display: none;
+        }
+        h4.subheading {
+            text-align: center;
+        }
+        ::-webkit-input-placeholder {
+            color: gray !important;
+        }
+        section#services {
+            background-color: #eeeeee !important;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+            color: gray !important;
+        }
+        ::-moz-placeholder {  /* Firefox 19+ */
+            color: gray !important;
+        }
+        .timeline>li .timeline-image, .navbar-custom .navbar-toggle{
+            background: #269052 !important;
+        }
+        .fa-inverse {
+            background: #269052;
+            border-radius: 100%;
+        }
+        :-ms-input-placeholder {
+            color: gray !important;
+        }
+        .timeline:before { background-color: #4e81ce !important; }
+        a.navbar-brand.page-scroll {
+            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+            color: #269052;
+            text-transform: uppercase;
+        }
+        div#products, div#born, div#service, div#expansion {
+            outline: 7px solid #ffffff;
+        }
+        .client {  max-height: 50px; }
+        a.page-scroll.btn.btn-xl {
+            margin-bottom: 16px !important;
+            margin-top: 16px !important;
+        }
+        a.page-scroll.btn.btn-xl, input[type="text"] {
+            width: 300px;
+            text-align: center;
+            font-size: 25px;
+            text-transform: uppercase;
+            font-weight: 200;
+            font-family: sans-serif;
+            padding: 14px;
+        }
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none; /* Disable selection/copy in UIWebView */
+        }
+        header .intro-text {
+            padding-top: 100px;
+            padding-bottom: 25px !important;
+        }
+        div#dialogPage { background: darkgrey; z-index: 500; height: 100%; } .ui-content { margin: 0 15%; height: 80%; max-width: 70%; zoom: 130%; } div#dialogPage { background: darkgrey; z-index: 500; height: 100%; zoom: 70%; overflow: scroll;} button.ui-button.ui-btn.ui-shadow.ui-corner-all { position: fixed; margin-bottom: 0px !important; height: 5%; }
+div#karmaModal, div#karmaModal * {
+    color: black !important;
+    text-align: left;
+}
+div#karmaModal .btn {
+    display: block;
+    margin: 10px auto !important;
+    color: white !important;
+    }
+    div#termsModal {
+    color: black;
+    text-align: left;
+}
+.modal-body {
+    overflow: scroll !important;
+}
+</style>
+</head>
+
+<body id="page-top" class="index">
+<div style="visibility: visible;" id="load" onclick="alertify('Thinking...');"></div>
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Universally Thinking's</div>
+            <div class="intro-heading"><span style="display:block;">Swagger</span><span style="display:block;">Jukebox!</span></div>
+            <a onclick="log(1);" class="page-scroll btn btn-xl">Host a Party!</a>
+            <br />
+            <a onclick="guest();" class="page-scroll btn btn-xl">Enter as Guest!</a>
+        </div>
+       <!-- <a class="intro-lead-in" style="color: white !important; font-weight: bold" id="modalPromo" href="#promoModal" data-toggle="modal" title="modalLaunch">Enter Promo Code</a>
+   --> </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog" style="height:100% !important;" role="document">
+            <div style="height: 98% !important; position: relative;" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Terms Agreement</h5>
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="modal-body" style="max-height: 500px; overflow:scroll;">
+                    <h3>Support the Cause!</h3>
+                    <p>1. The in-app subscription for Swagger Jukebox's Monthly Subscription is auto-renewable which means that once purchased it will be auto-renewed every month until you cancel it, 24 hours prior to the end of the current period.</p>
+                    <p>2. The duration of the subscription to support the app is 1 Month with a charge of $1.99 every month.</p>
+                    <p>3. Your Google Account will be charged for renewal within 24-hours prior to the end of the current period with the cost of $1.99.</p>
+                    <p>4. You can manage your Subscription and Auto-Renewal by going to your Account Settings.</p>
+                    <p>5. By choosing subscribe you agree to the above terms.</p>
+                    <p>6. Upon subscription termination, any un-used time remaining in the subscription will be automatically forfeited.</p>
+                </div>
+                <div class="modal-footer" style="position: absolute; bottom: 0; width: 100%;">
+                    <button type="button" style="border: 1px solid black; border-radius: 8px; float: right; color: white !important;" onclick="location.href='partymusic://25actions';" class="btn btn-secondary">Subscribe</button>
+                    <p id="dismissModal" data-dismiss="modal"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="promoModal" tabindex="-1" role="dialog" aria-labelledby="promoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="promoModalLabel">Enter Promo Code!</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="promoCode" name="party" type="text" placeholder="Enter Promo Code..." class="form-control input-md" required="">
+                    <br/>
+                    <center>
+                        <button type="button" onclick="promo();" class="btn btn-secondary" style="margin-bottom: 15px;" data-dismiss="modal">Enter Code</button>
+                    </center>
+                    <a class="intro-lead-in" style="color: white !important; font-weight: bold" id="modalTerms" href="#termsModal" data-toggle="modal" title="modalLaunch"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="row">
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy; Universally Thinking 2017</span>
+            </div>
+        </div>
+    </footer>
+</header>
+<script>
+$(document).ready(function() {
+//localStorage.clear();
+
+  window.updateKarma = function() { return; }
+          window.promo = function () { if($("#promoCode").val().toLowerCase()=="freeswag") { location.href = "partymusic://promo/"; } else { setTimeout(function() { location.href = "partymusic://invalidpromo/"; }, 2500); } }
+
+                                window.log = function(i) {
+                                if(!Cookies.get('karma') && 2 == 1) { $('#modalTerms').click(); }
+                                else {
+                                    location.href = "partymusic://register/";
+                                }
+                                }
+          localStorage.urlGuest = window.location.toString().split("/public/")[0] + "/guest";
+
+                                window.guest = function() {
+                                if (!Cookies.get('karma') && 2 == 1 ) { $('#modalTerms').click(); }
+                                else { location.href = localStorage.urlGuest + "/app.html"; }
+                                }
+    window.sendMessage = function(i, name, user, num) {
+      var obj = {}; /*new object to write to server...
+      Use DOT notation to add values: dataBody.recipients = ["5135453118", "5135683374"]; dataBody.message = "This is my message"; etc.
+      */
+      var requestUrl = "http://swaggersender.herokuapp.com/shareSMS";
+      if(i==1) {
+        requestUrl = "http://swaggersender.herokuapp.com/shareEmail";
+        obj.recipients = ["universallythinking@gmail.com"];
+        confirmSend(requestUrl, obj);
+      } else {
+          obj.recipients = num;
+          obj.name = name;
+          obj.user = user;
+          confirmSend(requestUrl, obj);
+      }
+    }
+    window.confirmSend = function(url, obj){
+      if(numberCount >= 1) {
+      numberCount--;
+          $.ajax({
+              type: "GET",
+              url: url,
+              data: obj,
+              success: function(res){
+                console.log(res);
+                localStorage.unlock = true;
+                if(numberCount == 0){
+                    sendMessage(1, 0, 0, 0);
+                    location.href = "partymusic://sharesuccess/";
+                    setTimeout(function() { location.href = localStorage.urlParts + "/app2.html"; }, 3000);
+                }
+                //unlock access to the app
+              }, error: function(res) {
+                console.log(res);
+                //display an error message to the user
+              }
+          });
+      }
+    }
+    var numberCount;
+        window.parseNumbers = function() {
+        numberCount = 0;
+        var arr = localStorage.numbers.split(",");
+        //console.log(arr.toString());
+        numbers = [];
+        var flag = false;
+        if(typeof localStorage.myName == 'undefined' || localStorage.myName == null) {
+            localStorage.myName = "Robbie";
+        }
+        var ban = ["+15135166516", "+15139436266", "+15138001305", "+15132055156", "+15133076145", "+15135607071", "+15133328868", "+15135025937", "15136008322", "+15133386164", "+15136008322", "+15132356494"];
+        $.each(arr, function(index) {
+           if(arr[index].split("::")[1]) {
+            var number = "123";
+            var num = arr[index].split("::")[1].replace(/[- )(]/g,'');
+            if(num.length==10) {
+              number = "+1" + num;
+            } else if(num.length==11 && num.charAt(0) == "1") {
+              number = "+" + num;
+            } else if (num.length==12 && num.charAt(0) == "+") {
+              number = num;
+            }
+            var name = arr[index].split("::")[0].split(" ")[0];
+            if(number.length == 12 && name.length >1 && number.indexOf("+1917")==-1 && numbers.toString().indexOf(number) ==-1 && ban.toString().indexOf(number)==-1) {
+              numberCount++;
+              console.log(numberCount);
+              /*if(number.indexOf("513") != -1) number = number.replace("513", "850");
+              if(number.indexOf("419") != -1) number = number.replace("419", "850");
+              if(number.indexOf("859") != -1) number = number.replace("859", "850");*/
+              numbers.push(number+":::there");
+            }
+          }
+        });
+        var int = numberCount-1;
+        while(numberCount >= 1) {
+          var phone = numbers[int].split(":::")[0];
+          var n = numbers[int].split(":::")[1];
+          int--;
+          sendMessage(0, n, "Sent from my iPhone", phone);
+        }
+    }
+    window.unlock = function(a) {
+                        if (a == 1) {
+                            localStorage.maxKarma = 15;
+                            localStorage.karma = 15;
+                            Cookies.set('karma25', '25', { expires: 30 });
+                            updateKarma();
+                        } else if (a == 2) {
+                            Cookies.set('karma', '25', { expires: 30 });
+                            localStorage.maxKarma = 25;
+                            localStorage.karma = 25;
+                            updateKarma();
+                        } else if (a == 3) {
+                            Cookies.set('karma', '25', { expires: 30 });
+                            localStorage.maxKarma = 35;
+                            localStorage.karma = 35;
+                            updateKarma();
+                        }
+                                                    Cookies.set('verified', '25', { expires: 30 });
+
+                    setTimeout(function() { location.href = "partymusic://thanks/"; }, 500);
+                    setTimeout(function() { location.href = location.href; }, 1000);
+                  }
+                  if (!Cookies.get("karma")) { location.href = "partymusic://getKarma"; }
+                  Cookies.remove("partyInfo");
+                  Cookies.remove("locStore");
+                  Cookies.remove("locStore2");
+                  localStorage.removeItem("locStore");
+                  localStorage.removeItem("locStore2");
+                  //Cookies.set('karma', '25', { expires: 30 });
+                  });
+</script>
+</body>
+
+</html>

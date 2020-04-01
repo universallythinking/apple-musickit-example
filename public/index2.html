@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <link rel="stylesheet" href="fa-fonts/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="styles/style.css"> -->
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="dirtyStyles/style.min.css">
+    <link rel="stylesheet" href="dirtyStyles/style.css">
+</head>
+
+<body id="html">
+
+    <div class="navbar-custom">
+        <div id="nowPlayingButtons">
+            <div id="songInformation" onclick="pause()">
+                <p><span id="song"></span><span style="text-align: center; max-width:10px; font-weight: 700; font-size: 15px;"> &#183; </span><span id="artist"></span></p>
+
+
+            </div>
+            <span id="playbackButtons">
+                    <i class="fa fa-chevron-circle-left" onclick="prev()"></i>
+                    <i class="fa fa-pause-circle" id="playPause" onclick="pause()"></i>
+            </span>
+
+        </div>
+        <a href="#nav1" id="showMenu" class="tablinks"><i class="fa fa-bars"></i></a>
+        <a href="#home" id="showPlaylists" class="tablinks"><i class="fa fa-th-list"></i></a>
+        <a href="#Search" id="showSearch" class="tablinks"><i class="fa fa-search"></i></a>
+        <a href="#NowPlaying" id="defaultTab" onclick="openLink(event, 'NowPlaying'); nS();" class="tablinks"><i class="fa fa-headphones"></i></a>
+    </div>
+
+    <div class="main">
+        <div id="mySidenav" class="sidenav" style="z-index: 100;padding-bottom: 150px;">
+            <a href="javascript:void(0)" style="color: white !important; font-weight: bold;">Party Name: <span style="color: white !important; font-weight: bold;" id="nameify"></span></a>
+            <a href="javascript:void(0)" style="color: white !important; font-weight: bold;">Admin Password:  <span style="color: white !important; font-weight: bold;" id="codeify"></span></a>
+            <a href="javascript:void(0)" style="color: white !important; font-weight: bold;" id="adminPassword">Current Earnings:  <span style="color: white !important; font-weight: bold;" id="earnings"></span></a>
+            <a href="javascript:tognav()" id="closebtn" class="closebtn">&times;</a>
+            <a onclick="hosting();" id="hosting-toggle" class="navLink t"></a>
+            <a onclick="hosting();" class="navLink w" title="Hosting">Host Mode</a>
+            <a onclick="cashOut();" class="navLink t"><i class="fa fa-money" aria-hidden="true"></i></a>
+            <a onclick="cashOut();" class="navLink w" title="Hosting">Cash Out</a>
+
+            <!--<a onclick="guest();" class="navLink t" title="Refresh"><i class="fa fa-search" aria-hidden="true"></i></a>
+          <a onclick="guest();" class="navLink w" title="Refresh">Find a Party</a>-->
+            <a onclick="relo();" class="navLink t" title="Refresh"><i class="fa fa-retweet" aria-hidden="true"></i></a>
+            <a onclick="relo();" class="navLink w" title="Refresh">Reload</a>
+            <a onclick="resetVotes(); setTimeout(calculateVotes, 500); tognav(); return true;" class="navLink t" title="Clear Votes"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            <a onclick="resetVotes(); setTimeout(calculateVotes, 500); tognav(); return true;" class="navLink w">Clear Votes</a>
+            <a onclick="purgify();" class="navLink t" title="Purge Votes"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            <a onclick="purgify();" class="navLink w">Purge Songs</a>
+            <!--<a href="javascript:playlists()" class="navLink t" title="Change Playlist"><i class="fa fa-headphones" aria-hidden="true"></i></a>
+          <a href="javascript:playlists()" class="navLink w">Change Playlist</a>-->
+            <a href="javascript:saveList()" class="navLink t" title="Save Playlist"><i class="fa fa-save" aria-hidden="true"></i></a>
+            <a href="javascript:saveList()" class="navLink w">Save Playlist</a>
+            <!--<a href="javascript:settings()" class="navLink t" title="Edit Settings"><i class="fa fa-cog" aria-hidden="true"></i></a>
+          <a href="javascript:settings()" class="navLink w">Edit Settings</a>-->
+            <a href="javascript:terminate();" class="navLink t red"><i class="fa fa-spotify" aria-hidden="true"></i></a>
+            <a href="javascript:terminate();" class="navLink w">Logout</a>
+        </div>
+        <div style="visibility: visible; zoom: 20% !important;" id="load"></div>
+
+        <!-- Tab content -->
+        <div id="Home" style="background-color: black;" class="tabcontent">
+            <ul class="list-group">
+            </ul>
+            <div id="playlistsListed"></div>
+            <div id="playlistItemsListed">
+            </div>
+        </div>
+
+        <div id="nav1" class="tabcontent">
+        </div>
+
+        <div id="Search" class="tabcontent">
+            <input style="background-color: black;" type="text" placeholder="Search song or artist..." id="fname" />
+            <div id="searchResults"></div>
+        </div>
+
+        <div id="NowPlaying" class="tabcontent">
+            <div style="visibility: visible; zoom: 20% !important;" id="vote"></div>
+            <div style="display: none !important; zoom: 20% !important;background:url('./images/green.png') center center no-repeat !important; z-index: 100000 !important;" id="verify" onclick="verif();"></div>
+            <div class="player">
+                <div class="cover">
+                    <div id="albumImage" style="background-size: cover;"></div>
+                </div>
+
+               <!-- <div class="player-ui">
+                    <center>
+                        <div class="title">
+                            <h3 id="song" style="overflow: ellipsis; white-space:nowrap; display:block;"></h3>
+                        </div>
+                        <p id="artist" style="overflow: ellipsis; white-space:nowrap; display:block; color: white !important;"></p>
+                    </center>
+                    <div class="small">
+
+                    </div>
+
+                    <div class="controls">
+                        <i class="fa fa-chevron-circle-left" onclick="prev()"></i>
+                        <i class="fa fa-pause-circle" id="playPause" onclick="pause()"></i>
+                        <i class="fa fa-chevron-circle-right" onclick="increment(1)"></i>
+                    </div>
+                </div>-->
+                <div class="btn btnplace">
+                    <div id="playNextButton" onclick="increment(1);">Next Song</div>
+                </div>
+                <div id="results" class="music">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <center id="footer"><div><em>Swagger Music 2020</em></div></center>
+
+    <script src="https://socketswagger.herokuapp.com/socket.io/socket.io.js"></script>
+    <script src="dirtyScripts/jquery-ui.js"></script>
+    <script src="dirtyScripts/cookie.js"></script>
+    <script src="dirtyScripts/drag.js"></script>
+    <script src="js/jquery.tap.js"></script>
+    <script src="dirtyScripts/all.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+setInterval(function() {
+    if(localStorage.state == "true" && parseInt(localStorage.position) <= 1.0) {
+        increment(1);
+    }
+    if(localStorage.state != "true0") {
+        console.log(localStorage.state, localStorage.position);
+    }
+}, 3000);
+        const a_token = localStorage.current_token;
+const play = function(id, spotify_uri) {
+    fetch(`https://api.spotify.com/v1/me/player/play?device_id=${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ uris: [spotify_uri] }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${a_token}`
+      },
+    });
+  };
+        window.opened = function() {
+            if(!localStorage.player)window.open("/indexTest.html");
+            localStorage.player = "ready";
+        }
+        opened();
+        setTimeout(function() {
+            if (!Cookies.get("verified")) Cookies.set("verified", "25", {
+                expires: 30
+            });
+            if (!Cookies.get("karma")) Cookies.set('karma', '25', {
+                expires: 30
+            });
+
+            window.unlock = function(a) {
+                if (a == 1) {
+                    Cookies.set('karma', '25', {
+                        expires: 30
+                    });
+                    Cookies.set('verified', '25', {
+                        expires: 30
+                    });
+                    localStorage.maxKarma = 25;
+                    localStorage.karma = 25;
+                    //updateKarma();
+                } else if (a == 2) {
+                    setTimeout(function() {
+                        location.reload();
+                    }, 3000);
+                    Cookies.set('karma', '25', {
+                        expires: 30
+                    });
+                    Cookies.set('verified', '25', {
+                        expires: 30
+                    });
+                    localStorage.maxKarma = 25;
+                    localStorage.karma = 25;
+                    //updateKarma();
+                } else if (a == 3) {
+                    if (!Cookies.get('karma') && !karma || !Cookies.get('verified')) setTimeout(function() {
+                        location.reload();
+                    }, 1000);
+                    Cookies.set('karma', '25', {
+                        expires: 30
+                    });
+                    Cookies.set('verified', '25', {
+                        expires: 30
+                    });
+                    localStorage.maxKarma = 25;
+                    localStorage.karma = 25;
+                    //updateKarma();
+                } else if (a == 7) {
+                    Cookies.set('karma', '7', {
+                        expires: 30
+                    });
+                    Cookies.set('verified', '25', {
+                        expires: 30
+                    });
+                    localStorage.maxKarma = 7;
+                    localStorage.karma = 7;
+                    //updateKarma();
+                }
+            }
+            window.verif = function(i) {
+
+                //Cookies.set("karma", "true", { expires: 1 });
+                if (!Cookies.get('verified')) {
+                    document.getElementById("verify").style.visibility = "hidden";
+                    return false;
+                } else {
+                    $("#verify").hide();
+                }
+            }
+            if (!Cookies.get("verified")) {
+                location.href = "partymusic://getKarma";
+            }
+            if (!localStorage.tictic) {
+                $("#verify").hide();
+                setTimeout(function() {
+                    localStorage.tictic = 0;
+                }, 5000);
+            } else {
+                $("#verify").hide();
+            }
+            if (Cookies.get('verified')) {
+                $("#verify").hide();
+            } else if (parseInt(localStorage.tictic) < 5) {
+                localStorage.tictic = parseInt(localStorage.tictic) + 1;
+                setTimeout(function() {
+                    $("#verify").hide();
+                }, 30000);
+            } //restoreBtn();
+            else {
+                setTimeout(function() {
+                    $("#verify").hide();
+                }, 30000);
+            }
+                   
+            window.purchase = function() {
+                location.href = "partymusic://25actions";
+                Cookies.set('purchbtn', 'true', {
+                    expires: 1
+                });
+                setTimeout(function() {
+                    $("#dismissModal").click();
+                }, 1500);
+            }
+            window.restore = function() {
+                if (Cookies.get('purchbtn') && !Cookies.get('karma')) location.href = "partymusic://checkpurchases";
+            }
+            window.restoreBtn = function() {
+                location.href = "partymusic://checkpurchases";
+            }
+        }, 750);
+        window.findVotes = function() {
+            var object = {};
+            object.party = localStorage.party.split(":::")[0];
+            $.ajax({
+                url: "https://paywallios.herokuapp.com/find",
+                data: object,
+                timeout: 10000,
+                dataType: "json",
+                success: function(d) {
+                    localStorage["refresh_token"] = d.refresh_token;
+                    if (localStorage.votes != d.votes) {
+                        localStorage["votes"] = d.votes;
+                        if(localStorage.CT)calculateVotes();
+                    }
+                },
+                error: function(e, ee, eee) {}
+            });
+        }
+        setInterval(findVotes, 5000);
+        findVotes();
+        window.moveToBottom = function(t) {
+            var e, a, o = -1;
+            var s = [];
+            var top = [];
+            var add = [],
+                l = localStorage.CT.split(",");
+            $.each(l, function(t, l) {
+                e = localStorage.votes.split("++" + l).length, a = localStorage.votes.split("--" + l).length, $("[data=" + l + "]").attr("title"), (e - a <= o && localStorage.nowp.indexOf(l) == -1 && s.toString().indexOf($("[data=" + l + "]").attr("title")) == -1) && s.push('{ "uri": "spotify:track:' + $("[data=" + l + "]").attr("title") + '" }')
+            });
+            $.each(l, function(t, l) {
+                e = localStorage.votes.split("++" + l).length, a = localStorage.votes.split("--" + l).length, $("[data=" + l + "]").attr("title"), (e - a <= (o-3) && localStorage.nowp.indexOf(l) == -1 && add.toString().indexOf($("[data=" + l + "]").attr("title")) == -1) && add.push('"spotify:track:' + $("[data=" + l + "]").attr("title") + '"')
+            });
+            var addObj = '{"uris":[' + add + ']}';
+            localStorage.addToBottom = add.length;
+            console.log(JSON.stringify(addObj));
+            var i = '{"tracks":[' + s + "]}";
+            if (1 <= s.length && localStorage.addToBottom != localStorage.oldAddToBottom || add.length > 2) {
+                localStorage.oldAddToBottom = localStorage.addToBottom;
+                $.ajax({
+                    async: !0,
+                    cache: !0,
+                    type: "DELETE",
+                    url: "https://api.spotify.com/v1/playlists/" + localStorage.Snapster + "/tracks",
+                    headers: {
+                        Authorization: "Bearer " + localStorage.current_token
+                    },
+                    contentType: "application/json",
+                    data: i,
+                    success: function(t) {
+                        $.ajax({
+                            async: !0,
+                            cache: !0,
+                            type: "POST",
+                            url: "https://api.spotify.com/v1/playlists/" + localStorage.Snapster + "/tracks",
+                            headers: {
+                                Authorization: "Bearer " + localStorage.current_token
+                            },
+                            contentType: "application/json",
+                            data: addObj,
+                            success: function(t) {
+                                nextSongs()
+                            },
+                            error: function(t) {}
+                        });
+                    },
+                    error: function(t) {}
+                });
+
+            }
+        }
+        setTimeout(function() {
+            $("#codeify").append(localStorage.password.toUpperCase());
+        }, 2000);
+        if (!localStorage.partyNameAlert) {
+            location.href = "partymusic://yourPartyName:::" + localStorage.party.toUpperCase() + "|||" + localStorage.password.toUpperCase();
+            localStorage.partyNameAlert = true;
+        }
+        // restore();
+        var headnav = document.getElementById('playNextButton');
+var headnavPos = headnav.offsetTop;
+
+window.scroller = function() {
+console.log($(window).scrollTop(), window.innerHeight, (window.innerHeight / 4));
+    if($(window).scrollTop() > (window.innerHeight / 3)) {
+        if(!$("#playNextButton").hasClass("affix")) {
+            $("#playNextButton").addClass("affix");
+        }
+    } else if ($(window).scrollTop() <= (window.innerHeight / 3)) {
+            $("#playNextButton").removeClass("affix");
+        }
+}
+// callback
+window.onScrolled = function(){
+    if( $(window).scrollTop() <= document.body.scrollHeight ) {
+        scroller();
+    }
+}
+$(window).on('scroll', onScrolled);
+$(document.body).on('touchmove', onScrolled); // for mobile
+    </script>
+
+</body>
+
+</html>

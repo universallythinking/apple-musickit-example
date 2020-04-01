@@ -1,0 +1,398 @@
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-overflow-scrolling: touch;
+}
+input[type="text"], #fname, input
+{
+    -webkit-touch-callout: all !important;
+    -webkit-user-select: all !important;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #333;
+    font-family: "Roboto",sans-serif;
+    font-size: 1em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1em;
+}
+
+body {
+    /*background: #e9e9e9;*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+i {
+    cursor: pointer;
+}
+
+.player {
+    overflow: hidden;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    padding-bottom: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 5;
+}
+.player .cover {
+    position: absolute;
+    z-index: 1;
+    width: 100% !important;
+    height: 100%;
+    background-size: cover;
+}
+.player nav {
+    margin-top: 5px;
+    position: relative;
+    z-index: 3;
+    min-height: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0px 15px;
+}
+.player nav .left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.player nav .left i {
+    cursor: pointer;
+    color: white;
+}
+.player nav .left h6 {
+    margin: 0;
+    padding-left: 20px;
+    color: white;
+    font-size: 18px;
+    line-height: 1.38;
+}
+.player nav .right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.player nav .right i {
+    cursor: pointer;
+    color: white;
+}
+.player nav .right .search {
+    padding-right: 10px;
+}
+.player .player-ui {
+    position: relative;
+    z-index: 3;
+    /*padding-top: 30px;*/
+}
+.player .player-ui .title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.player .player-ui .title h3 {
+    margin: 0;
+    color: white;
+    font-size: 30px;
+    font-weight: 100;
+}
+.player .player-ui .small {
+    padding: 15px 35px 0px 35px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.player .player-ui .small p, .player .player-ui .small i {
+    margin: 0;
+    color: white;
+    font-size: 14px;
+}
+.player .player-ui .small p {
+    color: #ddd;
+}
+.player .player-ui .small i {
+    font-size: 16px;
+}
+.player .player-ui .progress {
+    position: relative;
+    height: 2px;
+    margin: 30px 20px 0px 20px;
+    background: rgba(255, 255, 255, 0.3);
+}
+.player .player-ui .progress .played {
+    width: 20%;
+    height: 2px;
+    position: absolute;
+    background: #F44336;
+}
+.player .player-ui .progress .played .circle {
+    width: 10px;
+    height: 10px;
+    background: #F44336;
+    border-radius: 50%;
+    margin-left: 52px;
+    margin-top: -4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+.player .player-ui .controls {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 25px 50px 0px 50px;
+}
+.player .player-ui .controls i {
+    color: white;
+    font-size: 32px;
+}
+.player .btn {
+    margin-left: auto;
+    margin-right: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    z-index: 4;
+    margin-top: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.player .btn i {
+    font-size: 28px;
+    color: white;
+}
+  {
+    padding: 0px 20px 0px 20px;
+    background: #1A1B1E;
+    margin-top: -26px;
+}
+  .songLinkClick,   .songLinkClick1,   .songLinkClick,   .songLinkClick {
+    height: 80px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+  .songLinkClick .info,   .songLinkClick1 .info,   .songLinkClick .info,   .songLinkClick .info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+  .songLinkClick .info .img,   .songLinkClick1 .info .img,   .songLinkClick .info .img,   .songLinkClick .info .img {
+    width: 60px;
+    height: 60px;
+    background: red;
+    margin-right: 10px;
+}
+  .songLinkClick .info .img.first,   .songLinkClick .info .img.first,   .songLinkClick .info .img.first,   .songLinkClick .info .img.first {
+    background: url(http://static.stereogum.com/blogs.dir/2/files/2011/12/Adele-21.jpg) center center;
+    background-size: cover;
+}
+  .songLinkClick .info .img.second,   .songLinkClick .info .img.second,   .songLinkClick .info .img.second,   .songLinkClick .info .img.second {
+    background: url(https://upload.wikimedia.org/wikipedia/en/d/df/RedHotChiliPeppersCalifornication.jpg) center center;
+    background-size: cover;
+}
+  .songLinkClick .info .img.third,   .songLinkClick .info .img.third,   .songLinkClick .info .img.third,   .songLinkClick .info .img.third {
+    background: url(http://images.rapgenius.com/59fc635f7dbe6b5cd1e07e5e605c96b5.640x640x1.jpg) center center;
+    background-size: cover;
+}
+  .songLinkClick .info .img.fourth,   .songLinkClick .info .img.fourth,   .songLinkClick .info .img.fourth,   .songLinkClick .info .img.fourth {
+    background: url(http://djrichiep.us/wp-content/uploads/2014/06/princelgc7F.jpg) center center;
+    background-size: cover;
+}
+  .songLinkClick1 .info .titles h5,   .songLinkClick1 .info .titles p,   .songLinkClick .info .titles h5,   .songLinkClick .info .titles p,   .songLinkClick .info .titles h5,   .songLinkClick .info .titles p,   .songLinkClick .info .titles h5,   .songLinkClick .info .titles p {
+    margin: 0;
+    color: white;
+}
+  .songLinkClick1 .info .titles h5,   .songLinkClick .info .titles h5,   .songLinkClick1 .info .titles h5,   .songLinkClick .info .titles h5 {
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 7px;
+}
+  .songLinkClick1 .info .titles p,   .songLinkClick .info .titles p,   .songLinkClick .info .titles p,   .songLinkClick .info .titles p {
+    font-size: 13px;
+    color: #929292;
+}
+  .songLinkClick .state.playing i,   .songLinkClick .state.playing i,   .songLinkClick .state.playing i,   .songLinkClick
+  .state.playing i {
+    color: #F44336;
+}
+  .songLinkClick .state i,   .songLinkClick .state i,   .songLinkClick .state i,   .songLinkClick .state i {
+    color: #ddd;
+}
+#results, #searchResults, #NowPlaying, body {height: 100% !important; overflow: scroll; } #results, #searchResults { padding-bottom:250px; padding-top:15px;}
+.voteBtn { font-size: 260%; color: white; }
+.ninety { max-width : 90%;}
+.block { display : block; max-width: 75vw; overflow: hidden; white-space: nowrap; }
+.img { float: left !important; display: none; }
+input[type="text"], #fname, input
+{
+    background-color: rgba(0,0,0,0.1);
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid gray !important;
+    color: white !important;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+.footer {
+    position: fixed;
+    text-align: center;
+    height: 25px;
+    color: white;
+    background-color: #000000;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    z-index: 5;
+}
+.footer *  {
+    margin: 6px 0;
+    height: 13px;
+}
+#load {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9999;
+    background: url("images/green.png") no-repeat center center rgba(0, 0, 0, 1);
+}
+#fog {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.9);
+}
+#searchResults * {text-align: center;}
+#results, #searchResults, #searchResults *, #results * { z-index: 7 !important; opacity: 1; position: relative; background: transparent;  }
+#progressBar, .btn { width: 100% !important; z-index: 8 !important; position: relative; }
+.btn { top: -5px; }
+#progressBar { height: 5px !important; background: limegreen; }
+#results, #searchResults { background: rgba(0, 0, 0, 0.6); }
+.title { margin-top: 40px; }
+#artist { margin-top: 30px; }
+#artist { margin-bottom: -10px; }
+.voteBtn { font-size: 150%; }
+
+
+
+
+
+
+
+
+
+
+
+html {background: black !important; }
+
+    .songLinkClick {
+        font-weight: 200;
+    }
+    #playlistContainer {
+        color: white;
+    }
+    h5, p {
+        font-size: 75%;
+    }
+    .charlie {
+        width: 100%;
+    }
+    .images {
+        width: 100%;
+        border: none;
+        outline: none;
+    }
+    .row {
+        width: 100%;
+        float: none;
+        text-align: center;
+        margin: auto;
+    }
+    .half, .inline {
+        width: 44%;
+    }
+    .fourth {
+        width: 88%;
+    }
+    .playlists, .playlist {
+        padding: 15px 15px 0 15px;
+        display: inline-block;
+        height: auto;
+    }
+    h5 {
+        overflow: hidden;
+        height: 25px;
+    }
+    div#playlistContainer {
+        padding-left: 10%;
+        min-height: 100%;
+    }
+    #load {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 9999;
+        background: url("images/green.png") no-repeat center center rgba(0, 0, 0, 1);
+    }
+    center.items, p.items {
+        margin-left: -10%;
+    }
