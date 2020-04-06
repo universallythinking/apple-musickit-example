@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="dirtyStyles/style.min.css">
     <link rel="stylesheet" href="dirtyStyles/style.css">
+    <script src="https://socketswagger.herokuapp.com/socket.io/socket.io.js"></script>
     <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
     <script type="text/javascript" src="/index.js"></script>
 </head>
@@ -68,7 +69,7 @@
         <div style="visibility: visible; zoom: 20% !important;" id="load"></div>
 
         <!-- Tab content -->
-        <div id="Home" style="background-color: black;" class="tabcontent">
+        <div id="Home" style="background-color: white !important" class="tabcontent">
             <ul class="list-group">
             </ul>
             <div id="playlistsListed"></div>
@@ -80,7 +81,7 @@
         </div>
 
         <div id="Search" class="tabcontent">
-            <input style="background-color: black;" type="text" placeholder="Search song or artist..." id="fname" />
+            <input style="background-color: white !important" type="text" placeholder="Search song or artist..." id="fname" />
             <div id="searchResults"></div>
         </div>
 
@@ -121,7 +122,6 @@
     </div>
     <center id="footer"><div><em>Swagger Music 2020</em></div></center>
 
-    <script src="https://socketswagger.herokuapp.com/socket.io/socket.io.js"></script>
     <script src="dirtyScripts/jquery-ui.js"></script>
     <script src="dirtyScripts/cookie.js"></script>
     <script src="dirtyScripts/drag.js"></script>
@@ -221,7 +221,7 @@
                     $("#verify").hide();
                 }, 30000);
             }
-                   
+
             window.purchase = function() {
                 location.href = "partymusic://25actions";
                 Cookies.set('purchbtn', 'true', {

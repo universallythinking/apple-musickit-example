@@ -27,12 +27,11 @@ setTimeout(function() {
     };
 
     window.now = function(song, a) {
-    localStorage.nowp = song; nextSongsCache();
-      addtoq(song, "song");
-      setTimeout(function() {
-        music.changeToMediaAtIndex(MusicKit.getInstance().player.queue.items[MusicKit.getInstance().player.queue.items.length - 1]);
-        play();
-      }, 200);
+      MusicKit.getInstance().setQueue({ song: song}).then(function(queue) {
+          MusicKit.getInstance().play();
+      });
+      localStorage.nowp = song;
+      nextSongsCache();
     }
     window.play = function () {
       /***
@@ -47,7 +46,7 @@ setTimeout(function() {
         Pause playback of media item
         https://developer.apple.com/documentation/musickitjs/musickit/musickitinstance/2992708-pause
       ***/
-    
+
       music.pause();
       /*
       music.api.library.playlists().then(data => {
@@ -57,14 +56,16 @@ setTimeout(function() {
       music.api.library.playlist("p.eoGxRGoCZDgWmR8").then(data => {
         localStorage.playlistData = JSON.stringify(data);
       });
-      
+
     };
     window.auth = function () {
     music.authorize().then(musicUserToken => {
+      localStorage.token = musicUserToken;
       console.log(`Authorized, music-user-token: ${musicUserToken}`);
       music.api.library.playlist("p.eoGxRGoCZDgWmR8").then(data => {
         localStorage.playlistData = JSON.stringify(data);
       });
+      //location.href = "/index.html";
     });
   }
   auth();

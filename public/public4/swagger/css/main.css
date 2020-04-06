@@ -234,7 +234,7 @@ iframe {
 
 .wrap-login100 {
     /* width: 390px; */
-    background: #fff;
+    background: gray;
     /* border-radius: 10px; */
     overflow: hidden;
     padding: 77px 55px 33px 55px;
@@ -450,7 +450,7 @@ iframe {
 .login100-form-btn {
     font-family: Poppins-Medium;
     font-size: 15px;
-    color: #fff;
+    color: gray;
     line-height: 1.2;
     text-transform: uppercase;
     display: -webkit-box;
@@ -491,7 +491,7 @@ iframe {
     content: attr(data-validate);
     position: absolute;
     max-width: 70%;
-    background-color: #fff;
+    background-color: gray;
     border: 1px solid #c80000;
     border-radius: 2px;
     padding: 4px 25px 4px 10px;
@@ -523,7 +523,7 @@ iframe {
     color: #c80000;
     display: block;
     position: absolute;
-    background-color: #fff;
+    background-color: gray;
     top: 50%;
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);

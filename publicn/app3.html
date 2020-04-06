@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
     <head>
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="js/create.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+        <script type="text/javascript" src="/index.js"></script>
         <style>
             #wholeModal {
                 height: 100vh;
                 width: 100vw;
                 display: none;
             }
-        
+
         .modal-body *,
         .button {
             font-family: sans-serif;
         }
-        
+
         p.modal-p,
         a.modal-a {
             font-size: 10px;
         }
-        
+
         a.modal-a {
             color: gray;
         }
-        
+
         body,
         .modal-body,
         .modal-body * {
             background: #dbf1ff;
         }
-        
+
         button.btn.btn-secondary {
             border: 1px solid black;
             width: 100%;
@@ -40,24 +42,24 @@
             padding: 0;
             height: 10%;
         }
-        
+
         body,
         .modal-body {
             width: 100%;
             overflow: hidden;
         }
-        
+
         .modal-scroll {
             width: 100%;
             height: 100%;
         }
-        
+
         .modal-body {
             zoom: 100%;
             height: 90%;
             overflow: scroll;
         }
-        
+
         .button {
             display: table-cell;
             width: 100vw;
@@ -111,10 +113,10 @@
                                        }
                                        });
                                 }
-               
+
                                 //Cookies.remove("locStore");
                                 //Cookies.remove("locStore2");
-                                
+
                                 var karma = false;
                                 if (localStorage.karma) karma = true;
                                 var clicks = localStorage.clicks;
@@ -125,14 +127,14 @@
                                 localStorage.removeItem("i");
                                 localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
                                 localStorage.urlGuest = window.location.toString().split("/public/")[0] + "/guest";
-                                
+
                                 if (!localStorage.locked && localStorage.locked == "yes") {
                                 //location.href = "/app.html";
                                 }
                                 //localStorage.clear();
                                 localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
                                 localStorage.urlGuest = window.location.toString().split("/public/")[0] + "/guest";
-                                
+
                                 window.checkReceipt = function(a, b) {
                                 window.receiptData = {};
                                 receiptData["receipt-data"] = b;
@@ -159,7 +161,7 @@
                                               }
                                               },
                                               error: function(res2) {
-                                              
+
                                               }
                                               });
                                        } else if (Cookies.get('karma')) {
@@ -167,7 +169,7 @@
                                        }
                                        },
                                        error: function(res) {
-                                       
+
                                        }
                                        });
                                 //actions('3');
@@ -184,12 +186,12 @@
                                 createCookie('logged', 'logcookie', 30);
                                 localStorage.willywonka = true;
                                 //localStorage.removeItem("Snapster");
-                                
+
                                 window.login = function() {
                                 location.href = "https://paywallios.herokuapp.com/authIOS.html";
                                 //location.href='partymusic://login';
                                 }
-                                
+
                                 //setTimeout(function() { if(!Cookies.get('karma')) { $('#modalTerms').click(); } }, 0);
                                 window.resumeSession = function(i) {
                                 if (i == 1) {
@@ -295,7 +297,7 @@
                                            location.reload();
                                            }, 5000);
                                 }
-                                
+
                                 $("ul.nav.navbar-nav.navbar-right").css("display", "none");
                                 $("#menu-t").on("click", function() {
                                                 $("ul.nav.navbar-nav.navbar-right").toggle();
@@ -310,7 +312,7 @@
                                 $("#target").css("height", "auto");
                                 $("#target").css("height", $("#target").height() + 200);
                                 //if (localStorage.current_token) { window.location.href = "https://paywallios.herokuapp.com/authIOS"; }
-                                
+
                                 // }, 3000);
                                 localStorage.setItem("app", "true");
                                 localStorage.setItem("signedIn", "true");
@@ -411,7 +413,7 @@
                                            }
                                            }, 500);
                                 }
-                                
+
                                 window.sendEm = function() {
                                 $.ajax({
                                        type: "POST",
@@ -445,14 +447,14 @@
                                 setTimeout(index,500);
                                 }
                                 window.checkLog = function() {
-                                if(!Cookies.get("bought") && chargeMe()) {
+                                if(!Cookies.get("bought") && chargeMe() || 1==1) {
                                 location.href = "partymusic://25actions";
                                 setTimeout(restore, 2500);
                                 }
                                 else if (Cookies.get("locStore")) {
                                 location.href = "partymusic://authSpot2";
                                 } else {
-                                location.href = "partymusic://authSpot2";
+                                auth();
                                 }
                                 }
                                 window.checkGuest = function() {
@@ -487,14 +489,14 @@
                 z-index: 500;
                 height: 100%;
             }
-        
+
         .ui-content {
             margin: 0 15%;
             height: 80%;
             max-width: 70%;
             zoom: 130%;
         }
-        
+
         div#dialogPage {
             background: darkgrey;
             z-index: 500;
@@ -502,13 +504,13 @@
             zoom: 70%;
             overflow: scroll;
         }
-        
+
         button.ui-button.ui-btn.ui-shadow.ui-corner-all {
             position: fixed;
             margin-bottom: 0px !important;
             height: 5%;
         }
-        
+
         #welcome {
             width: 100%;
             height: 100%;
@@ -522,30 +524,30 @@
                 <meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
                 <meta name="description" content="">
                     <meta name="author" content="">
-                        
+
                         <title>Swagger</title>
-                        
+
                         <!-- Bootstrap Core CSS -->
                         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-                            
+
                             <!-- Custom Fonts -->
                             <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
                                 <!--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
                                  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
                                  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
                                  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>-->
-                                
+
                                 <!-- Theme CSS -->
                                 <link href="stylesheets/agency.min.css" rel="stylesheet">
                                     <script src="js/cookie.js"></script>
-                                    
+
                                     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
                                     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
                                     <!--[if lt IE 9]>
                                      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
                                      <script src="https://oss.maxcdn.com/libs/respond.javascripts/1.4.2/respond.min.js"></script>
                                      <![endif]-->
-                                    
+
                                     <head>
                                         <title>Swagger</title>
                                         <meta charset="UTF-8">
@@ -572,19 +574,19 @@
                                                                                 <link rel="stylesheet" type="text/css" href="swagger/css/main.css">
                                                                                     <!--===============================================================================================-->
                                                                                     </head>
-                                    
+
                                     <body>
                                         <div style="visibility: hidden; display:none; zoom: 20% !important;" onclick="hideWelcome();" id="welcome"></div>
-                                        
+
                                         <div class="limiter" id="main">
                                             <div class="container-login100">
                                                 <div class="wrap-login100">
                                                     <div class="login100-form validate-form">
-                                                        
+
                                                         <span class="login100-form-title p-b-48">
                                                             <img src="swagger/swagger.png" />
                                                         </span>
-                                                        
+
                                                         <div class="container-login100-form-btn">
                                                             <div class="wrap-login100-form-btn">
                                                                 <div class="login100-form-bgbtn"></div>
@@ -593,7 +595,7 @@
                                                                 </button>
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="container-login100-form-btn">
                                                             <div class="wrap-login100-form-btn">
                                                                 <div class="login100-form-bgbtn"></div>
@@ -610,13 +612,13 @@
                                                     </span>
                                                     <p onclick="restore();" class="txt1" id="restorePurch">Restore Purchase</p>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <a class="intro-lead-in" style="color: white !important; font-weight: bold" id="modalTerms" href="#termsModal" data-toggle="modal" title="modalLaunch"></a>
-                                        
+
                                         <div id="dropDownSelect1"></div>
-                                        
+
                                         <!--===============================================================================================-->
                                         <script src="swagger/vendor/jquery/jquery-3.2.1.min.js"></script>
                                         <!--===============================================================================================-->
@@ -633,7 +635,7 @@
                                         <script src="swagger/vendor/countdowntime/countdowntime.js"></script>
                                         <!--===============================================================================================-->
                                         <script src="swagger/js/main.js"></script>
-                                        
+
                                     </body>
-                                    
+
 </html>

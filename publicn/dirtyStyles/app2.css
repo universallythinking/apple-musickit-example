@@ -99,7 +99,7 @@ section#services {
     text-transform: uppercase;
     }
     div#products, div#born, div#service, div#expansion {
-    outline: 7px solid #ffffff;
+    outline: 7px solid grayfff;
 }
   .client {  max-height: 50px; }
         a.page-scroll.btn.btn-xl {

@@ -248,7 +248,7 @@
                          //location.href = "partymusic://newSongAdded";
                          nextSongs();
                          votedImg();
-                         //$("#songLinkClick1" + i).css({"color": "lightgray"});  //, "pointer-events": "none"});
+                         //$("#songLinkClick1" + i).css({"color": "gray"});  //, "pointer-events": "none"});
                          //setTimeout(function() { location.href = location.href; },3000);
                          }
                          });
