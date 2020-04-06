@@ -27,9 +27,12 @@ setTimeout(function() {
     };
 
     window.now = function(song, a) {
+    localStorage.nowp = song; nextSongsCache();
       addtoq(song, "song");
-      console.log(MusicKit.Queue.length);
-      music.changeToMediaAtIndex(MusicKit.Queue.length);
+      setTimeout(function() {
+        music.changeToMediaAtIndex(MusicKit.getInstance().player.queue.items[MusicKit.getInstance().player.queue.items.length - 1]);
+        play();
+      }, 200);
     }
     window.play = function () {
       /***
