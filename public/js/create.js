@@ -53,7 +53,7 @@ $(document).ready(function() {
                          error: function() {}
                          });
                          }
-                  if (localStorage["party"].length > 3 && localStorage["password"].length > 3) {
+                  if (localStorage["party"] && localStorage["password"]) {
                   obj2["party"] = localStorage["party"].split(":::")[0];
                   obj2["playlist"] = localStorage.Snapster + ":::" + localStorage.Snapster2;
                   obj2["access_token"] = localStorage["current_token"];
@@ -77,7 +77,7 @@ $(document).ready(function() {
                   }
                   }
                   window.kill = function() {
-                                    if (localStorage["party"].length > 3 && localStorage["password"].length > 3) {
+                                    if (localStorage["party"] && localStorage["password"]) {
                                     obj2["party"] = localStorage["party"].split(":::")[0] + "NEVERFIND";
                                     obj2["playlist"] = localStorage.Snapster + ":::" + localStorage.Snapster2;
                                     obj2["access_token"] = localStorage["current_token"];
