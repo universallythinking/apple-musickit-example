@@ -43,4 +43,4 @@ app.get('/token', function (req, res) {
 app.use(express.static(publicDir));
 
 console.log('Listening at', publicDir, hostname, port);
-app.listen(port, hostname);
+app.listen(process.env.PORT || 8080);
