@@ -13,6 +13,8 @@
     <script src="https://socketswagger.herokuapp.com/socket.io/socket.io.js"></script>
     <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
     <script type="text/javascript" src="/index.js"></script>
+    <script type="text/javascript" src="js/passwords.js"></script>
+    <script type="text/javascript" src="js/create.js"></script>
 </head>
 
 <body id="html">
@@ -38,9 +40,9 @@
 
     <div class="main">
         <div id="mySidenav" class="sidenav" style="z-index: 100;padding-bottom: 150px;">
-            <a href="javascript:void(0)" style="color: white !important; font-weight: bold;">Party Name: <span style="color: white !important; font-weight: bold;" id="nameify"></span></a>
-            <a href="javascript:void(0)" style="color: white !important; font-weight: bold;">Admin Password:  <span style="color: white !important; font-weight: bold;" id="codeify"></span></a>
-            <a href="javascript:void(0)" style="color: white !important; font-weight: bold;" id="adminPassword">Current Earnings:  <span style="color: white !important; font-weight: bold;" id="earnings"></span></a>
+            <a href="javascript:void(0)" style="color: gray !important; font-weight: bold;">Party Name: <span style="color: gray !important; font-weight: bold;" id="nameify"></span></a>
+            <a href="javascript:void(0)" style="color: gray !important; font-weight: bold;">Admin Password:  <span style="color: gray !important; font-weight: bold;" id="codeify"></span></a>
+            <a href="javascript:void(0)" style="color: gray !important; font-weight: bold;" id="adminPassword">Current Earnings:  <span style="color: gray !important; font-weight: bold;" id="earnings"></span></a>
             <a href="javascript:tognav()" id="closebtn" class="closebtn">&times;</a>
             <a onclick="hosting();" id="hosting-toggle" class="navLink t"></a>
             <a onclick="hosting();" class="navLink w" title="Hosting">Host Mode</a>

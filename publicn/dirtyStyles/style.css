@@ -395,3 +395,12 @@ center#footer {
 .navbar-custom {
 background-color: white !important;
 }
+.sidenav, div#Home * {
+    background-color: #fff !important;
+}
+.sidenav *, div#Home * {
+    color: gray !important;
+}
+sup {
+    color: gray !important;
+}

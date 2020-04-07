@@ -37,23 +37,38 @@ setTimeout(function() {
 
     window.usePlaylist = function(a) {
       localStorage.Snapster = a;
-      setTimeout(location.reload, 500);
+      openLink(event, 'NowPlaying');
+      getList();
+      nextSongsCache();
     }
 
     window.viewPlaylists = function() {
+      $("#playlistsListed").empty();
+    if(!localStorage.playlistsData) {
       music.api.library.playlists().then(data => {
+        localStorage.playlistsData = JSON.stringify(data);
         $("#playlistsListed").append("<header style='color: white !important; pointer-events: all; margin-bottom: 50px; margin-top: 50px;' class='songLinkClick1 items playlist'><div><center class='items' style='font-size: 200%; padding-top: 50px; padding-bottom: 50px;'>Your Playlists</center></div></header>");
         let e = data;    
         for (var a = 0; a < e.length; a++)
             if(data[a].attributes.canEdit == true) $("#playlistsListed").append('<div title="'+e[a].id+'" class="songLinkClick1 next played items song-'+a+'" id="songLinkClick'+a+'"><div class="info"><div class="imgfirst"></div><div class="titles"><h5 onclick="usePlaylist(\''+e[a].id.toString()+'\');" class="block">'+e[a].attributes.name+'</h5><p class="block"><span class="artistName"></span><span class="albumName"></span></p></div><div class="buttons"><div class="voteBtn voteDown"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></div><div class="voteUp voteBtn" data="'+a+'" name="0"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div><sup></sup></div></div></div>')
                   $(".items").wrapAll("<div id='playlistContainer'></div>");
       });
+    } else {
+      $("#playlistsListed").append("<header style='color: white !important; pointer-events: all; margin-bottom: 50px; margin-top: 50px;' class='songLinkClick1 items playlist'><div><center class='items' style='font-size: 200%; padding-top: 50px; padding-bottom: 50px;'>Your Playlists</center></div></header>");
+      let e = JSON.parse(localStorage.playlistsData);    
+      let data = e;
+      for (var a = 0; a < e.length; a++)
+          if(data[a].attributes.canEdit == true) $("#playlistsListed").append('<div title="'+e[a].id+'" class="songLinkClick1 next played items song-'+a+'" id="songLinkClick'+a+'"><div class="info"><div class="imgfirst"></div><div class="titles"><h5 onclick="usePlaylist(\''+e[a].id.toString()+'\');" class="block">'+e[a].attributes.name+'</h5><p class="block"><span class="artistName"></span><span class="albumName"></span></p></div><div class="buttons"><div class="voteBtn voteDown"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></div><div class="voteUp voteBtn" data="'+a+'" name="0"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div><sup></sup></div></div></div>')
+                $(".items").wrapAll("<div id='playlistContainer'></div>");
+   
+      }
+      openLink(event, 'Home');
     }
 
-    window.addToList = function() {
+    window.addToList = function(song) {
       var playlistId = localStorage.Snapster;
       var obj = {};
-      obj.id = "201281527";
+      obj.id = song;
       obj.type = "songs";
       var arr = [].push(obj);
       var obj2 = {arr}
@@ -63,18 +78,19 @@ setTimeout(function() {
           body: JSON.stringify({
             data: [obj]
           })
+        }).then(res => {
+          getList();
         });
     }
 
-    window.now = function(song, a) {
-      MusicKit.getInstance().setQueue({ song: song}).then(function(queue) {
-          setTimeout(function() { 
-            MusicKit.getInstance().play();
-          }, 5000);
+    window.now = function(song) {
+      music.setQueue({ song: song}).then(function() {
+          music.play();
+          localStorage.nowp = song;
+          nextSongsCache();
       });
-      localStorage.nowp = song;
-      nextSongsCache();
     }
+
     window.play = function () {
       /***
         Resume or start playback of media item
@@ -82,6 +98,18 @@ setTimeout(function() {
       ***/
       music.play();
     };
+
+    window.playPause = function() {
+      if(music.player.isPlaying) {
+          pause();
+      } else {
+          play();
+      }
+    }
+
+    music.addEventListener("playbackStateDidChange", function() {
+      if(music.player.playbackState == 10) now($(".songLinkClick").eq(0).attr("title"));
+    })
 
     window.search = function() {
       music.api.search(document.getElementById("fname").value.toLowerCase(), { limit: 100, types: 'songs' }).then(function(data) {
@@ -107,21 +135,42 @@ setTimeout(function() {
         console.log(`Authorized, music-user-token: ${JSON.stringify(data)}`);
       });
       */
-      music.api.library.playlist("p.eoGxRGoCZDgWmR8").then(data => {
-        localStorage.playlistData = JSON.stringify(data);
-      });
+      
 
     };
+
+    window.firstSong = function() {
+      if(!$("#song").attr("title")) now($(".songLinkClick").eq(0).attr("title"));
+      if($("#song").attr("title")) now($("#song").attr("title"));
+    }
     window.auth = function () {
-    music.authorize().then(musicUserToken => {
-      localStorage.token = musicUserToken;
-      console.log(`Authorized, music-user-token: ${musicUserToken}`);
-      music.api.library.playlist(localStorage.Snapster).then(data => {
-        localStorage.playlistData = JSON.stringify(data);
+      music.authorize().then(musicUserToken => {
+        localStorage.token = musicUserToken;
+        localStorage.userID = musicUserToken;
+        console.log(`Authorized, music-user-token: ${musicUserToken}`);
+        music.api.library.playlist(localStorage.Snapster).then(data => {
+          localStorage.playlistData = JSON.stringify(data);
+          setTimeout(firstSong, 1000);
+          nextSongsCache();
+        });
+        
+        if(!localStorage.Snapster) viewPlaylists();
+        //location.href = "/index.html";
       });
-      //location.href = "/index.html";
-    });
-  }
+    }
+
+    window.getList = function () {
+      music.authorize().then(musicUserToken => {
+        localStorage.token = musicUserToken;
+        localStorage.userID = musicUserToken;
+        console.log(`Authorized, music-user-token: ${musicUserToken}`);
+        music.api.library.playlist(localStorage.Snapster).then(data => {
+          localStorage.playlistData = JSON.stringify(data);
+          nextSongsCache();
+        });
+        //location.href = "/index.html";
+      });
+    }
   auth();
     // expose our instance globally for testing
     window.music = music;
