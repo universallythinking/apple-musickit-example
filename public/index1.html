@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PartyMusic</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
+    <script src="js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap-theme.css">
+    <link rel="stylesheet" href="styles/style.css">
+  <script>
+      localStorage.app = "true";
+      if (!localStorage.logged && 1 != 1) { location.href = "https://snapster.memberful.com/checkout?plan=13554"; }
+      localStorage.setItem("guest", true);
+      localStorage.setItem("temp", true);
+      localStorage.setItem("allowed", true);
+      window.start = function() {
+       $.ajax({
+                async: true,
+                type: "GET",
+                url: "https://api.spotify.com/v1/me",
+                headers: { 'Authorization': 'Bearer ' + localStorage["current_token"] },
+                dataType: "json",
+                data: "formdata",
+                success: function (userData) {
+                    localStorage['userID'] = userData.id;
+                    userID = localStorage['userID'];
+                    localStorage["valid"] = "true";
+                }
+       });
+      }
+      setInterval(function () {
+        if (localStorage.userID && !localStorage.Snapster && !localStorage.party) {
+            window.open("welcome.html", "_self");
+        }
+      }, 1000);
+
+      setInterval(function () {
+        if (!localStorage.url && !localStorage.userID && !localStorage.lastFM && !localStorage.Snapster) {
+            window.open("home.html", "_self");
+        }
+      }, 1000);
+      window.clearStorage = function () {
+          console.log("cleared");
+      if (!localStorage.app) {
+          localStorage.clear();
+      }
+      else {
+	      location.href = "/app.html";
+      }
+      }
+</script>
+<style>
+    html {background: #000000 !important; }
+	.firstAA * {
+    font-size: 150%;
+}
+	#filename {
+		background-color: #000000 !important;
+	}
+	.songLinkClick {
+    border: 1px solid #000000;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    display: none;
+}
+div#searchBoxContainer {
+    border-bottom: 1px solid #000000;
+}
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 50px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    margin-top: 40px;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+.voteBtn {
+    outline: 1px solid #000000 !important;
+}
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+a#nameify {
+    pointer-events: none !important;
+    color: #46a752 !important;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+	div#all * {
+    color: white;
+    background: #000000 !important;
+}
+</style>
+	</head>
+<body id="html">
+    <div style="visibility: visible;" id="load"></div>
+<div style="visibility:hidden;" id="main">
+<div style="width: auto; display: none !important;" id="dialogPower" title="Amazing!">
+  <p style="color: white;">Use Your Newly Found Powers Wisely.</p>
+  <div style="width: 67.9px; margin: auto;">
+        <button onclick="closePrompt();" id="singlebutton" type="submit" name="closeButton" class="btn btn-primary">Okay!</button>
+  </div>
+</div>
+    <div style="background-color: #000000; position: fixed; width: 100%; opacity: 1; float: right;" id="searchBoxContainer">
+        <center><h2 style="width: 100% !important; display: block !important; margin-bottom: 0px;height: 40px;font-size: 200%;font-weight: 300;color: #46a752;clear: right !important;" id="infoHeader">Upcoming Songs</h2></center>
+        <div style="width: 100% !important; display: block;" id="searchBox"><input class="col-xs-3 form-control" name="filename" placeholder="Song or Artist..." id="filename" type="text"></div>
+    </div>
+    <div id="all"><center><div style="padding-top: 79px;" id="albumart"></div></center>
+        <div id="results"></div></div>
+  <center><div id="footer2"></div></center>
+  <script>
+      $("document").ready(function () {
+          var access_token;
+          if (localStorage.current_token) {
+              access_token = localStorage.current_token;
+              $.ajax({
+                  async: true,
+                  url: 'https://api.spotify.com/v1/me',
+                  headers: {
+                      'Authorization': 'Bearer ' + access_token
+                  },
+                  success: function (response) {
+                      if (localStorage["allowed"] == "true") {
+                          $('#albumart').show();
+                          $('#loggedin').show();
+                          $('#footer2').show();
+                          $('#searchBox').show();
+                          $('#infoHeader').show();
+                          localStorage["valid"] = "true";
+                      }
+                      else {
+                          $('#loggedin').hide();
+                          $('#footer2').hide();
+                          $('#searchBox').hide();
+                          $('#infoHeader').hide();
+                          $("#dialog").hide();
+                          $('#albumart').hide();
+                          $('#results').hide();
+                          $("#all").css("height", "0px !important");
+                      }
+                  },
+                  error: function () {
+                      newToken();
+                  }
+              });
+          } else {
+              $('#loggedin').hide();
+              $('#footer2').hide();
+              $('#searchBox').hide();
+              $('#infoHeader').hide();
+              $("#dialog").hide();
+              $('#albumart').hide();
+              $('#results').hide();
+              $("#all").css("height", "0px !important");
+          }
+          var ii = 0;
+	  if (localStorage.party) {
+		//history.replaceState("/index.html", document.title, "/#" + localStorage["party"].toLowerCase());
+	  }
+
+      });
+    </script>
+    <script src="js/upcomingSongs.js"></script>
+    <script src="js/newSong.js"></script>
+    <!--<script src="js/timedJS.js"></script>-->
+    <script src="js/create.js"></script>
+<style>
+    #load{
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:9999;
+    background:url("styles/loading.gif") no-repeat center center rgba(0, 0, 0,0.7)
+}#addSongs{
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:9999;
+    background:url("styles/addMusic.svg") no-repeat center center rgba(0, 0, 0,0.7)
+}
+span.statcounter { display: none; }
+</style>
+</div>
+<script type="text/javascript"> var sc_project=10414742; var sc_invisible=0; var sc_security="f5bc11c6"; var scJsHost = (("https:" == document.location.protocol) ? "https://secure." : "http://www."); document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+ "statcounter.com/counter/counter.js'></"+"script>"); </script> <noscript><div class="statcounter"><a title="shopify analytics ecommerce" href="http://statcounter.com/shopify/" target="_blank"><img class="statcounter" src="//c.statcounter.com/10414742/0/f5bc11c6/0/" alt="shopify analytics ecommerce"></a></div></noscript> <!-- End of StatCounter Code for Default Guide -->
+</body>
+</html>

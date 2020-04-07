@@ -1,0 +1,296 @@
+.info,
+.info * {
+    float: left;
+}
+
+.block {
+    margin: 0;
+}
+
+.info {
+    margin: 5px;
+    width: 100vw !important;
+}
+
+.info * {
+    text-align: right;
+}
+
+.block {
+    width: 70vw;
+    height: 20px;
+}
+
+.voteDown {
+    margin-right: 10px;
+}
+
+h5.block {
+    width: 65vw;
+    text-align: left;
+    height: 20px;
+    font-size: 15px;
+}
+
+.buttons {
+    display: inherit;
+}
+
+sup {
+    margin-right: -10px;
+    color: white;
+    font-size: 15px;
+    width: 17px;
+}
+
+span.artistName {
+    color: #bf58c5;
+}
+
+span.albumName {
+    color: lightgray;
+}
+
+.albumName {
+    float: none;
+}
+
+.titles {
+    padding-bottom: 10px;
+}
+
+p.block * {
+    float: left;
+}
+
+.titles {
+    padding: 5px 0 5px 0;
+}
+
+span.albumName {
+    width: 10px;
+}
+
+.buttons {
+    /* width: 100%; */
+    /* float: right; */
+    /* display: block; */
+}
+
+div#playNextButton {
+    background: #bf58c5;
+    height: 35px;
+    width: 175px;
+    vertical-align: middle;
+    padding: 6px;
+    color: white;
+    border-radius: 25px;
+    margin: 17px auto 0 auto;
+}
+
+div#results {
+    /* margin-top: 0%; */
+}
+
+#albumImage {
+    height: 50vw;
+    width: 50vw;
+    margin: 50px auto;
+}
+
+.affix {
+    position: fixed !important;
+    top: 0 !important;
+    right: auto !important;
+}
+
+/*body, html {
+    background: #b5bdc8 !important;
+    background: -moz-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%) !important;
+    background: -webkit-linear-gradient(top, #b5bdc8 0%, #828c95 36%, #28343b 100%) !important;
+    background: linear-gradient(to bottom, #636363 0%, #191919 40%, #000000 100%) !important;
+}*/
+
+a.tablinks {
+    height: 40px;
+}
+
+.tablinks .fa {
+    color: #f5f5f5;
+    margin-top: -35px;
+}
+
+div#songInformation p {
+    color: white;
+    margin: 5px 25px;
+}
+
+div#nowPlayingButtons {
+    height: 40px;
+    background: #020202;
+    border-top: 2px solid #949494;
+}
+
+
+div#songInformation {
+    width: 65%;
+    display: inline-block;
+    /* color: green !important; */
+    padding-top: 2px;
+}
+
+span#playbackButtons {
+    float: right;
+    margin: 7px 27px 0 0;
+    font-size: 24px;
+}
+
+div#songInformation * {
+    display: inline-block;
+    font-size: 20px;
+    /* display: block; */
+    margin-right: 10px;
+    overflow: scroll;
+    white-space: nowrap;
+    margin: 3px 0;
+    /* vertical-align: middle; */
+}
+
+#songInformation p {
+    width: 70vw;
+    overflow: scroll;
+}
+
+span#artist {
+    color: #bf58c5;
+}
+
+span#song {
+    color: white;
+}
+
+i.fa.fa-chevron-circle-left {
+    margin-right: 5px;
+}
+
+div#nowPlayingButtons {
+    height: 40px;
+    background: #020202;
+    border-top: 2px solid #949494;
+}
+
+#text {
+    display: none;
+}
+
+#albumImage {
+    background-size: cover !important;
+}
+
+#searchResults *, .footer, .row {
+    text-align: center;
+}
+
+div#results {
+    color: transparent;
+    margin-top: 25px;
+    margin-bottom: 45px;
+}
+
+#results * {
+    border: none !important;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+.songLinkClick p {
+    overflow: hidden;
+    display: inline-block !important;
+    margin: 0 auto 0 auto;
+    padding: 0 0 0 0 !important;
+    /* padding-bottom: 5px !important; */
+    text-align: center;
+    height: 18px;
+    line-height: 18px;
+    font-size: 20px;
+    overflow: hidden;
+    font-size: 18px !important;
+}
+
+p.block span {
+    width: auto;
+    display: inline-block;
+}
+
+#results * {
+    border: none !important;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    display: inline-block;
+    max-width: 100%;
+    text-align: center;
+}
+h5.block {
+    width: 65vw;
+    text-align: left;
+    height: 24px;
+    font-size: 20px !important;
+}
+div#results {
+    color: transparent;
+    margin-top: 0px !important;
+    margin-bottom: 50px;
+}
+span.artistName {
+    max-width: 100% !important;
+}
+
+.buttons {
+    max-width: 5% !important;
+    float: right !important;
+}
+.titles {
+    float: left !important;
+}
+.songLinkClick div {
+    padding: 0 !important;
+}
+.buttons {
+    height: 70%;
+    margin-top: -32px !important;
+    max-width: 5% !important;
+    /* font-size: 40px !important; */
+}
+sup {
+    font-size: 25px;
+    line-height: 28px;
+    text-align: right !important;
+    font-weight: bold;
+}
+.block {
+    max-width: 100% !important;
+}
+
+html, body {
+    background: black;
+}
+
+#albumDiv {
+    border: 2px solid #bf58c5 !important;
+}
+p.block {
+    font-weight: 400;
+}
+
+div#playlistContainer {
+    width: 500px;
+    height: 100px;
+}
+html, body {
+    background: white  !important;
+}
+* {
+    color: gray;
+}

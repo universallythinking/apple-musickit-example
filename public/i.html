@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Swagger Jukebox</title>
+    <link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="fa-fonts/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css2/style.css">
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/newSong.js"></script>
+    <script src="js/upcomingSongs.js"></script>
+    <script src="js/create.js"></script>
+    <style>
+        <style>
+        html {background: #000000 !important; }
+        #load {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 9999;
+            background: url("styles/loading.gif") no-repeat center center rgba(0, 0, 0, 1.0) !important; //0.7
+        }
+    #mySidenav {
+    zoom: 40%;
+    }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            display: none;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 50px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            margin-top: 40px;
+        }
+
+        .sidenav a:hover,
+        .offcanvas a:focus {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+
+        div#all * {
+            color: white;
+            background: #000000 !important;
+        }
+
+        .navLink {
+            color: white;
+            font-size: 400% !important;
+            height: 50px;
+            padding-top: 50px;
+        }
+
+        .closebtn,
+        #closebtn {
+            font-size: 70px !important;
+            color: white;
+        }
+
+        .container * {
+            background-color: #35bd3b;
+        }
+	.navP {
+		color: white !important;
+		font-size: 200% !important;
+		height: 50px;
+		padding-top: 25px;
+		padding-left: 25px;
+	}
+	    * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;	    /* Disable selection/copy in UIWebView */
+}
+	    #fileName, #searchBox, #searchBoxContainer * {
+    -webkit-touch-callout: all;
+    -webkit-user-select: all;	    /* Enable selection/copy in UIWebView */
+}
+	     .ui-header .ui-title, .ui-footer .ui-title {
+		margin: 0 10% !important;
+	    }
+	    .ui-content {
+    margin: 0 15%;
+    max-width: 70%;
+}
+	    div#dialogPage {
+    background: darkgrey;
+		    z-index: 500;
+	    }
+	    .copyright {
+		    z-index: -1;
+	    }
+	    * {
+		    text-shadow: none !important;
+	    }
+	    html {
+		    background: #000000 !important;
+	    }
+    #load {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 9999;
+        background: url("styles/loading.gif") no-repeat center center rgba(0, 0, 0, 1); //0.7
+    }
+
+    #addSongs {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 9999;
+        background: url("styles/addMusic.svg") no-repeat center center rgba(0, 0, 0, 0.7)
+    }
+
+    .firstAA * {
+        font-size: 150%;
+    }
+
+    #filename {
+        background-color: #000000 !important;
+    }
+
+
+
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        display: none;
+    }
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 50px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+        margin-top: 40px;
+    }
+
+    .sidenav a:hover,
+    .offcanvas a:focus {
+        color: #f1f1f1;
+    }
+
+    #footer2 {
+        background-color: #000000 !important;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    a#nameify {
+        pointer-events: none !important;
+        color: #46a752 !important;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
+
+    div#all * {
+        color: white;
+        background: #000000 !important;
+    }
+
+    .navLink {
+        color: white;
+        font-size: 400% !important;
+        height: 50px;
+        padding-top: 50px;
+    }
+
+    #footer2 {
+        width: 100%;
+    }
+
+    .bar1,
+    .bar2,
+    .bar3 {
+        width: 100%;
+        height: 6px;
+        background-color: #00ee1e;
+        margin: 25px 0;
+        transition: 0.4s;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .closebtn,
+    #closebtn {
+        font-size: 70px !important;
+        color: #00ee1e;
+    }
+
+    .container * {
+        background-color: #35bd3b;
+    }
+    .navP {
+        color: white !important;
+        font-size: 200% !important;
+        height: 50px;
+        padding-top: 25px;
+        padding-left: 25px;
+    }
+    * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;	    /* Disable selection/copy in UIWebView */
+    }
+    #fileName, #searchBox, #searchBoxContainer * {
+        -webkit-touch-callout: all;
+        -webkit-user-select: all;	    /* Enable selection/copy in UIWebView */
+    }
+    .ui-header .ui-title, .ui-footer .ui-title {
+        margin: 0 10% !important;
+    }
+    .ui-content {
+        margin: 0 15%;
+        max-width: 70%;
+    }
+    div#dialogPage {
+        background: darkgrey;
+        z-index: 500;
+    }
+    .copyright {
+        z-index: -1;
+    }
+    * {
+        text-shadow: none !important;
+    }
+    html {
+        background: #000000 !important;
+    }
+    div#dialogPage { background: darkgrey; z-index: 500; height: 100%; } .ui-content { margin: 0 15%; max-width: 70%; zoom: 130%; } div#dialogPage { background: darkgrey; z-index: 500; height: 100%; zoom: 130%; }
+    a.navLink i {
+        zoom: 200%;
+    }
+    a.navLink {
+        width: 30%;
+    }
+    a.navLink.t {
+        width: 12% !important;
+        margin: 10px !important;
+        display: inline-block !important;
+    }
+    a.navLink.w {
+        width: 70% !important;
+        margin: 100px 5% 65px 5% !important;
+        display: inline-block !important;
+    }
+    i.fa {
+        color: whitesmoke;
+    }
+    inspector-stylesheet:1
+    i.fa.fa-ban {
+        color: red;
+    }
+    a.navLink.t.red i {
+        color: red !important;
+    }
+    #load{display: none; zoom:75%;}
+    </style>
+<script>
+$(document).ready(function() {
+    window.nextSongs1 = function() {
+                    $.ajax({
+                        async: !0,
+                        type: "GET",
+                        url: "https://api.spotify.com/v1/users/" + localStorage.userID + "/playlists/" + localStorage.Snapster + "/tracks?offset=" + localStorage.offsetNumber,
+                        headers: {
+                            Authorization: "Bearer " + localStorage.current_token
+                        },
+                        dataType: "json",
+                        data: "formdata",
+                        success: function(t) {
+                            for (var a = 0; a < t.items.length; a++) {
+                              $("#results").append('<div title="' + t.items[a].track.id + '" class="song-"' + a + ' songLinkClick" id="songLinkClick' + a + '" > <div class="info"> <div class="img first"></div> <div class="titles"> <h5>' + t.items[a].track.name + '</h5> <p>' + t.items[a].track.artists[0].name + '</p> </div> </div> <div class="state playing"> <i class="material-icons">equalizer</i> </div> </div>');
+                            }
+                              $('.player .cover').css('background', 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('+ t.items[0].track.album.images[0].url +') center bottom');
+                              $("#song").text(t.items[0].track.name);
+                              $("#artist").text(t.items[0].track.artists[0].name);
+                          }
+                    });
+        };
+        window.playlists = function() {
+            location.href = localStorage.urlParts + "/playlists.html";
+        }
+	window.relo = function() {
+	    location.href= localStorage.urlParts +'/index.html'; return false;
+	}
+	window.terminate = function() {
+	    location.href= "partymusic://terminate/";
+        var urlParts = localStorage.urlParts;
+        setTimeout(function(){
+                if (localStorage.locked == "no") {
+                   location.href= urlParts + "/app2.html";
+                }
+                else {
+                   location.href= urlParts + "/app.html";
+                }
+                }, 250);
+        localStorage.clear();
+	}
+	window.softTerminate = function() {
+	    location.href="partymusic://softterminate/";
+        var urlParts = localStorage.urlParts;
+        setTimeout(function(){
+                if (localStorage.locked == "no") {
+                   location.href= urlParts + "/app2.html";
+                   }
+                   else {
+                   location.href= urlParts + "/app.html";
+                }
+        }, 250);
+	}
+        window.settings = function() {
+            location.href = localStorage.urlParts +"/welcome.html";
+        }
+	window.terms = function() {
+		$('#dialogPage').hide();
+            location.href = "partymusic://terms/";
+        }
+	window.privacy = function() {
+		$('#dialogPage').hide();
+            location.href = "partymusic://privacy/";
+        }
+        window.tognav = function() {
+            $("#mySidenav").toggle(function() {
+                $("#mySidenav").css("width", "85%");
+            });
+        };
+        setTimeout(function() { nextSongs(); }, 10);
+});</script>
+</head>
+
+<body>
+<div id="mySidenav" class="sidenav" style="z-index: 100;">
+    <a href="javascript:void(0)" id="nameify" style="color: white !important; font-weight: bold;"></a>
+    <a href="javascript:tognav()" id="closebtn" class="closebtn">&times;</a>
+    <a onclick="relo();" class="navLink t" title="Refresh"><i class="fa fa-retweet" aria-hidden="true"></i></a>
+    <a onclick="relo();" class="navLink w" title="Refresh">Reload</i></a>
+    <a onclick="resetVotes(); loading(); tognav(); return false;" class="navLink t" title="Clear Votes"><i class="fa fa-trash" aria-hidden="true"></i></a>
+    <a onclick="resetVotes(); loading(); return false;" class="navLink w">Clear Votes</a>
+    <a href="javascript:playlists()" class="navLink t" title="Change Playlist"><i class="fa fa-headphones" aria-hidden="true"></i></a>
+    <a href="javascript:playlists()" class="navLink w">Change Playlist</a>
+    <a href="javascript:settings()" class="navLink t" title="Edit Settings"><i class="fa fa-cog" aria-hidden="true"></i></a>
+    <a href="javascript:settings()" class="navLink w">Edit Settings</a>
+    <a onclick="softTerminate();" class="navLink t red" title="End Party"><i class="fa fa-ban" aria-hidden="true"></i></a>
+    <a onclick="softTerminate();" class="navLink w">End Party</a>
+    <a href="javascript:terminate();" class="navLink t red"><i class="fa fa-spotify" aria-hidden="true"></i></a>
+    <a href="javascript:terminate();" class="navLink w">Logout</a>
+</div>
+<div class="player">
+    <div class="cover"></div>
+    <nav>
+        <div class="left">
+            <i onclick="tognav()" class="material-icons">menu</i>
+            <h6>Menu</h6>
+        </div>
+        <div class="right">
+            <i class="material-icons search">search</i>
+        </div>
+    </nav>
+    <div class="player-ui">
+        <center>
+        <div class="title">
+            <h3 id="song" style="overflow: ellipsis; white-space:nowrap; display:block;"></h3>
+        </div>
+        <p id="artist" style="overflow: ellipsis; white-space:nowrap; display:block; color: white !important;"></p>
+        </center>
+        <div class="small">
+
+        </div>
+
+        <div class="controls">
+            <i class="material-icons" onclick="prev();">skip_previous</i>
+            <i class="material-icons" onclick="pause();">play_arrow</i>
+            <i class="material-icons" onclick="increment(1);">skip_next</i>
+        </div>
+    </div>
+    <div class="btn">
+        <!-- 		<i class="material-icons">shuffle</i> -->
+    </div>
+    <div id="results" class="music">
+
+    </div>
+</div>
+
+
+</body>
+</html>

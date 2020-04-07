@@ -1,20 +1,12 @@
         html {background: #000000 !important; }
         #load{
-            width:100%;
-            height:100%;
-            position:fixed;
-            z-index:9999;
-            zoom: 5%;
-            background:url("../images/green.png") no-repeat center center rgba(0,0,0,1);
-        } #vote{
-              width:100%;
-              height:100%;
-              position:fixed;
-              z-index:9999;
-              zoom: 5%;
-              background:url("../images/green.png") no-repeat center center rgba(0,0,0,0);
-              display: none;
-          }
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:9999;
+    zoom: 5%;
+    background:url("styles/loading.gif") no-repeat center center rgba(0,0,0,1)
+}
     #mySidenav {
     zoom: 40%;
     }
@@ -46,14 +38,6 @@
         .sidenav a:hover,
         .offcanvas a:focus {
             color: #f1f1f1;
-        }
-
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
         }
 
 
@@ -122,6 +106,14 @@
 	    html {
 		    background: #000000 !important;
 	    }
+    #load {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 9999;
+        background: url("styles/loading.gif") no-repeat center center rgba(0, 0, 0, 1); //0.7
+    }
+
     #addSongs {
         width: 100%;
         height: 100%;
@@ -175,10 +167,11 @@
 
     .sidenav .closebtn {
         position: absolute;
-        top: 0;
         right: 25px;
         font-size: 36px;
-        margin-left: 50px;
+        left: 25px;
+        top: 25px;
+        bottom: 25px;
     }
 
     a#nameify {
@@ -293,7 +286,4 @@
     }
     .navLink.t.red i {
         color: red !important;
-    }
-    .voteBtn {
-    font-size: 110%;
     }

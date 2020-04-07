@@ -1,132 +1,65 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-    <meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
-    <script src="js/jquery-ui.js"></script>
-    <!--<link rel="stylesheet" href="styles/bootstrap-theme.css">-->
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="fa-fonts/css/font-awesome.min.css">
-    <script>
-	    if (localStorage.party) {
-		document.title = localStorage.party;
-	    }
-        localStorage.setItem("guest", true);
-        localStorage.setItem("temp", true);
-        localStorage.setItem("allowed", true);
-        window.start = function() {
-            $.ajax({
-                async: true,
-                type: "GET",
-                url: "https://api.spotify.com/v1/me",
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage["current_token"]
-                },
-                dataType: "json",
-                data: "formdata",
-                success: function(userData) {
-                    localStorage['userID'] = userData.id;
-                    userID = localStorage['userID'];
-                    localStorage["valid"] = "true";
-                }
-            });
-        }
-	
-        setInterval(function() {
-            if (localStorage.userID && !localStorage.Snapster) {
-                location.href = "/welcome.html";
-            }
- 	    else {
-		location.href = "/auth";
-	    }
-        }, 2000);
-    </script>
-    <style>
-        #load {
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            z-index: 9999;
-            background: url("styles/green.png") no-repeat center center rgba(0, 0, 0, 1); //0.7
-        }
-
-      
-    </style>
+  <meta charset="UTF-8">
+  <title>Swagger Music</title>
+  <link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0" />
+  <link rel="stylesheet" href="fa-fonts/css/font-awesome.min.css">
+  <script src="js/jquery-ui.js"></script>
+  <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+  <script type="text/javascript" src="/index.js"></script>
+  <script src="js/create.js"></script>
+  <script src="js/passwords.js"></script>
+  <script src="js/index.js"></script>
+  <link href="styles/style.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="https://socketswagger.herokuapp.com/socket.io/socket.io.js"></script>
+  <script src="js/newSong.js"></script>
+  <script src="js/upcomingSongs2.js"></script>
 </head>
 
-<body id="html">
-        <div style="visibility: visible; zoom:20% !important;" id="load"></div>
-    <script>
+<body>
+  <div style="visibility: visible; zoom: 20% !important;" id="load" onclick="reloadify();"></div>
+  <div id="mySidenav" class="sidenav" style="z-index: 100; width: 40% !important;">
+    <a href="javascript:void(0)" id="nameify" style="color: white !important; font-weight: bold;"></a>
+    <a href="javascript:tognav()" id="closebtn" class="closebtn">&times;</a>
+    <a onclick="hosting();" id="hosting-toggle" class="navLink t o"></a>
+    <span id="hosting-words" class="navLink w" title="Hosting">Host Mode</span>
+    <a onclick="resetVotes(); tognav(); return false;" class="navLink t" title="Clear Votes"><i class="fa fa-trash" aria-hidden="true"></i></a>
+    <span class="navLink w">Clear Votes</span>
+    <a href="javascript:viewPlaylists()" class="navLink t" title="Change Playlist"><i class="fa fa-headphones" aria-hidden="true"></i></a>
+    <span class="navLink w">Change Playlist</span>
+    <a href="javascript:getHashCode()" class="navLink t" title="Change Settings"><i class="fa fa-cog" aria-hidden="true"></i></a>
+    <span class="navLink w">Change Settings</span>
+  </div>
+  <div id="whole">
+    <div id="topBanner" class="banner">
+      Code: <span id="partyID"></span>
+    </div>
+    <div id="leftHalf">
+      <div id="albumDiv" class="img">
 
-	window.relo = function() {
-	    location.href= location.href; return false;	
-    }
-    window.newToken = function() {
-                  $.ajax({
-                         type: "GET",timeout:2000,
-                         url: 'https://swaggerwebplayer.herokuapp.com/refresh_token',
-                         data: {
-                         'refresh_token': localStorage["refresh_token"]
-                         }
-                         }).done(function(data) {
-                                 access_token = data.access_token;
-                                 localStorage["current_token"] = data.access_token;
-                                 });
-                  }
-        var access_token;
-        (function() {
-            function getHashParams() {
-                var hashParams = {};
-                var e, r = /([^&;=]+)=?([^&;]*)/g,
-                    q = window.location.hash.substring(1);
-                while (e = r.exec(q)) {
-                    hashParams[e[1]] = decodeURIComponent(e[2]);
-                }
-                return hashParams;
-            }
-            var params = getHashParams();
-            access_token = params.access_token,
-                refresh_token = params.refresh_token,
-                error = params.error;
-            if (!localStorage["current_token"] || localStorage["current_token"] == "undefined" || localStorage["current_token"] == undefined || localStorage["current_token"] == "null" || localStorage["current_token"] == "" || localStorage["current_token"] == null) {
-                localStorage["current_token"] = access_token;
-                try {
-                    start();
-                } catch (e) {
-                    //  console.log(e);
-                }
-                if (refresh_token !== undefined && refresh_token !== "undefined") {
-                    localStorage["refresh_token"] = refresh_token;
-                }
-            } else {
-                access_token = localStorage["current_token"];
-                if (localStorage["refresh_token"] != undefined) {
-                    refresh_token = localStorage["refresh_token"];
-                }
-            }
-            if (error) {
-                //alert('There was an error during the authentication');
-            } else {
-                if (localStorage["current_token"] != undefined && localStorage["current_token"] != "undefined" && localStorage["current_token"] != "null" && localStorage["current_token"] != null) {
-                    $.ajax({
-                        async: true,
-                        url: 'https://api.spotify.com/v1/me',
-                        headers: {
-                            'Authorization': 'Bearer ' + access_token
-                        },
-                        success: function(response) {
-                            return true;
-                        },
-                        error: function() {
-                            newToken();
-                        }
-                    });
-                } 
-            }
-        })();
-        var ii = 0; 
-	    //create();
-    </script>
+      </div>
+      <div id="songInfo">
+        <p id="song">
+
+        </p>
+        <p id="artist">
+
+        </p>
+      </div>
+    </div>
+    <div id="rightHalf">
+      <div id="results">
+
+      </div>
+    </div>
+    <div id="bottomBanner" class="banner">
+      <em>Swagger Music 2020</em>
+    </div>
+  </div>
+  <div id="playlistsListed"></div>
 </body>
 
 </html>

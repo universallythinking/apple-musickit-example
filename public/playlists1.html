@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jukebox</title>
+    <link rel="stylesheet" href="./styles/bootstrap-theme.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
+<script src="js/jquery-ui.js"></script>
+    <script src="js/create.js"></script>
+
+    <style>#html {
+    zoom: 150%;
+    font-weight: 200;
+    min-height: 150vh;
+    background: black;
+}
+.songLinkClick {
+  font-weight: 200;
+}
+#playlistContainer {
+  color: white;
+}
+h5, p {
+    font-size: 75%;
+}
+.inline {
+  width: 22%;
+}
+.charlie {
+    width: 100%;
+}
+.images {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.row {
+    width: 100%;
+    float: none;
+    text-align: center;
+    margin: auto;
+}
+.half {
+  width: 44%;
+}
+.fourth {
+  width: 88%;
+}
+.playlists, .playlist {
+    padding: 25px 25px 0 25px;
+    display: inline-block;
+    height: auto;
+}
+h5 {
+    overflow: hidden;
+    height: 25px;
+}
+div#playlistContainer {
+    padding-left: 10%;
+    min-height: 150vh;
+}
+#load {zoom:20%;}
+    </style>
+    <script>
+        localStorage.setItem("host", true);
+        localStorage.setItem("allowed", true);
+        localStorage.removeItem("Snapster2");
+    </script>
+</head>
+
+<body id="html">
+<div style="visibility: visible; zoom: 20% !important;" id="load"></div>
+    <script>
+        $(document).ready(function() {
+                            localStorage.removeItem("Snapster2");
+          var flag = false;
+        window.start = function () {
+            $.ajax({
+                async: true,
+                type: "GET",
+                url: "https://api.spotify.com/v1/me",
+                headers: { 'Authorization': 'Bearer ' + localStorage["current_token"] },
+                dataType: "json",
+                data: "formdata",
+                success: function (userData) {
+                    localStorage['userID'] = userData.id;
+                    userID = localStorage['userID'];
+                    localStorage["valid"] = "true";
+                }
+            });
+        }
+        start();
+    var access_token = localStorage.current_token;
+    var playlists = [];
+                          var date = new Date().toLocaleDateString();
+                          var mostVoted = "Most Voted " + date.split("/")[0] + "/" + date.split("/")[2];
+    window.loadLists = function() {
+    if (localStorage.userID) {
+        $.ajax({
+            async: true,
+            type: "GET",
+            url: "https://api.spotify.com/v1/users/" + localStorage.userID + "/playlists?limit=50",
+            headers: { 'Authorization': 'Bearer ' + localStorage.current_token },
+            dataType: "json",
+            data: "formdata",
+            success: function (data) {
+              $("#html").append("<header style='color: white !important; pointer-events: all;' class='songLinkClick'><div><center style='font-size: 200%'>Choose a Base Playlist!</center></div></header>");
+              $("#html").append("<p style='color: white !important; pointer-events: all;' class='songLinkClick'><div style='color: white !important; pointer-events: all;'><center>(Only Public Playlists Are Shown)</center></div></p>");
+              if (localStorage.Snapster) {
+			  $("#html").append("<div name='currentPlaylist' onclick='stay();' class='playlists inline pSnap'><div class='charlie'><div class='row'><div><div><div><div><img class='images' src='images/turtle.png'/></div></div><div class='playlist-desc'><h3</h3><h3></h3><h5>Current Playlist</h5><p></p></div></div></div>");
+			  }
+			  for (var i = 0; i < data.items.length; i++) {
+          if (data.items[i].name == mostVoted){
+            flag = true;
+            localStorage.Snapster2 = data.items[i].id.toString();
+          }
+              if (data.items[i].owner.id == localStorage.userID && data.items[i].public == true && data.items[i].images[0] != undefined && data.items[i].tracks.total < 76 && data.items[i].tracks.total > 7 && localStorage.Snapster2 != data.items[i].id.toString() ) {
+                $("#html").append("<div name='" + data.items[i].id.toString() + "' onclick='newPlaylist(\"" + data.items[i].id.toString() + "\");' class='playlists inline p'><div class='charlie'><div class='row'><div><div><div><div><img class='images' src=\"" + data.items[i].images[0].url.toString() + "\"/></div></div><div class='playlist-desc'><h3</h3><h3></h3><h5>" +  data.items[i].name + "</h5><p>" +  data.items[i].tracks.total + " Total Songs</p></div></div></div>");
+              }
+              else if (data.items[i].owner.id == localStorage.userID && data.items[i].public == true && data.items[i].tracks.total < 76 && data.items[i].tracks.total > 7 && localStorage.Snapster2 != data.items[i].id.toString()) {
+                $("#html").append("<div onclick='newPlaylist(\"" + data.items[i].id.toString() + "\");' class='playlists inline p'><div class='charlie'><div class='row'><div><div><div><div><img class='images' src='./noImageAvailable.png'/></div></div><div class='playlist-desc'><h3></h3><h3></h3><h5>" +  data.items[i].name + "</h5><p>" +  data.items[i].tracks.total + " Total Songs</p></div></div></div>");
+              }
+          }
+          $( ".playlists" ).wrapAll( "<div id='playlistContainer'></div>" );
+            }
+        });
+    }
+  }
+    window.removeHTML = function() {
+        if (document.hasFocus()) {
+          history.replaceState("/playlists.html", document.title, "/choose-a-playlist");
+        }
+    }
+    //removeHTML();
+    window.createBackup = function() {
+      if (!localStorage.Snapster2) {
+      var objBackup = {};
+      objBackup.name = mostVoted;
+      objBackup.public = "true";
+             $.ajax({
+                  async: true,
+                  type: "POST",
+                  url: "https://api.spotify.com/v1/users/"+ localStorage.userID + "/playlists",
+                  headers: { 'Authorization': 'Bearer ' + access_token },
+                  dataType: "json",
+                  data: JSON.stringify(objBackup),
+                  success: function (clearedData) {
+                    localStorage.Snapster2 = clearedData.id.toString();
+                  }
+              });
+      }
+    }
+  window.newPlaylist = function(playlist) {
+    if (!localStorage.Snapster2) {
+      createBackup();
+    }
+      localStorage.Snapster = playlist;
+	  localStorage.wasPressed = 0;
+      setTimeout(function() { location.href = localStorage.urlParts + "/index.html"; }, 2000);
+  }
+  window.removeHTML = function() {
+      if (document.hasFocus()) {
+          if (localStorage["current_token"] != undefined && localStorage["current_token"] != "null" && localStorage["current_token"] != null && (localStorage["partyid"] || localStorage["party"])) {
+            //  history.replaceState("/playlists.html", document.title, "/choose-a-playlist");
+          }
+      }
+  }
+  //playhover
+window.playHover = function () {
+  for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+    $(".playlists").eq( i ).mouseenter(function() {
+      $(this).css("width", "27%");
+      $("#playlistContainer").css("padding-left", "5%");
+});
+$(".playlists").eq( i ).mouseleave(function() {
+  $(this).css("width", "");
+  $("#playlistContainer").css("padding-left", "");
+});
+}
+  $( window ).resize(function() {
+  	if ($(window).width() < 900 && $(window).width() > 200) {
+  		for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+  			$(".playlists").eq(i).addClass("half");
+  			$(".playlists").eq(i).removeClass("inline");
+  			$(".playlists").eq(i).removeClass("fourth");
+  		}
+      for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+        $(".playlists").eq( i ).mouseenter(function() {
+          $(this).css("width", "50%");
+          $("#playlistContainer").css("padding-left", "5%");
+    });
+    $(".playlists").eq( i ).mouseleave(function() {
+      $(this).css("width", "");
+      $("#playlistContainer").css("padding-left", "");
+    });
+    }
+  		}
+  		else if ($(window).width() > 900) {
+  			for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+  				$(".playlists").eq(i).addClass("inline");
+  				$(".playlists").eq(i).removeClass("half");
+  				$(".playlists").eq(i).removeClass("fourth");
+  			}
+        for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+          $(".playlists").eq( i ).mouseenter(function() {
+            $(this).css("width", "27%");
+            $("#playlistContainer").css("padding-left", "5%");
+      });
+      $(".playlists").eq( i ).mouseleave(function() {
+        $(this).css("width", "");
+        $("#playlistContainer").css("padding-left", "");
+      });
+      }
+  			}
+  			else if ($(window).width() < 200) {
+  				for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+  					$(".playlists").eq(i).addClass("fourth");
+  					$(".playlists").eq(i).removeClass("inline");
+  					$(".playlists").eq(i).removeClass("half");
+  				}
+          for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+            $(".playlists").eq( i ).mouseenter(function() {
+              $(this).css("width", "90%");
+              $("#playlistContainer").css("padding-left", "5%");
+        });
+        $(".playlists").eq( i ).mouseleave(function() {
+          $(this).css("width", "");
+          $("#playlistContainer").css("padding-left", "5%");
+        });
+        }
+  				}
+  });
+window.stay = function(){
+  location.href = "index.html";
+    }
+        if ($(window).width() < 900 && $(window).width() > 200) {
+            for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+                $(".playlists").eq(i).addClass("half");
+                $(".playlists").eq(i).removeClass("inline");
+                $(".playlists").eq(i).removeClass("fourth");
+            }
+            for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+                $(".playlists").eq(i).mouseenter(function () {
+                    $(this).css("width", "50%");
+                    $("#playlistContainer").css("padding-left", "5%");
+                });
+                $(".playlists").eq(i).mouseleave(function () {
+                    $(this).css("width", "");
+                    $("#playlistContainer").css("padding-left", "");
+                });
+            }
+            //    $(".playlists").eq(0).mouseenter();
+        }
+        else if ($(window).width() > 900) {
+            for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+                $(".playlists").eq(i).addClass("inline");
+                $(".playlists").eq(i).removeClass("half");
+                $(".playlists").eq(i).removeClass("fourth");
+            }
+            for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+                $(".playlists").eq(i).mouseenter(function () {
+                    $(this).css("width", "27%");
+                    $("#playlistContainer").css("padding-left", "5%");
+                });
+                $(".playlists").eq(i).mouseleave(function () {
+                    $(this).css("width", "");
+                    $("#playlistContainer").css("padding-left", "");
+                });
+            }
+            //    $(".playlists").eq(0).mouseenter();
+        }
+        else if ($(window).width() < 200) {
+            for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+                $(".playlists").eq(i).addClass("fourth");
+                $(".playlists").eq(i).removeClass("inline");
+                $(".playlists").eq(i).removeClass("half");
+            }
+            for (var i = 0; i < $("#playlistContainer").children(".playlists").length; i++) {
+                $(".playlists").eq(i).mouseenter(function () {
+                    $(this).css("width", "90%");
+                    $("#playlistContainer").css("padding-left", "5%");
+                });
+                $(".playlists").eq(i).mouseleave(function () {
+                    $(this).css("width", "");
+                    $("#playlistContainer").css("padding-left", "5%");
+                });
+            }
+            //    $(".playlists").eq(0).mouseenter();
+        }
+            }
+//playhover
+          setTimeout(function(){
+            loadLists();
+          }, 700);
+          setTimeout(function(){
+            playHover();
+          }, 1500);
+        });
+    loading(1000);
+  </script>
+
+    </body>
+</html>

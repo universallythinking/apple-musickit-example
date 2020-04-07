@@ -99,7 +99,7 @@ section#services {
     text-transform: uppercase;
     }
     div#products, div#born, div#service, div#expansion {
-    outline: 7px solid grayfff;
+    outline: 7px solid #ffffff;
 }
   .client {  max-height: 50px; }
         a.page-scroll.btn.btn-xl {
@@ -124,12 +124,4 @@ section#services {
         padding-bottom: 25px !important;
     }
     div#dialogPage { background: darkgrey; z-index: 500; height: 100%; } .ui-content { margin: 0 15%; height: 80%; max-width: 70%; zoom: 130%; } div#dialogPage { background: darkgrey; z-index: 500; height: 100%; zoom: 70%; overflow: scroll;} button.ui-button.ui-btn.ui-shadow.ui-corner-all { position: fixed; margin-bottom: 0px !important; height: 5%; }
-#load{
-            width:100%;
-            height:100%;
-            position:fixed;
-            z-index:9999;
-            zoom: 5%;
-            background:url(",./images/green.png") no-repeat center center rgba(0,0,0,1);
-                        display: none;
-        }
+    #load {zoom:20% !important;}

@@ -1,0 +1,70 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Swagger Jukebox</title>
+  <link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0" />
+  <link rel="stylesheet" href="fa-fonts/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css2/style.css">
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/create.js"></script>
+  <script src="js/index.js"></script>
+  <link href="styles/style.css" rel="stylesheet">
+  <script src="https://socketswagger.herokuapp.com/socket.io/socket.io.js"></script>
+  <script src="js/newSong.js"></script>
+  <script src="js/upcomingSongs2.js"></script>
+</head>
+
+<body>
+  <div style="visibility: visible; zoom: 20% !important;" id="load" onclick="reloadify();"></div>
+  <div id="mySidenav" class="sidenav" style="z-index: 100;">
+    <a href="javascript:void(0)" id="nameify" style="color: white !important; font-weight: bold;"></a>
+    <a href="javascript:tognav()" id="closebtn" class="closebtn">&times;</a>
+    <a onclick="hosting();" id="hosting-toggle" class="navLink t o"></a>
+    <span id="hosting-words" class="navLink w" title="Hosting">Host Mode</span>
+    <a onclick="relo();" class="navLink t" title="Refresh"><i class="fa fa-retweet" aria-hidden="true"></i></a>
+    <span class="navLink w" title="Refresh">Reload</span>
+    <a onclick="resetVotes(); tognav(); return false;" class="navLink t" title="Clear Votes"><i class="fa fa-trash" aria-hidden="true"></i></a>
+    <span class="navLink w">Clear Votes</span>
+    <a onclick="location.href='partymusic://purgify'; tognav(); return false;" class="navLink t" title="Purge Votes"><i class="fa fa-trash" aria-hidden="true"></i></a>
+    <span class="navLink w">Purge Songs</span>
+    <a href="javascript:playlists()" class="navLink t" title="Change Playlist"><i class="fa fa-headphones" aria-hidden="true"></i></a>
+    <span class="navLink w">Change Playlist</span>
+    <a href="javascript:settings()" class="navLink t" title="Edit Settings"><i class="fa fa-cog" aria-hidden="true"></i></a>
+    <span class="navLink w">Edit Settings</span>
+    <a onclick="softTerminate();" class="navLink t red" title="End Party"><i class="fa fa-ban" aria-hidden="true"></i></a>
+    <span class="navLink w">End Party</span>
+    <a href="javascript:terminate();" class="navLink t red"><i class="fa fa-spotify" aria-hidden="true"></i></a>
+    <span class="navLink w">Logout</span>
+  </div>
+  <div id="whole">
+    <div id="topBanner" class="banner">
+      Top
+    </div>
+    <div id="leftHalf">
+      <div id="albumDiv" class="img">
+
+      </div>
+      <div id="songInfo">
+        <p id="song">
+
+        </p>
+        <p id="artist">
+
+        </p>
+      </div>
+    </div>
+    <div id="rightHalf">
+      <div id="results">
+        res
+      </div>
+    </div>
+    <div id="bottomBanner" class="banner">
+      bottom
+    </div>
+  </div>
+
+</body>
+
+</html>

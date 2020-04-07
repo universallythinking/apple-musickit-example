@@ -1,0 +1,741 @@
+@media (max-width: 450px) {
+    div#loggedin {
+        height: 0px !important;
+    }
+    div#results {
+      zoom: 175%;
+	}
+div#results {
+    padding-top: 280px;
+}
+img {
+    outline: 15px solid #000000;
+    border: 10px solid #46a752;
+    height: 20% !important;
+    width: 250px !important;
+}
+h1.albumInfo {
+    height: 37px;
+    float: left;
+    margin-left: 20px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    width: 95%;
+}
+div#albumart {
+    height: 486px;
+}
+#songLinkClick0 {
+    border-top: 1px solid #000000;
+}
+div#results, body {
+	    background: #0de027 !important;
+}
+div#results {
+    border-top: 1px solid #000000;
+    margin-top: 8px;
+}
+div#albumart {
+    padding-top: 89px !important;
+    position: fixed;
+    outline: 5px solid #000000;
+}
+img {
+    margin-top: 119px;
+    margin-bottom: 0px !important;
+    height: auto !important;
+}
+img {
+    outline: 15px solid #000000;
+    border: 10px solid #46a752;
+    float: left;
+    margin-left: 125px;
+	}
+.songLinkClick .voteBtn {
+    display: table-cell;
+    pointer-events: all;
+}
+.songLinkClick { zoom: 125%; }
+header.songLinkClick {
+    font-size: large;
+    height: 87px;
+    line-height: 10px;
+}
+div#albumart {
+	padding-top: 89px !important;
+    background: url('../checkeredGreen.png');
+    padding-bottom: 28px;
+outline: 5px solid #000000;
+}
+.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.ui-draggable.ui-resizable {
+    zoom: 220%;
+}
+    p.song {
+    margin-top: -10px;
+}
+    div#searchBox, #filename {
+    font-size: 200%;
+    height: 125px !important;
+}
+    p.artist {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+    input#partyID:focus {
+        border: 2px solid blue !important;
+        background: white;
+    }
+    a#spotify:hover {
+    text-decoration: none;
+}
+div#results {
+    font-size: 250% !important;
+}
+a#spotify:active {
+    color: #000000;
+}
+    div#results, body {
+        height: 100% !important;
+        background: transparent;
+    }
+    a#spotify:hover, a#spotify:active {
+        background-color: #96f896;
+    }
+    html {
+        position: relative !important;
+        min-height: 100% !important;
+        z-index: 0;
+    }
+    div#hideThis {
+        /*// 180*/
+        zoom: 180% !important;
+        display: none;
+    }
+    div#hideThis {
+    display: none;
+    margin-top: 34vh !important;
+
+    }
+    div#link {
+    height: 62px;
+    width: 291px;
+    background: #46a752 !important;
+    border: 2px solid #505050;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-left: 8px !important;
+}
+input#partyID, #spotify {
+    margin-top: 15% !important;
+    margin-left: 2%;
+   /*335*/
+    font-weight: lighter;
+}
+    header:last-child {
+        /*border-bottom: 3px solid white !important;
+        padding-bottom: 55px !important;*/
+    }
+
+
+    #currentSong {
+        margin-top: 0px !important;
+        font-size: 200%;
+        color: #16c345;
+    }
+
+    header {
+        /*border-bottom: 3px solid white !important;
+        padding-bottom: 55px !important;*/
+    }
+
+    footer, #footer {
+        background-color: transparent !important;
+        position: fixed !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        height: 49vh !important;
+        width: 100% !important;
+    }
+
+    #footer2 {
+        background-color: #000000 !important;
+        position: fixed !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        height: 52px !important;
+        width: 100% !important;
+        font-weight: bolder;
+        color: white;
+        z-index: 10;
+    }
+
+   body {
+
+      zoom: 45% !important;
+}
+
+    input#filename {
+        height: 125px !important;
+        /*//250*/
+        font-size: 100% !important;
+    }
+
+    #results {
+        height: 0px !important;
+        /*//250*/
+        font-size: 250% !important;
+    }
+#searchBox, #filename {
+    width: 100%;
+    border: 0;
+    background: rgb(49, 49, 49);
+    padding: 0 0 0 0;
+    margin: 0;
+    outline: 0;
+    border-radius: 0;
+    /* height: 66px !important; */
+    font-size: x-large;
+    text-align: center;
+    color: #00ee1e;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    opacity: 1;
+}
+
+    body {
+        width: 100%;
+        height: 0px !important;
+    }
+html {    background: #00ef1e !important;
+ background-size: contain; background-color: transparent !important;}
+    /*html {
+        width: 100%;
+        background-color: #443f3f;
+        height: 100vh !important;
+    }*/
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.2) and (max-width: 450px) {
+  h1.albumInfo {
+      height: 37px;
+      float: left;
+      margin-left: 20px;
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: left;
+      width: 95%;
+  }
+.songLinkClick { zoom: 125%; }
+.songLinkClick .voteBtn {
+    display: table-cell;
+    pointer-events: all;
+}
+img {
+    float: left;
+    margin-left: 12.5%;
+    width: 250px !important;
+}
+div#albumart {
+    padding-top: 89px !important;
+    position: fixed;
+       outline: 5px solid #000000;
+}
+img {
+    outline: 15px solid #000000;
+    border: 10px solid #46a752;
+    height: 256px !important;
+    width: 256px !important;
+}
+div#albumart {
+    height: 486px;
+    width: 100%;
+}
+div#results {
+    padding-top: 280px;
+}
+div#results {
+    border-top: 1px solid #000000;
+    margin-top: 8px;
+}
+#songLinkClick0 {
+    border-top: 1px solid #000000;
+}
+img {
+    margin-top: 115px;
+    margin-bottom: 0px !important;
+    height: auto !important;
+}
+img {
+    outline: 15px solid #000000;
+    border: 10px solid #46a752;
+}
+div#albumart {
+    padding-top: 89px !important;
+    background: url('../checkeredGreen.png');
+    padding-bottom: 28px;
+}
+    #searchBox {
+		-webkit-text-size-adjust: 70% !important;
+	}
+body {
+    -webkit-text-size-adjust: 90% !important;
+}
+#footer2 header {
+    margin-top: -7px !important;
+	}
+#footer2 {
+    -webkit-text-size-adjust: 50% !important;
+}
+#infoHeader {
+    -webkit-text-size-adjust: 60% !important;
+}
+p.song {
+    margin-bottom: 0px;
+    margin-top: 0px !important;
+}
+header {
+    margin-bottom: 0px;
+}
+h2#infoHeader {
+    margin-top: 8px !important;
+    font-size: xx-large;
+}
+div#searchBox, #filename {
+    font-size: 330%;
+    height: 125px !important;
+}
+p.artist {
+    margin-top: 20px !important;
+    margin-bottom: 0px;
+}
+}
+body {
+    zoom: 80%;
+    height: 100vh;
+}
+div#all {
+    width: 100% !important;
+}
+header {
+    /*border-bottom: 3px solid #000000 !important;*/
+    padding-bottom: 20px;
+}
+
+body {
+    overflow-x: hidden;
+}
+/** {
+   // font-family: 'Roboto', sans-serif !important;
+}
+div#footer2 {
+  //  overflow-y: hidden;
+}*/
+button#obtain-new-token {
+    visibility: hidden;
+}
+div#login {
+    height: 0px !important;
+}
+body {
+    width: 100%;
+    height: 0px !important;
+}
+div#link {
+    height: 62px;
+    width: 291px;
+    background: #46a752 !important;
+    border: 2px solid #505050;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: inline-block;
+}
+a#spotify:hover {
+text-decoration: none;
+}
+a#spotify:active {
+    color: #000000;
+}
+#spotify {
+    width: 291px !important;
+    border: none !important;
+    /*//140*/
+    font-size: 275%;
+    background-color: #46a752 !important;
+    font-family: fantasy;
+    height: 62px !important;
+    border-radius: 8px;
+    margin-left: 6px !important;
+}
+
+/*html {
+    width: 100%;
+    background-color: #443f3f;
+    height: 100vh !important;
+}
+html {background-image: url('../pixelatedGreen.png'); background-size: contain; background-color: transparent !important;}
+*/
+div#searchboxContainer {
+    position: fixed !important;
+    width: 100% !important;
+    opacity: 1;
+}
+
+#searchBox, #filename {
+    width: 100%;
+    border: 0;
+    background: rgb(49, 49, 49);
+    padding: 0 0 0 0;
+    margin: 0;
+    outline: 0;
+    border-radius: 0;
+    /* height: 66px !important; */
+    font-size: x-large;
+    text-align: center;
+    color: #00ee1e;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    opacity: 1;
+}
+footer, #footer {
+    background-color: transparent !important;
+    position: fixed;
+    left: 0;
+   /*// margin-bottom: 50%;*/
+    height: 50px;
+    width: 100%;
+}
+
+#footer2 {
+    background-color: #000000 !important;
+    position: fixed !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    height: 40px;
+    width: 100% !important;
+    font-weight: bolder;
+    color: white;
+}
+#partyID {
+    border: 2px solid #505050;
+    width: 291px;
+    background: #ececec;
+    padding: 0 0 0 0;
+    border-radius: 8px;
+    height: 62px !important;
+    font-size: 275%;
+    text-align: center;
+    color: #72ad21;
+    font-weight: lighter;
+    font-family: sans-serif;
+}
+#spotify {
+  border: 2px solid #505050;
+  width: 291px;
+  background: #ececec;
+  padding: 0 0 0 0;
+  margin-top: 15%;
+  border-radius: 8px;
+  height: 62px !important;
+  /*//100*/
+    font-size: 275%;
+    text-align: center;
+  color: #ffffff;
+  font-weight: lighter;
+  font-family: sans-serif;
+}
+input#partyID:focus {
+    border: 2px solid blue !important;
+    background: white;
+}
+div#results, body {
+    height: 100% !important;
+    background: #46a752 !important;
+}
+a#spotify:hover, a#spotify:active {
+    background-color: #96f896;
+    text-decortation: none !important;
+}
+div#loggedin {
+    width: 350px !important;
+    margin: auto !important;
+    height: 0px !important;
+}
+html {
+    width: 100%;
+    margin: auto;
+    z-index: 8;
+    background-size: contain;
+}
+body {
+    width: 100%;
+    margin: auto;
+}
+
+div#searchBox {
+    width: inherit;
+    margin: auto;
+    margin-top: 0px;
+}
+
+button#searchSongs {
+    margin-left: 5px;
+}
+
+.dl-horizontal dd {
+    margin: 0;
+}
+div#hideThis {
+        display: none;
+    }
+div#oauth {
+    display: none;
+}
+#login {
+    background: transparent;
+}
+#login {
+    border-top: 5px solid #443f3f;
+    display: none;
+    width: 150px;
+    margin: auto;
+    margin-top: 3%;
+    text-align: -webkit-center;
+    font-size: 180%;
+}
+#loggedin {
+    display: auto;
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 500px;
+}
+
+body {
+    padding: 0px;
+}
+
+/*#search-form, .form-control {
+    // margin-bottom: 20px;
+}*/
+
+.cover {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    background-size: cover;
+}
+
+.media, .media-body, div#oauth, div#user-profile, h1 {
+    height: 0px;
+}
+
+div#results {
+    width: 100% !important;
+    color: white;
+    font-weight: bold;
+    background: transparent;
+    /*background: #443f3f;*/
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.cover:hover {
+    cursor: pointer;
+}
+
+.cover.playing {
+    border: 5px solid #e45343;
+}
+
+dt {
+    text-align: left !important;
+}
+
+button#obtain-new-token {
+    width: 346px;
+}
+
+div#results {
+    width: 340px;
+    margin: auto;
+}
+
+button#setDefaultPlaylist {
+    width: 347px;
+    margin-top: 20px;
+}
+
+div#searchboxContainer {
+    position: fixed !important;
+    width: 100% !important;
+    opacity: 1;
+}
+h2#infoHeader {
+    margin-top: 8px !important;
+}
+.songLinkClick {
+            display:table;
+            border-spacing:0;
+            padding:0 0 0 0;
+            margin:0 0 0 0;
+            height:52px;
+            width:100%;
+        }
+        .songLinkClick div {
+            display:table-cell;
+            border-bottom:1px solid #000000;
+            height:50px;
+            margin: 0 0 0 0;
+            padding: 10px;
+            vertical-align:middle;
+        }
+       .songLinkClick a {
+            display:block;
+            height:48px;
+            line-height:48px;
+            font-size:36px;
+            text-align:center;
+            color: white;
+        }
+        .songLinkClick p {
+            display:block;
+            margin: 0 auto 0 auto;
+            padding:0 0 0 0;
+            text-align:center;
+            height:24px;
+            line-height:24px;
+            font-size:20px;
+            overflow: hidden;
+        }
+        .songLinkClick div:first-child {
+            border-right: 1px solid #000000;
+            /*border-radius:25px 0 0 25px;*/
+            width:50px;
+        }
+        .songLinkClick div:last-child {
+            /*float:right;*/
+            border-left: 1px solid #000000;
+            /*border-radius:25px 0 0 25px;*/
+            width:50px;
+        }
+header#currentSong {
+    padding-top: 10px;
+}
+.songLinkClick { zoom: 125%; }
+.songLinkClick .voteBtn {
+    display: table-cell;
+    pointer-events: all;
+}
+div#results {
+    border-top: 1px solid #000000;
+}
+img {
+    outline: 15px solid #000000;
+    border: 10px solid #46a752;
+}
+div#albumart {
+    padding-top: 89px !important;
+    width: 100%;
+}
+div#searchBoxContainer {
+	z-index: 5;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #46a752 !important
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #46a752 !important
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #46a752 !important
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #46a752 !important
+}
+.ui-dialog .ui-dialog-content {overflow: hidden !important; } .ui-widget-content { background: #2b2b2b !important; } .ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle { background: #46a752 !important; } legend {color:white !important;} form.form-horizontal { color: white !important; }
+.form-horizontal .control-label { text-align: center; width: 100%; }
+.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle {z-index: 500 !important; }
+@media (min-width: 450px) {
+html {
+    zoom: 75%;
+}
+#dialog {
+	zoom: 120%;
+	}
+div#albumart {
+    padding-top: 105px !important;
+    width: 100%;
+    padding-bottom: 25px;
+    background: url('../checkeredGreen.png');
+    position: fixed;
+        outline: 3px solid #000000;
+}
+img {
+    float: left;
+    margin-left: 125px;
+}
+div#results {
+padding-top: 530px;
+}
+#hideThis {
+    margin-top: 65vh;
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #000000;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+#songLinkClick0 {
+	border-top: 1px solid #000000;
+}
+div#albumart, div#searchBoxContainer, div#results {
+    border-right: 250px solid #000000 !important;
+    border-left: 250px solid #000000 !important;
+}
+}
+html {height: 100%;}
+.songLinkClick:nth-child(even) {
+    background-color: #278833;
+}
+.songLinkClick:nth-child(odd) {
+    background-color: #46a752;
+}
+.songLinkClick:last-child {
+    margin-bottom: 31px !important;
+}
+body#html {
+    background-color: #000000 !important;
+}
+div#main, div#all, div#results {
+    height: 100% !important;
+}
+.voteBtn {
+    min-width: 65px !important;
+}
+.songLinkClick div:first-child, .songLinkClick div:last-child {width: 65px !important; }
+#songLinkClick0 { display: none !important; }
+@media (min-width: 850px) {
+html {zoom: 35% !important;}
+#results {padding-top: 520px !important;}
+}

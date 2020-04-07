@@ -1,0 +1,62 @@
+body {
+  background-color: #000000;
+  background-image: linear-gradient(315deg, #000000 0%, #414141 74%);
+}
+
+* {
+  color: white;
+  font-family: sans-serif;
+}
+
+.banner {
+  height: 5%;
+  display: block;
+  text-align: center;
+  padding-top: 2.5%;
+}
+
+#leftHalf, #rightHalf {
+  display: inline-block;
+  max-width: 49%;
+  width: 49%;
+  height: 80%;
+}
+
+#rightHalf {
+  float: right;
+}
+
+#leftHalf {
+  position: relative;
+}
+
+#albumDiv {
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: url('https://about.canva.com/wp-content/uploads/sites/3/2015/01/album-cover.png');
+  background-position: center;
+  background-size: contain;
+  width: 50%;
+  height: 0;
+  padding-bottom: 50%;
+}
+
+#songInfo {
+  margin: 0;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 0;
+  padding-bottom: 10%;
+}
+
+#song, #artist {
+  text-align: center;
+}

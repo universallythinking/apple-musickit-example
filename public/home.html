@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Swagger Jukebox</title>
-<meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
-<script src="js/jquery-ui.js"></script>
+  <title>PartyMusic Jukebox</title>
+    <meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
+    <script src="js/jquery-ui.js" onload="window.$ = window.jQuery = module.exports;"></script>
 <style>
     html *, html {background: #000000 !important;}
 </style>
 <script>
-    localStorage.clear();
     var urlParts = window.location.toString().split("/public/")[0] + "/public";
-    location.href = urlParts + "/app2.html";
+    if (localStorage.signedIn == "true") {
+        localStorage.clear();
+        location.href = "https://paywallios.herokuapp.com/login.html";
+        
+    }else if (!localStorage.signedIn) {
+        localStorage.clear();
+        location.href = "https://paywallios.herokuapp.com/login.html";
+    }
 </script>
 </head>
 <body>

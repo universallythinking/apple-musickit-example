@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script>
+        localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
+window.findParty = function (a) {
+                    var object = {};
+                    object["search"] = a;
+                    $.ajax({
+                        type: "POST",
+                        url: "https://paywallios.herokuapp.com/",
+                        dataType: "json",
+                        data: object,
+                        success: function (accessData) {
+                            var plist = $.parseJSON(accessData["playlist"]);
+                            localStorage["complete_access"] = true;
+                            localStorage["password"] = $.parseJSON(accessData["password"]);
+                            localStorage["explicit"] = $.parseJSON(accessData["explicit"]);
+                            localStorage["Snapster"] = plist.split(":::")[0];
+                            localStorage["Snapster2"] = plist.split(":::")[1];
+                            localStorage["lastFM"] = $.parseJSON(accessData["lastFM"]);
+                            localStorage["party"] = $.parseJSON(accessData["partyID"]);
+                            localStorage["url"] = $.parseJSON(accessData["access_token"]);
+                           localStorage["userID"] = $.parseJSON(accessData["username"]).split(":::")[0];
+                           localStorage["username"] = $.parseJSON(accessData["username"]);
+                            localStorage["refresh_token"] = $.parseJSON(accessData["refresh_token"]);
+                            localStorage["current_token"] = $.parseJSON(accessData["access_token"]);
+                            setTimeout(function () { location.href = localStorage.urlParts + "/index.html"; }, 100);
+                        }, error: function (e, ee, eee) {
+                            location.href = localStorage.urlParts + "/find.html#" + a;
+                        }
+                    });
+                }
+                var partyName = window.location.toString().split("#")[1];
+                setTimeout(function() { findParty(partyName); }, 100);
+</script>
+</head>
+<body style="background: #000000 !important;">
+</body>
+</html>

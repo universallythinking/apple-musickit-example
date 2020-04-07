@@ -3,165 +3,203 @@
 <head>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/create.js"></script>
-    <script src="dirtyScripts/app.js"></script>
-    <link href="dirtyStyles/app2.css" rel="stylesheet">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta http-equiv="refresh" content="0;URL='/app4.html'" />
-
-    <title>Swagger</title>
-
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="vendor/agency.min.css" rel="stylesheet">
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <style>
-            html {background: white !important; }
-            footer {
-                background: black;
-                color: white;
-            }
-        header {
-            background: black;
-            background-image: none !important;
-        }
+        html {background: #1A1B1E !important; }
+    footer {
+    background: #1A1B1E;
+    color: white;
+}
+            header {
+    background: #1A1B1E;
+    background-image: none !important;
+}
         header {background-attachment: scroll !important; }
         #target h3,#target h2,#target h4, #target p {
-            color: white !important;
+    color: white !important;
         }
-        a.page-scroll.btn.btn-xl {
-            margin-bottom: 16px;
-        }
-        footer {
-            height: 14vh !important;
-        }
-        * {
-            overflow: hidden;
-        }
-        .container {
-            height: 86vh !important;
-        }
-        input[type="text"] {
-            height: 65px;
-            font-size: xx-large;
-            width: 225px;
-            border-radius: 4px;
-            padding: 10px;
-            margin-bottom: 10px;
-            color: #333333;
-            margin: auto;
-            display: block;
-        }
-        #how {
-            background-color: white !important
-            // background: url(../images/header-bg.jpg);
-            background-attachment: fixed;
-            background-size: cover;
-            background-repeat: no-repeat;
-            opacity: .8;
-        }
-        nav#mainNav { display: none !important; }
-        a.page-scroll.btn.btn-xl {
-            margin-bottom: 16px !important;
-            margin-top: 16px !important;
-        }
-        .member { max-width: 350px;}
-        .timeline-panel {
-        }
+a.page-scroll.btn.btn-xl {
+    margin-bottom: 16px;
+}
+footer {
+    height: 14vh !important;
+}
+* {
+    overflow: hidden;
+}
+.container {
+    height: 86vh !important;
+}
+input[type="text"] {
+    height: 65px;
+    font-size: xx-large;
+        width: 225px;
+        border-radius: 4px;
+        padding: 10px;
+        margin-bottom: 10px;
+    color: #333333;
+    margin: auto;
+    display: block;
+    }
+       #how {
+    background-color: #1A1B1E;
+   // background: url(../images/header-bg.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: .8;
+}
+nav#mainNav { display: none !important; }
+a.page-scroll.btn.btn-xl {
+    margin-bottom: 16px !important;
+    margin-top: 16px !important;
+}
+    .member { max-width: 350px;}
+    .timeline-panel {
+}
         .navbar>.container .navbar-brand { float: left; }
         .navbar-header.page-scroll {
-            width: 100%;
-        }
-        html, header, body {
-            height: 100vh;
-        }
+    width: 100%;
+}
+html, header, body {
+    height: 100vh;
+}
         ul.nav.navbar-nav.navbar-right { display: none; }
         button.navbar-toggle {
-            display: block;
-        }
+    display: block;
+}
         ul.nav.navbar-nav.navbar-right {
-            width: 22% !important;
-            float: left !important;
-            display: block;
-        }
-        .btn-xl, li.active a {background-color: #269052 !important;}
-        span.statcounter {
-            display: none;
-        }
+    width: 22% !important;
+    float: left !important;
+    display: block;
+}
+.btn-xl, li.active a {background-color: #269052 !important;}
+span.statcounter {
+    display: none;
+}
         h4.subheading {
-            text-align: center;
-        }
-        ::-webkit-input-placeholder {
-            color: gray !important;
-        }
-        section#services {
-            background-color: #eeeeee !important;
-        }
-        :-moz-placeholder { /* Firefox 18- */
-            color: gray !important;
-        }
-        ::-moz-placeholder {  /* Firefox 19+ */
-            color: gray !important;
-        }
-        .timeline>li .timeline-image, .navbar-custom .navbar-toggle{
+    text-align: center;
+}
+::-webkit-input-placeholder {
+   color: gray !important;
+}
+section#services {
+    background-color: #eeeeee !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: gray !important;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: gray !important;
+}
+ .timeline>li .timeline-image, .navbar-custom .navbar-toggle{
             background: #269052 !important;
         }
-        .fa-inverse {
-            background: #269052;
-            border-radius: 100%;
-        }
-        :-ms-input-placeholder {
-            color: gray !important;
-        }
-        .timeline:before { background-color: #4e81ce !important; }
-        a.navbar-brand.page-scroll {
-            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-            color: #269052;
-            text-transform: uppercase;
-        }
-        div#products, div#born, div#service, div#expansion {
-            outline: 7px solid grayfff;
-        }
-        .client {  max-height: 50px; }
+.fa-inverse {
+    background: #269052;
+    border-radius: 100%;
+}
+:-ms-input-placeholder {
+   color: gray !important;
+}
+.timeline:before { background-color: #4e81ce !important; }
+    a.navbar-brand.page-scroll {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #269052;
+    text-transform: uppercase;
+    }
+    div#products, div#born, div#service, div#expansion {
+    outline: 7px solid #ffffff;
+}
+  .client {  max-height: 50px; }
         a.page-scroll.btn.btn-xl {
             margin-bottom: 16px !important;
             margin-top: 16px !important;
         }
         a.page-scroll.btn.btn-xl, input[type="text"] {
-            width: 300px;
-            text-align: center;
-            font-size: 25px;
-            text-transform: uppercase;
-            font-weight: 200;
-            font-family: sans-serif;
-            padding: 14px;
-        }
-        * {
-            -webkit-touch-callout: none;
-            -webkit-user-select: none; /* Disable selection/copy in UIWebView */
-        }
-        header .intro-text {
-            padding-top: 100px;
-            padding-bottom: 25px !important;
-        }
-        div#dialogPage { background: darkgrey; z-index: 500; height: 100%; } .ui-content { margin: 0 15%; height: 80%; max-width: 70%; zoom: 130%; } div#dialogPage { background: darkgrey; z-index: 500; height: 100%; zoom: 70%; overflow: scroll;} button.ui-button.ui-btn.ui-shadow.ui-corner-all { position: fixed; margin-bottom: 0px !important; height: 5%; }
-            </style>
+    width: 300px;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 200;
+    font-family: sans-serif;
+    padding: 14px;
+}
+	    * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Disable selection/copy in UIWebView */
+}
+    header .intro-text {
+        padding-top: 100px;
+        padding-bottom: 25px !important;
+    }
+    div#dialogPage { background: darkgrey; z-index: 500; height: 100%; } .ui-content { margin: 0 15%; height: 80%; max-width: 70%; zoom: 130%; } div#dialogPage { background: darkgrey; z-index: 500; height: 100%; zoom: 70%; overflow: scroll;} button.ui-button.ui-btn.ui-shadow.ui-corner-all { position: fixed; margin-bottom: 0px !important; height: 5%; }
+    </style>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PartyMusic | Let's Put the "Us" Back in Music</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <link href="stylesheets/agency.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.javascripts/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
 <body id="page-top" class="index">
 <div style="visibility: visible;" id="load" onclick="alertify('Thinking...');"></div>
+<script>
+		if (!localStorage.locked && localStorage.locked == "yes"){
+			location.href = "/app.html";
+		}
+		//localStorage.clear();
+        localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
+        localStorage.urlGuest = window.location.toString().split("/public/")[0] + "/guest";
+		//if (localStorage.current_token) { window.location.href = "https://paywallios.herokuapp.com/login"; }
+</script>
+<!-- Navigation -->
+<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display
+        <div class="navbar-header page-scroll">
+            <a class="navbar-brand page-scroll" href="#page-top">PartyMusic</a>
+        </div>-->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<!-- Header -->
 <header>
     <div class="container">
         <div class="intro-text">
             <div class="intro-lead-in">Universally Thinking's</div>
-            <div class="intro-heading"><span style="display:block;">Swagger</span><span style="display:block;">Jukebox!</span></div>
+            <div class="intro-heading">Swagger Jukebox!</div>
             <a onclick="login();" class="page-scroll btn btn-xl">Host a Party!</a>
-            <!--<br />
-            <a onclick="guest();" class="page-scroll btn btn-xl">Enter as Guest!</a>-->
+            <br />
+            <a onclick="guest();" class="page-scroll btn btn-xl">Enter as Guest!</a>
         </div>
         <div class="intro-lead-in">Thanks for using our app!</div>
 
@@ -176,6 +214,59 @@
         </div>
     </footer>
 </header>
+<!-- jQuery -->
+
+
+<!-- Bootstrap Core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="javascripts/jqBootstrapValidation.js"></script>
+<script src="javascripts/contact_me.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="javascripts/agency.min.js"></script>
+<!-- Start of StatCounter Code for Default Guide -->
+<script>
+        localStorage.removeItem("Snapster");
+        window.login = function() {
+                   //location.href = "partymusic://testplayer";
+                   setTimeout(function() {
+            if (!localStorage.userID) {
+                location.href = "partymusic://register/";
+                   }
+            else {
+                location.href = "partymusic://register/";
+            }
+                              }, 500);
+        }
+    window.guest = function() {
+        localStorage.signedIn = "true";
+        location.href = localStorage.urlGuest + "/app.html";
+    }
+        $("ul.nav.navbar-nav.navbar-right").css("display", "none");
+        $("#menu-t").on("click", function() {
+             $("ul.nav.navbar-nav.navbar-right").toggle();
+        });
+        $(".revert").on("click", function() {
+             $("ul.nav.navbar-nav.navbar-right").css("display", "none");
+        });
+        $(window).on('resize', function(){
+             $("#target").css("height", "auto");
+             $("#target").css("height", $("#target").height() + 200);
+        });
+        $("#target").css("height", "auto");
+        $("#target").css("height", $("#target").height() + 200);
+//if (localStorage.current_token) { window.location.href = "https://paywallios.herokuapp.com/login"; }
+
+// }, 3000);
+ localStorage.setItem("app", "true");
+ localStorage.setItem("signedIn", "true");
+
+    </script>
 </body>
 
 </html>

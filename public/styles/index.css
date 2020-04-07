@@ -1,0 +1,306 @@
+        html {background: #000000 !important; }
+        #load{
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:9999;
+    zoom: 5%;
+    background:url("styles/loading.gif") no-repeat center center rgba(0,0,0,1)
+}
+    #mySidenav {
+    zoom: 40%;
+    }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            display: none;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 50px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            margin-top: 40px;
+        }
+
+        .sidenav a:hover,
+        .offcanvas a:focus {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+
+        div#all * {
+            color: white;
+            background: #000000 !important;
+        }
+
+        .navLink {
+            color: white;
+            font-size: 400% !important;
+            height: 50px;
+            padding-top: 50px;
+        }
+
+        .closebtn,
+        #closebtn {
+            font-size: 70px !important;
+            color: white;
+        }
+
+        .container * {
+            background-color: #35bd3b;
+        }
+	.navP {
+		color: white !important;
+		font-size: 200% !important;
+		height: 50px;
+		padding-top: 25px;
+		padding-left: 25px;
+	}
+	    * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;	    /* Disable selection/copy in UIWebView */
+}
+	    #fileName, #searchBox, #searchBoxContainer * {
+    -webkit-touch-callout: all;
+    -webkit-user-select: all;	    /* Enable selection/copy in UIWebView */
+}
+	     .ui-header .ui-title, .ui-footer .ui-title {
+		margin: 0 10% !important;
+	    }
+	    .ui-content {
+    margin: 0 15%;
+    max-width: 70%;
+}
+	    div#dialogPage {
+    background: darkgrey;
+		    z-index: 500;
+	    }
+	    .copyright {
+		    z-index: -1;
+	    }
+	    * {
+		    text-shadow: none !important;
+	    }
+	    html {
+		    background: #000000 !important;
+	    }
+    #load {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 9999;
+        background: url("styles/loading.gif") no-repeat center center rgba(0, 0, 0, 1); //0.7
+    }
+
+    #addSongs {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 9999;
+        background: url("styles/addMusic.svg") no-repeat center center rgba(0, 0, 0, 0.7)
+    }
+
+    .firstAA * {
+        font-size: 150%;
+    }
+
+    #filename {
+        background-color: #000000 !important;
+    }
+
+
+
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        display: none;
+    }
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 50px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+        margin-top: 40px;
+    }
+
+    .sidenav a:hover,
+    .offcanvas a:focus {
+        color: #f1f1f1;
+    }
+
+    #footer2 {
+        background-color: #000000 !important;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    a#nameify {
+        pointer-events: none !important;
+        color: #46a752 !important;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
+
+    div#all * {
+        color: white;
+        background: #000000 !important;
+    }
+
+    .navLink {
+        color: white;
+        font-size: 400% !important;
+        height: 50px;
+        padding-top: 50px;
+    }
+
+    #footer2 {
+        width: 100%;
+    }
+
+    .bar1,
+    .bar2,
+    .bar3 {
+        width: 100%;
+        height: 6px;
+        background-color: #00ee1e;
+        margin: 25px 0;
+        transition: 0.4s;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .closebtn,
+    #closebtn {
+        font-size: 70px !important;
+        color: #00ee1e;
+    }
+
+    .container * {
+        background-color: #35bd3b;
+    }
+    .navP {
+        color: white !important;
+        font-size: 200% !important;
+        height: 50px;
+        padding-top: 25px;
+        padding-left: 25px;
+    }
+    * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;	    /* Disable selection/copy in UIWebView */
+    }
+    #fileName, #searchBox, #searchBoxContainer * {
+        -webkit-touch-callout: all;
+        -webkit-user-select: all;	    /* Enable selection/copy in UIWebView */
+    }
+    .ui-header .ui-title, .ui-footer .ui-title {
+        margin: 0 10% !important;
+    }
+    .ui-content {
+        margin: 0 15%;
+        max-width: 70%;
+    }
+    div#dialogPage {
+        background: darkgrey;
+        z-index: 500;
+    }
+    .copyright {
+        z-index: -1;
+    }
+    * {
+        text-shadow: none !important;
+    }
+    html {
+        background: #000000 !important;
+    }
+    div#dialogPage { background: darkgrey; z-index: 500; height: 100%; } .ui-content { margin: 0 15%; max-width: 70%; zoom: 130%; } div#dialogPage { background: darkgrey; z-index: 500; height: 100%; zoom: 130%; }
+    .navLink i {
+        zoom: 200%;
+    }
+    .navLink {
+        width: 30%;
+    }
+    .navLink.t {
+        width: 12%;
+        height: 11%;
+        display: inline-block !important;
+    }
+    .navLink.t.o {
+        width: 12%;
+        height: 10%;
+        padding-top:10px;
+    }
+    .navLink.w {
+        width: 70% !important;
+        margin: 100px 5% 65px 5% !important;
+        display: inline-block !important;
+    }
+    i.fa {
+        color: whitesmoke;
+    }
+    inspector-stylesheet:1
+    i.fa.fa-ban {
+        color: red;
+    }
+    .navLink.t.red i {
+        color: red !important;
+    }
+.noSelect {
+-webkit-touch-callout: none;
+               -webkit-user-select: none;
+                pointer-events: none;/* Disable selection/copy in UIWebView */
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Register a Jukebox</title>
+    <meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="js/jquery-ui.js"></script>
+        <style>
+        .control-label {    color: gray;
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+    text-align: center;
+}
+		input {color: white;}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    white !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    white !important;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    white !important;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    white !important;
+}
+input {
+    background: black;
+}
+input {
+    width: 100%;
+    margin-bottom: 10px;
+    background: rgba(0,0,0,0.7);
+    outline: none;
+    padding: 10px;
+    font-size: 13px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+.parent {
+    position: relative;
+    top: 50%;
+    height: 600px;
+    width: 350px !important;
+    background: black;
+    opacity: 0.5;
+    z-index: -1;
+    left: 50%;
+    margin-left: -185px;
+    margin-top: -300px;
+    border-radius: 10px;
+}
+.login { position: absolute; top: 47%; left: 50%; margin: -150px 0 0 -150px; width: 300px; height: 300px; }
+.login h1, .login h3, .login p { color: gray; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+.login h3, .login p {opacity: 0.8;}
+
+h3.full {
+    margin-top: 65px;
+}
+input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+#options, full {width: 300px; display: inline-block;}
+.half {width: 150px; display: inline-block;}
+#host, #guest {display:none;}
+form#host {
+    margin-top: 60px;
+}
+        body {background: black;}
+        .radio {
+          width: 10px;
+        }
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+.btn { display: inline-block; *display: inline; *zoom: 1; padding: 4px 10px 4px; margin-bottom: 0; font-size: 13px; line-height: 18px; color: #333333; text-align: center;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); vertical-align: middle; background-color: white; background-image: -moz-linear-gradient(top, grayfff, #e6e6e6); background-image: -ms-linear-gradient(top, grayfff, #e6e6e6); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(grayfff), to(#e6e6e6)); background-image: -webkit-linear-gradient(top, grayfff, #e6e6e6); background-image: -o-linear-gradient(top, grayfff, #e6e6e6); background-image: linear-gradient(top, grayfff, #e6e6e6); background-repeat: repeat-x; filter: progid:dximagetransform.microsoft.gradient(startColorstr=grayfff, endColorstr=#e6e6e6, GradientType=0); border-color: #e6e6e6 #e6e6e6 #e6e6e6; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border: 1px solid #e6e6e6; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); cursor: pointer; *margin-left: .3em; }
+.btn-primary, .btn-primary:hover { text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); color: grayfff; }
+.btn-primary.active { color: green; }
+input#partyName, input#Superpower {
+    height: 50px;
+    border-radius: 100px;
+    font-size: 20px;
+    /*color: gray !important;*/
+    pointer-events: none !important;
+}
+button#button {color: white; background: #1db954; height: 50px; border-radius: 100px; font-size: 20px;}
+.btn-primary { background-color: green; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5); }
+.btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] { filter: none; background-color: #4a77d4; }
+.btn-block { width: 100%; display:block; }
+* { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; box-sizing:border-box; }
+html { width: 100%; height:100%; overflow:hidden; }
+body {
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans', sans-serif;
+}
+.login {
+	position: absolute;
+	top: 44%;
+	left: 50%;
+	margin: -150px 0 0 -150px;
+	width:300px;
+	height:300px;
+}
+.login h1 { color: gray; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+
+input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+		#load {zoom:20%;}
+		input[type='text'] {
+    /*text-align: center !important;*/
+}
+    </style>
+
+  </head>
+
+  <body>
+<div class="parent">
+	  </div>
+    <div class="login">
+	<h1 id="dynamic">Host a Party!</h1>
+            <input id="partyName" name="party" type="text" placeholder="Party Name: ABCD" class="form-control input-md" required="">
+            <input id="Superpower" name="textinput" type="text" placeholder="Host Password: WXYZ" class="form-control input-md" required="">
+              <center>  <label class="control-label" style="margin: auto;" for="radios">Allow Explicit Songs?</label></center><br />
+                <div style="width: 140px !important; margin: auto;">
+                    <label class="control-label radio-inline" for="radios-0">
+                        <input class="form-control input-md radio" type="radio" name="radios" id="radios-0" value="true" checked="checked">
+                        Yes
+                    </label>
+                    <label class="control-label radio-inline" for="radios-1">
+                        <input class="form-control input-md radio" type="radio" name="radios" id="radios-1" value="false">
+                        No
+                    </label>
+                </div>
+            <button id="button" class="btn btn-primary btn-block btn-large">Let me rock!</button>
+</div>
+<script>
+            localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
+        if(localStorage.password && localStorage.Snapster) location.href = "/playlists.html";
+	      window.hashCode = function(i) {
+  var hash = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  for (var i = 0; i < 5; i++)
+    hash += possible.charAt(Math.floor(Math.random() * possible.length));
+  var s = hash.toString();
+		      localStorage.hash = s.substr(0, 4);
+checkPassword();
+      //return localStorage.hash;
+}
+	       window.passCode = function() {
+  var hash = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  for (var i = 0; i < 5; i++)
+    hash += possible.charAt(Math.floor(Math.random() * possible.length));
+  var s = hash.toString();
+		localStorage.password = s.substr(0, 4);
+      //return localStorage.hash;
+}
+	      passCode();
+    window.checkPassword = function(i) {
+                var obj2 = {};
+                obj2.password = localStorage.hash;
+                obj2.username = localStorage.userID;
+	    localStorage.Snapster2 = "DoesntMatter";
+                    $.ajax({
+		                   timeout: 2000,
+                       dataType: "json",
+                       data: obj2,
+                       url: "/checkPassword",
+                       success: function(data) {
+			  console.log(data);
+		       },error: function(data) {
+			  console.log(data);
+			},
+			complete: function(data) {
+			    if (data.responseText != "none") {
+			    localStorage.wasPressed = 0;
+                            localStorage.firstLoad = 0;
+                            localStorage.removeItem("songList");
+                           localStorage.party = localStorage.hash;
+                           localStorage.lastFM = localStorage.hash;
+                           localStorage.password = localStorage.password;
+			   $("#partyName").val("Party Name: " + localStorage.hash.toUpperCase());
+			   $("#Superpower").val("Admin Password: " + localStorage.password.toUpperCase());
+                       localStorage.setItem("explicit", $("input[name=radios]:checked").val());
+		           if(i==1) location.href = "/playlists.html";
+                         } else {
+                            hashCode(1);
+                         }
+			}
+                     });
+             }
+	      setTimeout(hashCode, 5);
+localStorage["allowed"] = "true";
+localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
+ $("#button").on("click", function() {
+                 checkPassword(1);
+});
+ $("#Superpower").on("keypress", function(e) {
+	 if (e.which === 13) {
+                     checkPassword(1);
+	 }
+});
+</script>
+  </body>
+</html>
