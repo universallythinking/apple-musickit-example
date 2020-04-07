@@ -16,7 +16,7 @@ window.hideload = function() {
 }, setTimeout(function() {
     localStorage.Snapster || (localStorage.clear(), location.href = "https://paywallios.herokuapp.com/loginAndroid.html")
 }, 1), window.now = function(t, e) {
-    location.href = "partymusic://song/" + t + ":::" + e, localStorage.nowp = t
+    location.href = "//partymusic://song/" + t + ":::" + e, localStorage.nowp = t
 }, window.hashCode = function(t) {
     return t.split("").reduce(function(t, e) {
         return (t = (t << 5) - t + e.charCodeAt(0)) & t
@@ -53,7 +53,7 @@ window.isReady = function() {
 }, window.rVote = function() {
     parseInt($(".songLinkClick").eq(1).children(".voteUp").text()) < 0 && resetVotes()
 }, window.nextSong = function(t) {
-    location.href = "partymusic://" + $(".songLinkClick").eq(1).attr("title")
+    location.href = "//partymusic://" + $(".songLinkClick").eq(1).attr("title")
 }, localStorage.party && (localStorage.lastFM = localStorage.party), localStorage.votedArray || (localStorage.votedArray = " "), localStorage.CT1, $("#results").empty, localStorage.totalSongs = 0, localStorage.currentlyPlayingWC = "", localStorage.currentlyPlaying = "", localStorage.currentTrack = 0, localStorage.offsetNumber = 0, $("#nameify").empty(), $("#nameify").append("#" + localStorage.party.split(":::")[0].toUpperCase()), window.loading = function() {
     $("#load").show(), $("#load").fadeOut(2e3)
 }, window.votedImg = function() {
@@ -100,7 +100,7 @@ i = [], window.nextSongs = function() {
     if(e==0)t = "--" + t;
     localStorage.firstHide = 1;
     var a = {};
-    localStorage.votes = localStorage.votes + t, location.href = "partymusic://calcvotes", a.votes = t, a.username = localStorage.userID, $.ajax({
+    localStorage.votes = localStorage.votes + t, location.href = "//partymusic://calcvotes", a.votes = t, a.username = localStorage.userID, $.ajax({
         async: false,
         url: "https://paywallios.herokuapp.com/upVote",
         dataType: "json",
@@ -131,7 +131,7 @@ i = [], window.nextSongs = function() {
             a - o <= s && l.push('{ "uri": "spotify:track:' + e + '" }')
         });
         var i = '{"tracks":[' + l + "]}";
-        1 <= l.length && (location.href = "partymusic://newSongAdded", $.ajax({
+        1 <= l.length && (location.href = "//partymusic://newSongAdded", $.ajax({
             async: !0,
             cache: !0,
             type: "DELETE",
@@ -153,12 +153,12 @@ i = [], window.nextSongs = function() {
         }))
     }
 }, window.updateNowSong = function() {
-    location.href = "partymusic://updateNow/spotify:track:" + $("#song").attr("title")
+    location.href = "//partymusic://updateNow/spotify:track:" + $("#song").attr("title")
 }, window.updateLSSong = function() {
-    location.href = "partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
+    location.href = "//partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
 }, window.removeOne = function(t) {
     var e = '{"tracks":[{ "uri": "spotify:track:' + t + '" }]}';
-    location.href = "partymusic://newSongAdded", $.ajax({
+    location.href = "//partymusic://newSongAdded", $.ajax({
         async: !0,
         cache: !0,
         type: "DELETE",
@@ -169,7 +169,7 @@ i = [], window.nextSongs = function() {
         contentType: "application/json",
         data: e,
         success: function(t) {
-            nextSongs(), location.href = "partymusic://newSongAdded"
+            nextSongs(), location.href = "//partymusic://newSongAdded"
         },
         error: function(t) {}
     })
@@ -182,7 +182,7 @@ i = [], window.nextSongs = function() {
         s = localStorage.votes.replace(a, "");
     s = (s = (s += ", --" + e).replace(o, "")).replace(/\\/, ""), localStorage.votes = s, updateVotes(s)
 }, window.increment = function(t) {
-    (localStorage.firstHide = 1) === t && null != $(".songLinkClick").eq(0).attr("title") && (location.href = "partymusic://song/" + $(".songLinkClick").eq(0).attr("title") + ":::12", localStorage.nowp = $(".songLinkClick").eq(0).attr("title"), setTimeout(function() {
+    (localStorage.firstHide = 1) === t && null != $(".songLinkClick").eq(0).attr("title") && (location.href = "//partymusic://song/" + $(".songLinkClick").eq(0).attr("title") + ":::12", localStorage.nowp = $(".songLinkClick").eq(0).attr("title"), setTimeout(function() {
         socket.emit(localStorage.userID + "songChanged", {
             body: localStorage.nowp
         })
@@ -192,15 +192,15 @@ i = [], window.nextSongs = function() {
         })
     }, 1e3), setTimeout(nS, 500), setTimeout(rVote, 2500))
 }, window.reload = function() {
-    location.href = "partymusic://reload"
+    location.href = "//partymusic://reload"
 }, window.playFirst = function() {
-    $("#song").attr("title") ? location.href = "partymusic://prettyprev/" + $("#song").attr("title") : increment(1), localStorage.firstLoad = 1
+    $("#song").attr("title") ? location.href = "//partymusic://prettyprev/" + $("#song").attr("title") : increment(1), localStorage.firstLoad = 1
 }, setTimeout(playFirst, 5e3), window.next = function() {
     $(".songLinkClick").eq(0).attr("title") && (localStorage.nextUp = $(".songLinkClick").eq(0).attr("title") + ":::" + $(".songLinkClick").eq(0).attr("id").substr(13))
 }, window.prev = function() {
-    localStorage.nowp && (location.href = "partymusic://song/" + localStorage.nowp + ":::")
+    localStorage.nowp && (location.href = "//partymusic://song/" + localStorage.nowp + ":::")
 }, window.pause = function() {
-    location.href = "partymusic://pause"
+    location.href = "//partymusic://pause"
 }, window.nS = function() {
     localStorage.songList ? nextSongsCache() : nextSongs()
 }, setTimeout(nS, 1e3), window.downVoteify = function(t) {
@@ -210,7 +210,7 @@ i = [], window.nextSongs = function() {
         down()
     }, 7e3)
 }, window.loader = function() {
-    downVoteify(), location.href = "partymusic://updatePass"
+    downVoteify(), location.href = "//partymusic://updatePass"
 }, window.song = function() {
     var t = {};
     t.username = localStorage.userID, t.song = $("#song").attr("title"), $.ajax({
@@ -230,7 +230,7 @@ var hashCodeNum = function(t) {
     return a
 };
 localStorage.hashNum || (localStorage.hashNum = hashCodeNum((new Date).getTime().toString())), setTimeout(song, 7e3), window.reload = function() {
-    location.href = "partymusic://reloader"
+    location.href = "//partymusic://reloader"
 }, setTimeout(function() {
     $("#song").text.length < 1 && increment(1)
 }, 9e3), setTimeout(function() {
@@ -370,7 +370,7 @@ window.removeFromPlaylist = function(t) {
                     for (a = 0; a < Math.min(t.items.length, 100) && (0 == t.items[a].track.explicit && (arr.push(t.items[a].track.uri.toString()), e++), 100 != e); a++);
                 localStorage.Snapster || newSpotifyPlaylist(), 100 <= arr.toString().length ? (loading(), setTimeout(function() {
                     addToPlaylist(arr.toString())
-                }, 500)) : location.href = "partymusic://playlisterror"
+                }, 500)) : location.href = "//partymusic://playlisterror"
             }
         })
     }, 1e3), loading()
@@ -604,7 +604,7 @@ if ($("#fname").on("blur", function() {}), $("#search").on("click", function() {
             },
             timeout: 12e3
         }).done(function(t) {
-            localStorage.playerToken = t.access_token, location.href = "partymusic://callback/" + localStorage.playerToken
+            localStorage.playerToken = t.access_token, location.href = "//partymusic://callback/" + localStorage.playerToken
         })
     }, localStorage.explicit && localStorage.Snapster && localStorage.current_token && localStorage.party && localStorage.lastFM && localStorage.userID && localStorage.explicit && localStorage.password) {
     var party, userPrompt;
@@ -705,7 +705,7 @@ localStorage.setItem("guest", !0), localStorage.setItem("temp", !0), localStorag
 }, setTimeout(function() {
     !localStorage.userID || localStorage.Snapster || localStorage.party || (location.href = localStorage.urlParts + "/welcome.html")
 }, 1e3), window.guest = function() {
-    localStorage.removeItem("host"), location.href = "partymusic://pause", setTimeout(function() {
+    localStorage.removeItem("host"), location.href = "//partymusic://pause", setTimeout(function() {
         return location.href = localStorage.urlGuest + "/app.html", !1
     }, 250)
 }, window.playlists = function() {
@@ -728,26 +728,26 @@ localStorage.setItem("guest", !0), localStorage.setItem("temp", !0), localStorag
         success: function(t) {}
     }), setTimeout(tognav, 500)
 }, window.purgify = function() {
-    location.href = "partymusic://purgify"
+    location.href = "//partymusic://purgify"
 }, window.removeHTML = function() {
     document.hasFocus() && history.replaceState("/index.html", document.title, "Swagger Jukebox")
 }, window.reloadify = function() {
     return $("#load").hide(), !1
 }, window.terminate = function() {
     localStorage.urlParts;
-    localStorage.clear(), location.href = "partymusic://terminate", localStorage.clear()
+    localStorage.clear(), location.href = "//partymusic://terminate", localStorage.clear()
 }, window.softTerminate = function() {
     Cookies.remove("locStore"), Cookies.remove("justClicked");
     localStorage.urlParts;
     localStorage.clear(), setTimeout(function() {
-        location.href = "partymusic://softterminate"
+        location.href = "//partymusic://softterminate"
     }, 250)
 }, window.settings = function() {
     location.href = localStorage.urlParts + "/welcome.html"
 }, window.terms = function() {
-    $("#dialogPage").hide(), location.href = "partymusic://terms"
+    $("#dialogPage").hide(), location.href = "//partymusic://terms"
 }, window.privacy = function() {
-    $("#dialogPage").hide(), location.href = "partymusic://privacy"
+    $("#dialogPage").hide(), location.href = "//partymusic://privacy"
 }, Cookies.get("karma") || Cookies.set("karma", "25", {
     expires: 30
 }), Cookies.remove("justClicked"), 5 < localStorage.length && (Cookies.set("locStore", JSON.stringify(localStorage), {
@@ -759,7 +759,7 @@ localStorage.setItem("guest", !0), localStorage.setItem("temp", !0), localStorag
 }, 4e3), setTimeout(function() {
     Cookies.get("partyInfo") || (Cookies.set("partyInfo", "true", {
         expires: 30
-    }), location.href = "partymusic://yourPartyName:::" + localStorage.party)
+    }), location.href = "//partymusic://yourPartyName:::" + localStorage.party)
 }, 1e3), window.startPlaying = function(t) {
     localStorage.Snapster = t, localStorage.removeItem("songList"), setTimeout(function() {
         location.href = localStorage.urlParts + "/index.html"

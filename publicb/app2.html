@@ -113,7 +113,7 @@
                 });
         window.purchase = function() {
             $("button").css("background-color","##888c89");
-            location.href = "partymusic://25actions";
+            location.href = "//partymusic://25actions";
             Cookies.set('purchbtn', 'true', {
                 expires: 1
             });
@@ -122,7 +122,7 @@
             }, 500);
         }
         window.restore = function() {
-            if (Cookies.get('verified') && !Cookies.get('karma')) location.href = "partymusic://checkpurchases";
+            if (Cookies.get('verified') && !Cookies.get('karma')) location.href = "//partymusic://checkpurchases";
         }
     localStorage.urlG = window.location.toString().split("/public/")[0] + "/guest";
     window.checkReceipt = function(a, b) {
@@ -165,7 +165,7 @@
                //actions('3');
     }
         window.restoreBtn = function() {
-            location.href = "partymusic://checkpurchases";
+            location.href = "//partymusic://checkpurchases";
         }
         restore();
         localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
@@ -275,8 +275,8 @@
         <p class="price">$1.99</p>
         <p class="desc">Unlock the Whole App for $1.99</p>
     </div>
-    <a class="first link" href="javascript:location.href='partymusic://terms';">Terms of Use</a>
-    <a class="second link" href="javascript:location.href='partymusic://privacy';">Privacy Policy</a>
+    <a class="first link" href="javascript:location.href='//partymusic://terms';">Terms of Use</a>
+    <a class="second link" href="javascript:location.href='//partymusic://privacy';">Privacy Policy</a>
     <a class="third link" href="javascript:restoreBtn();">Restore Purchase</a>
     <!--<a class="fourth link" href="javascript:russianRoulette();">Get Free Access, Play Russian Roulette</a>-->
 

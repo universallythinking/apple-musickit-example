@@ -239,13 +239,13 @@
                          dataType: "json",
                          data: "formdata",
                          success: function (dataFirst) {
-                         //location.href = "partymusic://newSongAdded";
+                         //location.href = "//partymusic://newSongAdded";
                          nextSongs();
                          votedImg();
                          //setTimeout(function() { location.href = location.href; },3000);
                          },
                          error: function(e) {
-                         //location.href = "partymusic://newSongAdded";
+                         //location.href = "//partymusic://newSongAdded";
                          nextSongs();
                          votedImg();
                          //$("#songLinkClick1" + i).css({"color": "gray"});  //, "pointer-events": "none"});

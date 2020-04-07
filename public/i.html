@@ -345,7 +345,7 @@ $(document).ready(function() {
 	    location.href= localStorage.urlParts +'/index.html'; return false;
 	}
 	window.terminate = function() {
-	    location.href= "partymusic://terminate/";
+	    location.href= "//partymusic://terminate/";
         var urlParts = localStorage.urlParts;
         setTimeout(function(){
                 if (localStorage.locked == "no") {
@@ -358,7 +358,7 @@ $(document).ready(function() {
         localStorage.clear();
 	}
 	window.softTerminate = function() {
-	    location.href="partymusic://softterminate/";
+	    location.href="//partymusic://softterminate/";
         var urlParts = localStorage.urlParts;
         setTimeout(function(){
                 if (localStorage.locked == "no") {
@@ -374,11 +374,11 @@ $(document).ready(function() {
         }
 	window.terms = function() {
 		$('#dialogPage').hide();
-            location.href = "partymusic://terms/";
+            location.href = "//partymusic://terms/";
         }
 	window.privacy = function() {
 		$('#dialogPage').hide();
-            location.href = "partymusic://privacy/";
+            location.href = "//partymusic://privacy/";
         }
         window.tognav = function() {
             $("#mySidenav").toggle(function() {

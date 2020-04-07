@@ -170,7 +170,7 @@ $(document).ready(function() {
                                                 loading(2000);
                                                 setTimeout(function() { addToPlaylist(arr.toString()); }, 500);
                                             } else {
-                                                location.href = "partymusic://playlisterror";
+                                                location.href = "//partymusic://playlisterror";
                                             }
                                         }
                     });

@@ -114,7 +114,7 @@ $(document).ready(function() {
                                         })
                                 };
                         window.now = function(a,b) {
-                            location.href = "partymusic://song/" + a;
+                            location.href = "//partymusic://song/" + a;
                             inc(b);
                             calculateVotes();
                         };
@@ -126,7 +126,7 @@ $(document).ready(function() {
         }
         window.nextSong = function(e) {
             //increment(),
-            location.href = "partymusic://" + $(".songLinkClick").eq(1).attr("title");
+            location.href = "//partymusic://" + $(".songLinkClick").eq(1).attr("title");
         }
         localStorage.party && (localStorage.lastFM = localStorage.party),
         localStorage.votedArray || (localStorage.votedArray = " "),
@@ -151,7 +151,7 @@ $(document).ready(function() {
                     document.getElementById("load").style.visibility = "hidden";
                         clearInterval(a);
                 }, t);
-                if(i == 10) { location.href = "partymusic://problems"; } else { i++; }
+                if(i == 10) { location.href = "//partymusic://problems"; } else { i++; }
             }, 1000);
         };
     var s = 1,
@@ -370,7 +370,7 @@ $(document).ready(function() {
                 updateVotes(o);
         },
         window.increment = function(e) {
-            location.href = "partymusic://song/" + $(".songLinkClick").eq(0).attr("title"); //"partymusic://song/" + $(".songLinkClick").eq(1).attr("title")
+            location.href = "//partymusic://song/" + $(".songLinkClick").eq(0).attr("title"); //"//partymusic://song/" + $(".songLinkClick").eq(1).attr("title")
             if (parseInt($(".songLinkClick").eq(0).children(".voteUp").attr("name")) > 2) {
                 addPopularSong($(".songLinkClick").eq(0).attr("title"));
             };
@@ -409,7 +409,7 @@ $(document).ready(function() {
         },
         loading(),
         window.updateLSSong = function() {
-            location.href = "partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
+            location.href = "//partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
         },
         setInterval(function() {
             rVote()
@@ -418,18 +418,18 @@ $(document).ready(function() {
             loading()
         }, 100),
         window.reload = function() {
-            location.href = "partymusic://reload"
+            location.href = "//partymusic://reload"
         },
         window.playFirst = function() {
             if(localStorage.firstLoad == 0) {
                 /*setTimeout(function() {
-                //location.href = "partymusic://song/" + localStorage.nowp;
+                //location.href = "//partymusic://song/" + localStorage.nowp;
                 }, 6000);*/
-                location.href = "partymusic://playlist/user:" + localStorage.userID + ":playlist:" + localStorage.Snapster;
+                location.href = "//partymusic://playlist/user:" + localStorage.userID + ":playlist:" + localStorage.Snapster;
                 localStorage.firstLoad = 1;
             }
             /*else {
-                location.href = "partymusic://playlist/user:" + localStorage.userID + ":playlist:" + localStorage.Snapster;
+                location.href = "//partymusic://playlist/user:" + localStorage.userID + ":playlist:" + localStorage.Snapster;
             }*/
         },
         window.next = function() {
@@ -439,20 +439,20 @@ $(document).ready(function() {
             }, 100)
         },
         window.prev = function() {
-            location.href = "partymusic://song/" + localStorage.nowp
+            location.href = "//partymusic://song/" + localStorage.nowp
         },
         setTimeout(function() {
             1 != localStorage.wasPressed && (localStorage.wasPressed = 1,
                 playFirst())
         }, 1000),
         window.pause = function() {
-            location.href = "partymusic://pause"
+            location.href = "//partymusic://pause"
         },
         window.downVoteify = function(i) {
             if (i == 1) {
             nextSongs();
                 setTimeout(function() {
-                    location.href = "partymusic://reload";
+                    location.href = "//partymusic://reload";
                 }, 1500);
             } else {
             nextSongs();

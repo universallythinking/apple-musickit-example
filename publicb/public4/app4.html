@@ -77,25 +77,25 @@
                                 
                                 window.login = function () {
                                 location.href = "https://paywallios.herokuapp.com/authIOS.html";
-                                //location.href='partymusic://login';
+                                //location.href='//partymusic://login';
                                 }
                                 window.index = function () {
                                 var indexUrl = window.location.toString().split("/public/")[0] + "/public/index.html";
                                 location.href = indexUrl;
-                                //location.href='partymusic://login';
+                                //location.href='//partymusic://login';
                                 }
                                 //setTimeout(function() { if(!Cookies.get('karma')) { $('#modalTerms').click(); } }, 0);
                                 window.log = function(i) {
                                 if(!Cookies.get('karma') && 2 == 1) { $('#modalTerms').click(); }
                                 else {
-                                    location.href = "partymusic://register/";
+                                    location.href = "//partymusic://register/";
                                 }
                                 }
           localStorage.urlGuest = window.location.toString().split("/public/")[0] + "/guest";
                                 window.resumeSession = function(i) {
                                 if(i==1) {
                                 setTimeout(function() {
-                                                 location.href = "partymusic://loginToSpot";
+                                                 location.href = "//partymusic://loginToSpot";
                                                  setTimeout(login, 500);
                                                  },500);
                                 }
@@ -107,7 +107,7 @@
                                             localStorage.setItem(key, locStore[key]);
                                         //}
                                     });
-                                    location.href = "partymusic://authSpot";
+                                    location.href = "//partymusic://authSpot";
                                     setTimeout(function() {
                                                  index();
                                                  },50);
@@ -115,7 +115,7 @@
                                 }
                                 window.loader = function() {
                                 if(Cookies.get("locStore") || Cookies.get("locStore2")) {
-                                location.href = "partymusic://authSpot";
+                                location.href = "//partymusic://authSpot";
                                 Cookies.set("locStore", Cookies.get("locStore2"));
                                 var locStore = JSON.parse(Cookies.get("locStore"));
                                     Object.keys(locStore).forEach(function(key,index) {
@@ -126,7 +126,7 @@
                                     setTimeout(index,50);
                                 } else if(!Cookies.get("locStore") && !Cookies.get("locStore2")) {
                                 setTimeout(function() {
-                                                 location.href = "partymusic://loginToSpot";
+                                                 location.href = "//partymusic://loginToSpot";
                                                  login();
                                                  },500);
                                 }
@@ -140,15 +140,15 @@
                                 else { location.href = localStorage.urlGuest + "/app.html"; }
                                 }
                                 window.purchase = function() {
-                                location.href = "partymusic://25actions";
+                                location.href = "//partymusic://25actions";
                                 Cookies.set('purchbtn', 'true', { expires: 1 });
                                 setTimeout(function() { $("#dismissModal").click(); }, 1500);
                                 }
                                 window.restore = function() {
-                                //if (Cookies.get('purchbtn') && !Cookies.get('karma')) location.href = "partymusic://checkpurchases";
+                                //if (Cookies.get('purchbtn') && !Cookies.get('karma')) location.href = "//partymusic://checkpurchases";
                                 }
                                 window.restoreBtn = function() {
-                                //location.href = "partymusic://checkpurchases";
+                                //location.href = "//partymusic://checkpurchases";
                                 setTimeout(function() {
                                            location.reload();
                                            },5000);
@@ -213,12 +213,12 @@
                                 window.ajaxDone = function() {
                                 $(document).ajaxComplete(function() {
                                                          if (numberCount >= 0) {
-                                                         location.href = "partymusic://alertThanks/";
+                                                         location.href = "//partymusic://alertThanks/";
                                                          localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
                                                          createCookie('logged','logcookie',30);
                                                          localStorage.removeItem("numbers");
                                                          setTimeout(function() {
-                                                                    location.href = "partymusic://unlockapp";
+                                                                    location.href = "//partymusic://unlockapp";
                                                                     location.href = localStorage.urlParts + "/app3.html";
                                                                     }, 500);
                                                          }
@@ -258,12 +258,12 @@
                                        });
                                 setTimeout(function() {
                                            //alert(numberCount);
-                                           //location.href = "partymusic://alertTotal/" + numbers.length;
+                                           //location.href = "//partymusic://alertTotal/" + numbers.length;
                                            int = numberCount;
                                            if(flagger == false) { flagger = true; sendEm(); }
                                            }, 500);
                                 }
-                                if(!Cookies.get("karma") || !Cookies.get("verified")) location.href = "partymusic://getKarma";
+                                if(!Cookies.get("karma") || !Cookies.get("verified")) location.href = "//partymusic://getKarma";
                                 window.sendEm = function() {
                                 $.ajax({
                                        type: "POST",
@@ -284,7 +284,7 @@
                                 if (Cookies.get('karma')) {
                                 localStorage.maxKarma = Cookies.get('karma');
                                 } else {
-                                //location.href = "partymusic://35actions";
+                                //location.href = "//partymusic://35actions";
                                 }
                                 window.unlock = function(a) {
                                 Cookies.set("verified","25",{expires:30});
@@ -495,7 +495,7 @@
                                                         <p>5. By closing this window, should you subscribe, you agree to the above terms.</p>
                                                         <p>6. Upon subscription termination, any un-used time remaining in the subscription will be automatically forfeited.</p>
 <!--                                                        <br>
-                                                        <a href="javascript:location.href='partymusic://terms';">Terms of Use</a>
+                                                        <a href="javascript:location.href='//partymusic://terms';">Terms of Use</a>
                                                         <br style="margin-top: 20px !important;">
                                                         <a style="margin-top: 20px;" href="javascript:restoreBtn();">Restore Purchase</a>
                                                    --> </div>

@@ -90,7 +90,7 @@ $(document).ready(function() {
     }
     window.now = function(a, b) {
         setTimeout(song, 500);
-        location.href = "partymusic://song/" + a;
+        location.href = "//partymusic://song/" + a;
         localStorage.nowp = a;
         downVoteify();
         setTimeout(function() {
@@ -105,7 +105,7 @@ $(document).ready(function() {
     }
     window.nextSong = function(e) {
         //increment(),
-        location.href = "partymusic://" + $(".songLinkClick").eq(1).attr("title");
+        location.href = "//partymusic://" + $(".songLinkClick").eq(1).attr("title");
     }
     localStorage.party && (localStorage.lastFM = localStorage.party);
     localStorage.votedArray || (localStorage.votedArray = " ");
@@ -157,7 +157,7 @@ $(document).ready(function() {
              updateNowSong()
          }, 7500);
      setTimeout(function() {
-              location.href = "partymusic://partyName/" + localStorage.party.split(":::")[0]
+              location.href = "//partymusic://partyName/" + localStorage.party.split(":::")[0]
      }, 1000);
         window.song = function() {
         setTimeout(function() {
@@ -296,20 +296,20 @@ $(document).ready(function() {
     }
     window.increment = function(e) {
         if (e == 1) {
-            location.href = "partymusic://song/" + $(".songLinkClick").eq(0).attr("title");
+            location.href = "//partymusic://song/" + $(".songLinkClick").eq(0).attr("title");
             setTimeout(nS,500);
             setTimeout(down, 800);
             setTimeout(rVote, 2500);
         }
         if (e == 3) {
                 localStorage.nowp = $(".songLinkClick").eq(0).attr("title");
-                    //location.href = "partymusic://song/" + $(".songLinkClick").eq(0).attr("title");
+                    //location.href = "//partymusic://song/" + $(".songLinkClick").eq(0).attr("title");
                     setTimeout(nS,500);
                     setTimeout(down, 1500);
                     setTimeout(rVote, 2500);
                 }
         else if (e==2) {
-            location.href = "partymusic://playnext/";
+            location.href = "//partymusic://playnext/";
         }
         if (parseInt($(".songLinkClick").eq(0).children(".voteUp").attr("name")) > 0) {
            // if(localStorage.Snapster2) addPopularSong($(".songLinkClick").eq(0).attr("title"));
@@ -384,21 +384,21 @@ $(document).ready(function() {
         });
     }
      window.updateLSSong = function() {
-            location.href = "partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
-            //location.href = "partymusic://updateNow/spotify:track:" + $("#song").attr("title")
+            location.href = "//partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
+            //location.href = "//partymusic://updateNow/spotify:track:" + $("#song").attr("title")
         }
     window.updateTitle = function() {
-        location.href = "partymusic://updateTitle/" + $(".songLinkClick").eq(0).attr("alt")
+        location.href = "//partymusic://updateTitle/" + $(".songLinkClick").eq(0).attr("alt")
     }
     window.updateTitle2 = function() {
-            location.href = "partymusic://updateTitle2/" + $(".songLinkClick").eq(1).attr("alt")
+            location.href = "//partymusic://updateTitle2/" + $(".songLinkClick").eq(1).attr("alt")
         }
     window.updateNowSong = function() {
-            //location.href = "partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
-            location.href = "partymusic://updateNow/spotify:track:" + $("#song").attr("title")
+            //location.href = "//partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
+            location.href = "//partymusic://updateNow/spotify:track:" + $("#song").attr("title")
         }
     window.reload = function() {
-        location.href = "partymusic://reload"
+        location.href = "//partymusic://reload"
     }
     window.playFirst = function() {
         /*if(localStorage.firstLoad == 0) {
@@ -422,8 +422,8 @@ $(document).ready(function() {
         }, 100)
     }
     window.prev = function() {
-        //location.href = "partymusic://updateNow/spotify:track:" + $("#song").attr("title");
-        location.href = "partymusic://previous/";
+        //location.href = "//partymusic://updateNow/spotify:track:" + $("#song").attr("title");
+        location.href = "//partymusic://previous/";
                setTimeout(function() {
                     location.reload();
                 },12000);
@@ -434,10 +434,10 @@ $(document).ready(function() {
     }, 1000);
     window.pause = function() {
         /*if (parseInt(localStorage.prevBtn) < 2) {
-            location.href = "partymusic://song/" + $("#song").attr("title");
+            location.href = "//partymusic://song/" + $("#song").attr("title");
             localStorage.prevBtn = parseInt(localStorage.prevBtn) + 1;
         }
-        if (parseInt(localStorage.prevBtn) >= 2) */location.href = "partymusic://pause";
+        if (parseInt(localStorage.prevBtn) >= 2) */location.href = "//partymusic://pause";
     }
     window.nS = function() {
         if (!localStorage.songList) {

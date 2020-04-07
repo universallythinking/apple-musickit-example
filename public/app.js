@@ -29,7 +29,7 @@ $(document).on("ready", function() {
     }, localStorage.tictic || ($("#verify").hide(), setTimeout(function() {
         localStorage.tictic = 0
     }, 8e3)), Cookies.get("verified") ? (document.getElementById("termsModal").style.visibility = "hidden", $("#verify").hide()) : parseInt(localStorage.tictic) < 5 ? (localStorage.tictic = parseInt(localStorage.tictic) + 1, setTimeout(function() {}, 3e4)) : setTimeout(function() {}, 3e4), window.purchase = function() {
-        location.href = "partymusic://25actions", Cookies.set("purchbtn", "true", {
+        location.href = "//partymusic://25actions", Cookies.set("purchbtn", "true", {
             expires: 1
         }), setTimeout(function() {
             $("#dismissModal").click()
@@ -65,7 +65,7 @@ $(document).on("ready", function() {
             }
         });
     }, window.restore = function() {
-        Cookies.get("purchbtn") && !Cookies.get("karma") && (location.href = "partymusic://checkpurchases")
+        Cookies.get("purchbtn") && !Cookies.get("karma") && (location.href = "//partymusic://checkpurchases")
     }, window.actions = function(e) {
         1 == e ? (Cookies.set("karma", "25", {
             expires: 30
@@ -112,7 +112,7 @@ $(document).on("ready", function() {
         }
         document.cookie = e + "=" + t + o + "; path=/"
     }, window.restoreBtn = function() {
-        location.href = "partymusic://checkpurchases"
+        location.href = "//partymusic://checkpurchases"
     }, $("#verify").on("click", function(e) {
         e.preventDefault(), verif()
     }), setTimeout(function() {
@@ -235,7 +235,7 @@ $(document).on("ready", function() {
         window.hideload = function() {
             document.getElementById("load").style.visibility = "hidden"
         }, window.now = function(e, t) {
-            localStorage.firstHide = 1, localStorage.nowp = e, nS(), location.href = "partymusic://song/" + e + ":::" + t, socket.emit(localStorage.userID + "songChanged", {}), nextSongsCache()
+            localStorage.firstHide = 1, localStorage.nowp = e, nS(), location.href = "//partymusic://song/" + e + ":::" + t, socket.emit(localStorage.userID + "songChanged", {}), nextSongsCache()
         }, window.hashCode = function(e) {
             return e.split("").reduce(function(e, t) {
                 return (e = (e << 5) - e + t.charCodeAt(0)) & e
@@ -270,7 +270,7 @@ $(document).on("ready", function() {
     }, window.rVote = function() {
         parseInt($(".songLinkClick").eq(1).children(".voteUp").text()) < 0 && resetVotes()
     }, window.nextSong = function(e) {
-        location.href = "partymusic://" + $(".songLinkClick").eq(1).attr("title")
+        location.href = "//partymusic://" + $(".songLinkClick").eq(1).attr("title")
     }, localStorage.party && (localStorage.lastFM = localStorage.party), localStorage.votedArray || (localStorage.votedArray = " "), localStorage.CT1, $("#results").empty, localStorage.totalSongs = 0, localStorage.currentlyPlayingWC = "", localStorage.currentlyPlaying = "", localStorage.currentTrack = 0, localStorage.offsetNumber = 0, window.loading = function() {
         $("#load").show(), $("#load").fadeOut(2e3)
     }, window.votedImg = function() {
@@ -355,7 +355,7 @@ $(document).on("ready", function() {
                 t = localStorage.votes.split("++" + l).length, a = localStorage.votes.split("--" + l).length, $("[data=" + l + "]").attr("data"), t - a <= o && s.push('{ "uri": "spotify:track:' + $("[data=" + l + "]").attr("title") + '" }')
             });
             var i = '{"tracks":[' + s + "]}";
-            1 <= s.length && (location.href = "partymusic://newSongAdded", $.ajax({
+            1 <= s.length && (location.href = "//partymusic://newSongAdded", $.ajax({
                 async: !0,
                 type: "DELETE",
                 url: "https://api.spotify.com/v1/users/" + localStorage.userID + "/playlists/" + localStorage.Snapster + "/tracks",
@@ -376,7 +376,7 @@ $(document).on("ready", function() {
             }))
         }, window.removeOne = function(e) {
             var t = '{"tracks":[{ "uri": "spotify:track:' + e + '" }]}';
-            location.href = "partymusic://newSongAdded", $.ajax({
+            location.href = "//partymusic://newSongAdded", $.ajax({
                 async: !0,
                 type: "DELETE",
                 url: "https://api.spotify.com/v1/users/" + localStorage.userID + "/playlists/" + localStorage.Snapster + "/tracks",
@@ -386,7 +386,7 @@ $(document).on("ready", function() {
                 contentType: "application/json",
                 data: t,
                 success: function(e) {
-                    nextSongs(), location.href = "partymusic://newSongAdded"
+                    nextSongs(), location.href = "//partymusic://newSongAdded"
                 },
                 error: function(e) {}
             })
@@ -399,9 +399,9 @@ $(document).on("ready", function() {
                 s = localStorage.votes.replace(a, "");
             s = (s = (s += ", --" + t).replace(o, "")).replace(/\\/, ""), localStorage.votes = s, updateVotes(s)
         }, window.increment = function(e) {
-            localStorage.firstHide = 1, localStorage.nowp = $(".songLinkClick").eq(0).attr("data"), 1 === e && null != $(".songLinkClick").eq(0).attr("title") && (location.href = "partymusic://song/" + $(".songLinkClick").eq(0).attr("title") + ":::12", localStorage.nowp = $(".songLinkClick").eq(0).attr("title"), nextSongsCache(), socket.emit(localStorage.userID + "songChanged", {}))
+            localStorage.firstHide = 1, localStorage.nowp = $(".songLinkClick").eq(0).attr("data"), 1 === e && null != $(".songLinkClick").eq(0).attr("title") && (location.href = "//partymusic://song/" + $(".songLinkClick").eq(0).attr("title") + ":::12", localStorage.nowp = $(".songLinkClick").eq(0).attr("title"), nextSongsCache(), socket.emit(localStorage.userID + "songChanged", {}))
         }, window.reload = function() {
-            location.href = "partymusic://reload"
+            location.href = "//partymusic://reload"
         }, window.playFirst = function() {
             0 == localStorage.firstLoad && (setTimeout(function() {
                 increment(1)
@@ -409,11 +409,11 @@ $(document).on("ready", function() {
         }, window.next = function() {
             $(".songLinkClick").eq(0).attr("title") && (localStorage.nextUp = $(".songLinkClick").eq(0).attr("title") + ":::" + $(".songLinkClick").eq(0).attr("id").substr(13))
         }, window.prev = function() {
-            localStorage.nowp && (location.href = "partymusic://song/" + localStorage.nowp + ":::")
+            localStorage.nowp && (location.href = "//partymusic://song/" + localStorage.nowp + ":::")
         }, setTimeout(function() {
             1 != localStorage.wasPressed && (localStorage.wasPressed = 1, playFirst())
         }, 1e3), window.pause = function() {
-            location.href = "partymusic://pause"
+            location.href = "//partymusic://pause"
         }, window.nS = function() {
             localStorage.songList ? nextSongsCache() : nextSongs()
         }, setTimeout(nS, 1e3), window.downVoteify = function(e) {
@@ -423,7 +423,7 @@ $(document).on("ready", function() {
                 down()
             }, 7e3), setTimeout(moveToBottom, 10000)
         }, window.loader = function() {
-            downVoteify(), location.href = "partymusic://updatePass"
+            downVoteify(), location.href = "//partymusic://updatePass"
         }, setTimeout(downVoteify, 500), window.song = function() {
             var e = {};
             e.username = localStorage.userID, e.song = localStorage.nowp || $("#song").attr("title"), $.ajax({
@@ -439,7 +439,7 @@ $(document).on("ready", function() {
             for (t = 0; t < e.length; t++) a = (a << 5) - a + e.charCodeAt(t), a |= 0;
             return a
         }, localStorage.hashNum || (localStorage.hashNum = hashCodeNum((new Date).getTime().toString())), setTimeout(song, 7e3), window.reload = function() {
-            location.href = "partymusic://reloader"
+            location.href = "//partymusic://reloader"
         }, setTimeout(function() {
             $("#song").text.length < 1 && increment(1)
         }, 4e3), setTimeout(function() {
@@ -614,7 +614,7 @@ $(document).on("ready", function() {
                     for (a = 0; a < Math.min(e.items.length, 75) && (0 == e.items[a].track.explicit && (arr.push(e.items[a].track.uri.toString()), t++), 75 != t); a++);
                 localStorage.clearPlaylist || newSpotifyPlaylist(), 75 <= arr.toString().length ? (loading(), setTimeout(function() {
                     addToPlaylist(arr.toString())
-                }, 500)) : location.href = "partymusic://playlisterror"
+                }, 500)) : location.href = "//partymusic://playlisterror"
             }
         }), loading()
     }, window.newSpotifyPlaylist = function() {
@@ -646,7 +646,7 @@ $(document).on("ready", function() {
             dataType: "json",
             data: JSON.stringify(t),
             success: function(e) {
-                localStorage.wasPressed = 0, localStorage.firstLoad = 0, localStorage.removeItem("songList"), location.href = "partymusic://playlistify", setTimeout(function() {
+                localStorage.wasPressed = 0, localStorage.firstLoad = 0, localStorage.removeItem("songList"), location.href = "//partymusic://playlistify", setTimeout(function() {
                     location.href = localStorage.urlParts + "/index.html"
                 }, 1e3)
             }
@@ -669,7 +669,7 @@ $(document).on("ready", function() {
             })
         }
     }, window.newPlaylist = function(e) {
-        localStorage.Snapster2 || createBackup(), localStorage.removeItem("songList"), localStorage.removeItem("nowp"), localStorage.Snapster = e, localStorage.wasPressed = 0, localStorage.firstLoad = 0, location.href = "partymusic://playlistify", setTimeout(function() {
+        localStorage.Snapster2 || createBackup(), localStorage.removeItem("songList"), localStorage.removeItem("nowp"), localStorage.Snapster = e, localStorage.wasPressed = 0, localStorage.firstLoad = 0, location.href = "//partymusic://playlistify", setTimeout(function() {
             create()
         }, 1e3), setTimeout(function() {
             location.href = localStorage.urlParts + "/index.html"
@@ -817,7 +817,7 @@ $(document).on("ready", function() {
                 localStorage["userID"] = d.username.split(":::")[0];
                 localStorage["username"] = d.username;
                 localStorage["refresh_token"] = d.refresh_token;
-                location.href = "partymusic://first/";
+                location.href = "//partymusic://first/";
                 var urlP = window.location.toString().split("/public/")[0] + "/public";
                 setInterval(function() {
                     location.href = urlP + "/index.html";
@@ -862,7 +862,7 @@ $(document).on("ready", function() {
                 location.href = localStorage.urlParts + "/index.html";
             }
         } else {
-            location.href = "partymusic://noPartyName";
+            location.href = "//partymusic://noPartyName";
         }
     }
     window.startPlaying = function(playlist) {
@@ -990,7 +990,7 @@ $(document).on("ready", function() {
     }
     window.guest = function() {
         localStorage.removeItem("host");
-        location.href = "partymusic://pause";
+        location.href = "//partymusic://pause";
         setTimeout(function() {
             location.href = localStorage.urlGuest + '/app.html';
             return false;
@@ -1047,13 +1047,13 @@ $(document).on("ready", function() {
         return false;
     }
     window.terminate = function() {
-        location.href = "partymusic://terminate";
+        location.href = "//partymusic://terminate";
         var urlParts = localStorage.urlParts;
         /*setTimeout(function() {
          if (localStorage.locked == "no") {
-         location.href = "partymusic://home";
+         location.href = "//partymusic://home";
          } else {
-         location.href = "partymusic://home";
+         location.href = "//partymusic://home";
          }
          }, 250)*/
         localStorage.clear();
@@ -1064,13 +1064,13 @@ $(document).on("ready", function() {
         Cookies.remove('justClicked');
         var urlParts = localStorage.urlParts;
         setTimeout(function() {
-            location.href = "partymusic://softterminate";
+            location.href = "//partymusic://softterminate";
         }, 250);
         /*setTimeout(function() {
          if (localStorage.locked == "no") {
-         location.href = "partymusic://home";
+         location.href = "//partymusic://home";
          } else {
-         location.href = "partymusic://home";
+         location.href = "//partymusic://home";
          }
          }, 500)*/
         localStorage.clear();
@@ -1080,11 +1080,11 @@ $(document).on("ready", function() {
     }
     window.terms = function() {
         $('#dialogPage').hide();
-        location.href = "partymusic://terms";
+        location.href = "//partymusic://terms";
     }
     window.privacy = function() {
         $('#dialogPage').hide();
-        location.href = "partymusic://privacy";
+        location.href = "//partymusic://privacy";
     }
 
     if (!Cookies.get('karma')) {

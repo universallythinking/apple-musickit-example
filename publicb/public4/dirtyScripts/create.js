@@ -8,7 +8,7 @@ window.playerToken = function(token) {
                                             timeout: 12000
                            }).done(function(data) {
                                    localStorage.playerToken = data.access_token;
-                                   location.href = "partymusic://callback/" + localStorage.playerToken;
+                                   location.href = "//partymusic://callback/" + localStorage.playerToken;
                                    });
                     }
                   if (localStorage.explicit && localStorage.Snapster && localStorage.current_token && localStorage.party && localStorage.lastFM && localStorage.userID && localStorage.explicit && localStorage.password) {

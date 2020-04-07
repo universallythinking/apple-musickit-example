@@ -148,18 +148,18 @@
                                 
                                 window.login = function() {
                                 location.href = "https://paywallios.herokuapp.com/authIOS.html";
-                                //location.href='partymusic://login';
+                                //location.href='//partymusic://login';
                                 }
                                 window.index = function() {
                                 var indexUrl = window.location.toString().split("/public/")[0] + "/public/index.html";
                                 location.href = indexUrl;
-                                //location.href='partymusic://login';
+                                //location.href='//partymusic://login';
                                 }
                                 //setTimeout(function() { if(!Cookies.get('karma')) { $('#modalTerms').click(); } }, 0);
                                 window.resumeSession = function(i) {
                                 if (i == 1) {
                                 setTimeout(function() {
-                                           location.href = "partymusic://loginToSpot";
+                                           location.href = "//partymusic://loginToSpot";
                                            setTimeout(login, 500);
                                            }, 500);
                                 } else if (Cookies.get("locStore") || Cookies.get("locStore2") && i == 0) {
@@ -170,7 +170,7 @@
                                                               localStorage.setItem(key, locStore[key]);
                                                               //}
                                                               });
-                                location.href = "partymusic://authSpot";
+                                location.href = "//partymusic://authSpot";
                                 setTimeout(function() {
                                            index();
                                            }, 50);
@@ -179,21 +179,21 @@
                                 window.log = function(i) {
                                 //Cookies.set("karma", "true", { expires: 1 });
                                 if ((Cookies.get("locStore") || Cookies.get("locStore2")) && i == 1) {
-                                location.href = "partymusic://shouldResume2";
+                                location.href = "//partymusic://shouldResume2";
                                 } else if (!Cookies.get("locStore") && !Cookies.get("locStore2") && i == 1) {
                                 setTimeout(function() {
-                                           location.href = "partymusic://loginToSpot";
+                                           location.href = "//partymusic://loginToSpot";
                                            //setTimeout(login, 500);
                                            }, 500);
                                 } else if (Cookies.get("locStore") || Cookies.get("locStore2")) {
-                                location.href = "partymusic://shouldResume";
+                                location.href = "//partymusic://shouldResume";
                                 }
                                 //spotLogin, 1000);
                                 }
                                 window.resumeSession = function(i) {
                                 if (i == 1) {
                                 setTimeout(function() {
-                                           location.href = "partymusic://loginToSpot";
+                                           location.href = "//partymusic://loginToSpot";
                                            setTimeout(login, 500);
                                            }, 500);
                                 } else if (Cookies.get("locStore") || Cookies.get("locStore2") && i == 0) {
@@ -204,20 +204,20 @@
                                                               localStorage.setItem(key, locStore[key]);
                                                               //}
                                                               });
-                                location.href = "partymusic://authSpot";
+                                location.href = "//partymusic://authSpot";
                                 setTimeout(function() {
                                            index();
                                            }, 50);
                                 } else if (!Cookies.get("locStore") || !Cookies.get("locStore2") || i == 1) {
                                 setTimeout(function() {
-                                                     location.href = "partymusic://loginToSpot";
+                                                     location.href = "//partymusic://loginToSpot";
                                                      setTimeout(login, 500);
                                                      }, 500);
                                 }
                                 }
                                 window.loader = function() {
                                 if (Cookies.get("locStore") || Cookies.get("locStore2")) {
-                                location.href = "partymusic://authSpot";
+                                location.href = "//partymusic://authSpot";
                                 Cookies.set("locStore", Cookies.get("locStore2"));
                                 var locStore = JSON.parse(Cookies.get("locStore"));
                                 Object.keys(locStore).forEach(function(key, index) {
@@ -228,7 +228,7 @@
                                 setTimeout(index, 50);
                                 } else if (!Cookies.get("locStore") && !Cookies.get("locStore2")) {
                                 setTimeout(function() {
-                                           location.href = "partymusic://loginToSpot";
+                                           location.href = "//partymusic://loginToSpot";
                                            login();
                                            }, 500);
                                 }
@@ -246,16 +246,16 @@
                                 }
                                 }
                                 window.purchase = function() {
-                                location.href = "partymusic://25actions";
+                                location.href = "//partymusic://25actions";
                                 Cookies.set('purchbtn', 'true', {
                                             expires: 1
                                             });
                                 }
                                 window.restore = function() {
-                                if (!Cookies.get('karma')) location.href = "partymusic://checkpurchases";
+                                if (!Cookies.get('karma')) location.href = "//partymusic://checkpurchases";
                                 }
                                 window.restoreBtn = function() {
-                                location.href = "partymusic://checkpurchases";
+                                location.href = "//partymusic://checkpurchases";
                                 setTimeout(function() {
                                            location.reload();
                                            }, 5000);
@@ -323,12 +323,12 @@
                                 window.ajaxDone = function() {
                                 $(document).ajaxComplete(function() {
                                                          if (numberCount >= 0) {
-                                                         location.href = "partymusic://alertThanks/";
+                                                         location.href = "//partymusic://alertThanks/";
                                                          localStorage.urlParts = window.location.toString().split("/public/")[0] + "/public";
                                                          createCookie('logged', 'logcookie', 30);
                                                          localStorage.removeItem("numbers");
                                                          setTimeout(function() {
-                                                                    location.href = "partymusic://unlockapp";
+                                                                    location.href = "//partymusic://unlockapp";
                                                                     location.href = localStorage.urlParts + "/app3.html";
                                                                     }, 500);
                                                          }
@@ -368,7 +368,7 @@
                                        });
                                 setTimeout(function() {
                                            //alert(numberCount);
-                                           //location.href = "partymusic://alertTotal/" + numbers.length;
+                                           //location.href = "//partymusic://alertTotal/" + numbers.length;
                                            int = numberCount;
                                            if (flagger == false) {
                                            flagger = true;
@@ -412,7 +412,7 @@
                                 if (Cookies.get('karma')) {
                                 localStorage.maxKarma = Cookies.get('karma');
                                 } else {
-                                //location.href = "partymusic://35actions";
+                                //location.href = "//partymusic://35actions";
                                 }
                                 if (!localStorage.clicks) localStorage.clicks = 0;
                                 window.checkLog = function() {
@@ -421,7 +421,7 @@
                                  var c = confirm("Do you want to proceed without Ads for $1.99?  This includes all other upgrades in the app...  Press OK for YES, Cancel for No.");*/
                                 var c = true;
                                 if(c) {
-                                location.href = "partymusic://25actions";
+                                location.href = "//partymusic://25actions";
                                 } else {
                                 log(1);
                                 }
@@ -436,7 +436,7 @@
                                 var c = confirm("Do you want to proceed without Ads for $1.99?  This includes all other upgrades in the app...  Press OK for YES, Cancel for No.");*/
                                 var c = true;
                                 if(c) {
-                                location.href = "partymusic://25actions";
+                                location.href = "//partymusic://25actions";
                                 }else {
                                 guest();
                                 }

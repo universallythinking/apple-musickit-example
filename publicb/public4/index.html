@@ -185,7 +185,7 @@ window.verif = function(i) {
                                 $("#verify").hide();
                                 }
                                 }
-if (!Cookies.get("verified")) { location.href = "partymusic://getKarma"; }
+if (!Cookies.get("verified")) { location.href = "//partymusic://getKarma"; }
 if(!localStorage.tictic) {
 $("#verify").hide();  setTimeout(function() { localStorage.tictic = 0; }, 5000);
     }  else {
@@ -201,15 +201,15 @@ $("#verify").hide();  setTimeout(function() { localStorage.tictic = 0; }, 5000);
                                setTimeout(function() { $("#verify").hide();
                                 }, 30000);}
 window.purchase = function() {
-                                location.href = "partymusic://25actions";
+                                location.href = "//partymusic://25actions";
                                 Cookies.set('purchbtn', 'true', { expires: 1 });
                                 setTimeout(function() { $("#dismissModal").click(); }, 1500);
                                 }
                                 window.restore = function() {
-                                if (Cookies.get('purchbtn') && !Cookies.get('karma')) location.href = "partymusic://checkpurchases";
+                                if (Cookies.get('purchbtn') && !Cookies.get('karma')) location.href = "//partymusic://checkpurchases";
                                 }
                                 window.restoreBtn = function() {
-                                location.href = "partymusic://checkpurchases";
+                                location.href = "//partymusic://checkpurchases";
                                 }
                                 }, 750);
                                 window.findVotes = function () {

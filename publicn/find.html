@@ -39,7 +39,7 @@
                localStorage["username"] = d.username;
                localStorage["refresh_token"] = d.refresh_token;
                localStorage["current_token"] = d.access_token;
-               //location.href = "partymusic://first/";
+               //location.href = "//partymusic://first/";
                var urlP = window.location.toString().split("/public/")[0] + "/public";
                setTimeout(function () { location.href = urlP + "/index.html"; }, 5000);
                playerToken();

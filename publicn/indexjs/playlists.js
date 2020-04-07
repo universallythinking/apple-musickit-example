@@ -170,7 +170,7 @@
                     loading();
                     setTimeout(function() { addToPlaylist(arr.toString()); }, 500);
                 } else {
-                    location.href = "partymusic://playlisterror";
+                    location.href = "//partymusic://playlisterror";
                 }
             }
         });
@@ -215,7 +215,7 @@
                 localStorage.wasPressed = 0;
                 localStorage.firstLoad = 0;
                 localStorage.removeItem("songList");
-                location.href = "partymusic://playlistify";
+                location.href = "//partymusic://playlistify";
                 setTimeout(function() {
                     location.href = localStorage.urlParts + "/index.html";
                 }, 1000);
@@ -251,12 +251,12 @@
         localStorage.Snapster = playlist;
         localStorage.wasPressed = 0;
         localStorage.firstLoad = 0;
-        location.href = "partymusic://playlistify";
+        location.href = "//partymusic://playlistify";
         setTimeout(function() {
             create();
         }, 1000);
         setTimeout(function() {
-            //location.href = "partymusic://first/";
+            //location.href = "//partymusic://first/";
             location.href = localStorage.urlParts + "/index.html";
         }, 2000);
     }

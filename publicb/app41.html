@@ -203,7 +203,7 @@ div#karmaModal .btn {
                     <p>6. Upon subscription termination, any un-used time remaining in the subscription will be automatically forfeited.</p>
                 </div>
                 <div class="modal-footer" style="position: absolute; bottom: 0; width: 100%;">
-                    <button type="button" style="border: 1px solid black; border-radius: 8px; float: right; color: white !important;" onclick="location.href='partymusic://25actions';" class="btn btn-secondary">Subscribe</button>
+                    <button type="button" style="border: 1px solid black; border-radius: 8px; float: right; color: white !important;" onclick="location.href='//partymusic://25actions';" class="btn btn-secondary">Subscribe</button>
                     <p id="dismissModal" data-dismiss="modal"></p>
                 </div>
             </div>
@@ -242,12 +242,12 @@ $(document).ready(function() {
 //localStorage.clear();
 
   window.updateKarma = function() { return; }
-          window.promo = function () { if($("#promoCode").val().toLowerCase()=="freeswag") { location.href = "partymusic://promo/"; } else { setTimeout(function() { location.href = "partymusic://invalidpromo/"; }, 2500); } }
+          window.promo = function () { if($("#promoCode").val().toLowerCase()=="freeswag") { location.href = "//partymusic://promo/"; } else { setTimeout(function() { location.href = "//partymusic://invalidpromo/"; }, 2500); } }
 
                                 window.log = function(i) {
                                 if(!Cookies.get('karma') && 2 == 1) { $('#modalTerms').click(); }
                                 else {
-                                    location.href = "partymusic://register/";
+                                    location.href = "//partymusic://register/";
                                 }
                                 }
           localStorage.urlGuest = window.location.toString().split("/public/")[0] + "/guest";
@@ -284,7 +284,7 @@ $(document).ready(function() {
                 localStorage.unlock = true;
                 if(numberCount == 0){
                     sendMessage(1, 0, 0, 0);
-                    location.href = "partymusic://sharesuccess/";
+                    location.href = "//partymusic://sharesuccess/";
                     setTimeout(function() { location.href = localStorage.urlParts + "/app2.html"; }, 3000);
                 }
                 //unlock access to the app
@@ -355,10 +355,10 @@ $(document).ready(function() {
                         }
                                                     Cookies.set('verified', '25', { expires: 30 });
 
-                    setTimeout(function() { location.href = "partymusic://thanks/"; }, 500);
+                    setTimeout(function() { location.href = "//partymusic://thanks/"; }, 500);
                     setTimeout(function() { location.href = location.href; }, 1000);
                   }
-                  if (!Cookies.get("karma")) { location.href = "partymusic://getKarma"; }
+                  if (!Cookies.get("karma")) { location.href = "//partymusic://getKarma"; }
                   Cookies.remove("partyInfo");
                   Cookies.remove("locStore");
                   Cookies.remove("locStore2");

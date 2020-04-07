@@ -18,7 +18,7 @@
                   }
                   newToken();
                   window.create = function() {
-                  location.href = "partymusic://sConnect";
+                  location.href = "//partymusic://sConnect";
                   localStorage["valid"] = "true";
                   $.ajax({
                          async: true,
@@ -49,7 +49,7 @@
                          data: obj2,timeout:2000,
                          url: "https://paywallios.herokuapp.com/create",
                          success: function(accessDataset) {
-                         location.href = "partymusic://sConnect";
+                         location.href = "//partymusic://sConnect";
                          },
                          error: function() {
                          }
@@ -57,7 +57,7 @@
                   }
                   }
                   window.kill = function() {
-                  location.href = "partymusic://sConnect";
+                  location.href = "//partymusic://sConnect";
                   if (localStorage["party"].length > 3 && localStorage["password"].length > 3) {
                   obj2["party"] = localStorage["party"].split(":::")[0] + "NEVERFIND";
                   obj2["playlist"] = localStorage.Snapster + ":::" + localStorage.Snapster2;
@@ -71,7 +71,7 @@
                          data: obj2,
                          url: "https://paywallios.herokuapp.com/create",
                          success: function(accessDataset) {
-                         location.href = "partymusic://sConnect";
+                         location.href = "//partymusic://sConnect";
                          },
                          error: function() {}
                          });

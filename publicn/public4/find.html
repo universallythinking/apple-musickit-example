@@ -41,7 +41,7 @@ window.findParty = function (a) {
            localStorage["username"] = d.username;
            localStorage["refresh_token"] = d.refresh_token;
            localStorage["current_token"] = d.access_token;
-           location.href = "partymusic://first/";
+           location.href = "//partymusic://first/";
                             var urlP = window.location.toString().split("/public/")[0] + "/public";
                             setInterval(function () { location.href = urlP + "/index.html"; }, 500);
                         }, error: function (e, ee, eee) {
@@ -61,7 +61,7 @@ window.findParty = function (a) {
                     findParty(localStorage.party);
                   }, 1000);
                 }, 100);
-                window.relo = function() { location.href='partymusic://problems'; }
+                window.relo = function() { location.href='//partymusic://problems'; }
 </script>
   </body>
 </html>

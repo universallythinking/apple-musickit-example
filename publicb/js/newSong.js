@@ -69,7 +69,7 @@ $(document).ready(function() {
 
         	socket.on(localStorage.combo + 'nextSong', function (data) {
         		localStorage.nowp = data.split(":::")[0];
-        		location.href = "partymusic://song/" + localStorage.nowp;
+        		location.href = "//partymusic://song/" + localStorage.nowp;
         		socket.emit(localStorage.userID + 'songChanged', {
         			body: localStorage.nowp
         		});

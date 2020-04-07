@@ -18,16 +18,16 @@ localStorage.urlParts = window.location.toString().split("/public/")[0] + "/publ
             location.href= localStorage.urlParts +'/index.html';
     }
 	window.reloadify = function() {
-        location.href= 'partymusic://problems';
+        location.href= '//partymusic://problems';
     }
     if(!localStorage.H) { localStorage.H = 1; setTimeout(function() { reload(); }, 1000); }
 	window.guest = function() {
 	    localStorage.removeItem("host");
-		location.href="partymusic://pause/";
+		location.href="//partymusic://pause/";
 	    setTimeout(function(){ location.href= localStorage.urlGuest +'/app.html'; return false; }, 250);
 	}
 	window.terminate = function() {
-	    location.href= "partymusic://terminate/";
+	    location.href= "//partymusic://terminate/";
         var urlParts = localStorage.urlParts;
         localStorage.removeItem("host");
         setTimeout(function(){
@@ -41,7 +41,7 @@ localStorage.urlParts = window.location.toString().split("/public/")[0] + "/publ
         localStorage.clear();
 	}
 	window.softTerminate = function() {
-	    location.href="partymusic://softterminate/";
+	    location.href="//partymusic://softterminate/";
         var urlParts = localStorage.urlParts;
         localStorage.removeItem("host");
         setTimeout(function(){
@@ -59,11 +59,11 @@ localStorage.urlParts = window.location.toString().split("/public/")[0] + "/publ
         localStorage.superHost = 1;
 	window.terms = function() {
 		$('#dialogPage').hide();
-            location.href = "partymusic://terms/";
+            location.href = "//partymusic://terms/";
         }
 	window.privacy = function() {
 		$('#dialogPage').hide();
-            location.href = "partymusic://privacy/";
+            location.href = "//partymusic://privacy/";
         }
         window.tognav = function() {
             $("#mySidenav").toggle(function() {

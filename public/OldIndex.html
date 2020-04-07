@@ -441,7 +441,7 @@
   <a class="navP">(Stay logged in)</a>
   <a href="#" class="navLink" ></a>
   <a href="#" class="navLink" ></a>
-  <!--<a href="javascript:location.href='partymusic://terminate/';localStorage.clear();setTimeout(function(){ location.href='http://partymusic.co/app.html'; }, 250);" class="navLink red" title="LOGOUT">Be a Guest</a>-->
+  <!--<a href="javascript:location.href='//partymusic://terminate/';localStorage.clear();setTimeout(function(){ location.href='http://partymusic.co/app.html'; }, 250);" class="navLink red" title="LOGOUT">Be a Guest</a>-->
   <a onclick='$( "#dialogPage" ).slideUp( 10 ).fadeIn(3000);tognav();' class='navLink' >Terms and Conditions</a>
   <a href="#" class="navLink" ></a>
   <a onclick="terminate();" class="navLink red" title="LOGOUT">Logout</a>
@@ -478,13 +478,13 @@
 	    location.href= localStorage.urlParts +'/index.html'; return false;
 	}
 	window.terminate = function() {
-	    location.href= "partymusic://terminate/";
+	    location.href= "//partymusic://terminate/";
         var urlParts = localStorage.urlParts;
         setTimeout(function(){ location.href = urlParts + "/app2.html"; }, 250);
         localStorage.clear();
 	}
 	window.softTerminate = function() {
-	    location.href="partymusic://softterminate/";
+	    location.href="//partymusic://softterminate/";
         setTimeout(function(){ location.href=localStorage.urlParts +"/app2.html"; }, 250);
 	}
         window.settings = function() {
@@ -492,11 +492,11 @@
         }
 	window.terms = function() {
 		$('#dialogPage').hide();
-            location.href = "partymusic://terms/";
+            location.href = "//partymusic://terms/";
         }
 	window.privacy = function() {
 		$('#dialogPage').hide();
-            location.href = "partymusic://privacy/";
+            location.href = "//partymusic://privacy/";
         }
         window.tognav = function() {
             $("#mySidenav").toggle(function() {
@@ -597,7 +597,7 @@
         $(document).ready(function() {
             /*window.nextSong = function (a) {
                  increment();
-                 location.href = "partymusic://" + $(".songLinkClick").eq(1).attr("title");
+                 location.href = "//partymusic://" + $(".songLinkClick").eq(1).attr("title");
                  updateFooter();
              };*/
             var songNo;

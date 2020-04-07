@@ -10,7 +10,7 @@ localStorage.urlParts = window.location.toString().split("/public/")[0] + "/publ
             location.href = localStorage.urlParts + "/playlists.html";
         }
         window.purgify = function() {
-                    location.href = "partymusic://purgify";
+                    location.href = "//partymusic://purgify";
                 }
 	window.relo = function() {
 	    location.href= localStorage.urlParts +'/indexOld.html'; return false;
@@ -19,36 +19,36 @@ localStorage.urlParts = window.location.toString().split("/public/")[0] + "/publ
             location.href= localStorage.urlParts +'/indexOld.html';
     }
 	window.reloadify = function() {
-        location.href= 'partymusic://problems';
+        location.href= '//partymusic://problems';
     }
     if(!localStorage.H) { localStorage.H = 1; setTimeout(function() { reload(); }, 1000); }
 	window.guest = function() {
 	    localStorage.removeItem("host");
-		location.href="partymusic://pause/";
+		location.href="//partymusic://pause/";
 	    setTimeout(function(){ location.href= localStorage.urlGuest +'/app.html'; return false; }, 250);
 	}
 	window.terminate = function() {
-	    location.href= "partymusic://terminate/";
+	    location.href= "//partymusic://terminate/";
         var urlParts = localStorage.urlParts;
         setTimeout(function(){
                 if (localStorage.locked == "no") {
-                    location.href = "partymusic://home";
+                    location.href = "//partymusic://home";
                 }
                 else {
-                    location.href = "partymusic://home";
+                    location.href = "//partymusic://home";
                 }
                 }, 250);
         localStorage.clear();
 	}
 	window.softTerminate = function() {
-	    location.href="partymusic://softterminate/";
+	    location.href="//partymusic://softterminate/";
         var urlParts = localStorage.urlParts;
         setTimeout(function(){
                 if (localStorage.locked == "no") {
-                    location.href = "partymusic://gohome/";
+                    location.href = "//partymusic://gohome/";
                    }
                    else {
-                    location.href = "partymusic://gohome/";
+                    location.href = "//partymusic://gohome/";
                 }
         }, 250);
         localStorage.clear();
@@ -58,11 +58,11 @@ localStorage.urlParts = window.location.toString().split("/public/")[0] + "/publ
         }
 	window.terms = function() {
 		$('#dialogPage').hide();
-            location.href = "partymusic://terms/";
+            location.href = "//partymusic://terms/";
         }
 	window.privacy = function() {
 		$('#dialogPage').hide();
-            location.href = "partymusic://privacy/";
+            location.href = "//partymusic://privacy/";
         }
         window.tognav = function() {
             $("#mySidenav").toggle(function() {

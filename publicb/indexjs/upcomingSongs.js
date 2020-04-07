@@ -8,7 +8,7 @@
                   };
                   window.nextSong = function(e) {
                   //increment(),
-                  location.href = "partymusic://" + $(".songLinkClick").eq(1).attr("title");
+                  location.href = "//partymusic://" + $(".songLinkClick").eq(1).attr("title");
                   };
                   localStorage.party && (localStorage.lastFM = localStorage.party),
                   localStorage.votedArray || (localStorage.votedArray = " "),
@@ -233,8 +233,8 @@
                   if (parseInt($(".songLinkClick").eq(0).children(".voteUp").attr("name")) > 2) {
                   addPopularSong($(".songLinkClick").eq(0).attr("title"));
                   }
-                  if (e===1) { location.href = "partymusic://song/" + $(".songLinkClick").eq(0).attr("title") + ":::" + $("[title=" + $(".songLinkClick").eq(0).attr("title") + "]")[0].id.slice(13); }
-                  /*"partymusic://song/" + $(".songLinkClick").eq(1).attr("title")
+                  if (e===1) { location.href = "//partymusic://song/" + $(".songLinkClick").eq(0).attr("title") + ":::" + $("[title=" + $(".songLinkClick").eq(0).attr("title") + "]")[0].id.slice(13); }
+                  /*"//partymusic://song/" + $(".songLinkClick").eq(1).attr("title")
                   var t = localStorage.nowp,
                   a = new RegExp(t, "g"),
                   n = new RegExp(/""/, "g"),
@@ -275,18 +275,18 @@
                              loading();
                              }, 100),
                   window.reload = function() {
-                  location.href = "partymusic://reload";
+                  location.href = "//partymusic://reload";
                   },
                   window.playFirst = function() {
                   if(localStorage.firstLoad == 0) {
                   setTimeout(function() {
-                             location.href = "partymusic://playlist/user:" + localStorage.userID + ":playlist:" + localStorage.Snapster;
+                             location.href = "//partymusic://playlist/user:" + localStorage.userID + ":playlist:" + localStorage.Snapster;
                              }, 2000);
                   localStorage.firstLoad = 1;
                   }
                   else {
                   setTimeout(function() {
-                             location.href = "partymusic://playlist/user:" + localStorage.userID + ":playlist:" + localStorage.Snapster;
+                             location.href = "//partymusic://playlist/user:" + localStorage.userID + ":playlist:" + localStorage.Snapster;
                              }, 2000);
                   }
                   },
@@ -294,14 +294,14 @@
                   localStorage.nextUp = $(".songLinkClick").eq(0).attr("title") + ":::" + $(".songLinkClick").eq(0).attr("id").substr(13);
                   },
                   window.prev = function() {
-                  location.href = "partymusic://song/" + localStorage.nowp + ":::";
+                  location.href = "//partymusic://song/" + localStorage.nowp + ":::";
                   },
                   setTimeout(function() {
                              1 != localStorage.wasPressed && (localStorage.wasPressed = 1,
                                                               playFirst());
                              }, 1000),
                   window.pause = function() {
-                  location.href = "partymusic://pause";
+                  location.href = "//partymusic://pause";
                   },
                   window.downVoteify = function(i) {
                   nextSongs();
@@ -357,7 +357,7 @@
                          });
                   }
                   window.now = function(a, b) {
-                  location.href = "partymusic://song/" + a + ":::" + b;
+                  location.href = "//partymusic://song/" + a + ":::" + b;
                   downVoteify();
 
                   /*r = {};
@@ -372,7 +372,7 @@
                          Authorization: "Bearer " + localStorage.current_token
                          },
                          data: JSON.stringify(r),
-                         success: function () { location.href = "partymusic://song/" + a; nextSongs(); downVoteify(); }
+                         success: function () { location.href = "//partymusic://song/" + a; nextSongs(); downVoteify(); }
                          })*/
                   };
                          setTimeout(remove, 3000);

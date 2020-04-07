@@ -5,9 +5,9 @@ $(document).ready(function () {
           //localStorage.removeItem("songList");
           localStorage.removeItem("nowp");
           localStorage.removeItem("sVote");
-          //if(localStorage.current_token && localStorage.superHost1) { localStorage.wasPressed = 0; localStorage.firstLoad = 0; location.href = "partymusic://loginToSpotify/"; }
+          //if(localStorage.current_token && localStorage.superHost1) { localStorage.wasPressed = 0; localStorage.firstLoad = 0; location.href = "//partymusic://loginToSpotify/"; }
   		  //localStorage.removeItem("Snapster");
-          window.login = function() { location.href = "partymusic://register/"; }
+          window.login = function() { location.href = "//partymusic://register/"; }
           localStorage.setItem("app", "true");
           localStorage.setItem("signedIn", "true");
 });

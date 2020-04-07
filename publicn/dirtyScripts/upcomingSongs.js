@@ -15,7 +15,7 @@
     localStorage.firstHide = 1;
         localStorage.nowp = a;
         nextSongsCache();
-        location.href = "partymusic://song/" + a + ":::" + b;
+        location.href = "//partymusic://song/" + a + ":::" + b;
         //if(document.hasFocus()) setTimeout(function() { location.href = location.href; }, 1000);
                 setTimeout(function() {
                      socket.emit(localStorage.userID+"songChanged", {body: localStorage.nowp});
@@ -108,7 +108,7 @@
     };
     window.nextSong = function(e) {
         //increment(),
-        location.href = "partymusic://" + $(".songLinkClick").eq(1).attr("title");
+        location.href = "//partymusic://" + $(".songLinkClick").eq(1).attr("title");
     };
     localStorage.party && (localStorage.lastFM = localStorage.party);
     localStorage.votedArray || (localStorage.votedArray = " ");
@@ -238,7 +238,7 @@
         });
         var a = '{"tracks":[' + arrPop + ']}';
         if (arrPop.length >= 1) {
-            location.href = "partymusic://newSongAdded";
+            location.href = "//partymusic://newSongAdded";
             $.ajax({
                 async: true,
                 type: "DELETE",
@@ -260,16 +260,16 @@
         }
     };
     window.updateNowSong = function() {
-                //location.href = "partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
-                location.href = "partymusic://updateNow/spotify:track:" + $("#song").attr("title")
+                //location.href = "//partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
+                location.href = "//partymusic://updateNow/spotify:track:" + $("#song").attr("title")
             };
             window.updateLSSong = function() {
-                        location.href = "partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
-                        //location.href = "partymusic://updateNow/spotify:track:" + $("#song").attr("title")
+                        location.href = "//partymusic://updateSong/spotify:track:" + $(".songLinkClick").eq(0).attr("title")
+                        //location.href = "//partymusic://updateNow/spotify:track:" + $("#song").attr("title")
                     };
     window.removeOne = function(song) {
         var a = '{"tracks":[' + '{ "uri": "spotify:track:' + song + '" }' + ']}';
-        location.href = "partymusic://newSongAdded";
+        location.href = "//partymusic://newSongAdded";
         $.ajax({
             async: true,
             type: "DELETE",
@@ -282,7 +282,7 @@
             data: a,
             success: function(e) {
                 nextSongs();
-                location.href = "partymusic://newSongAdded";
+                location.href = "//partymusic://newSongAdded";
             },
             error: function(e) {}
         });
@@ -305,7 +305,7 @@
     localStorage.firstHide = 1;
         //localStorage.nowp = $(".songLinkClick").eq(0).attr("title");
         if (e === 1 && $(".songLinkClick").eq(0).attr("title") != undefined) {
-            location.href = "partymusic://song/" + $(".songLinkClick").eq(0).attr("title") + ":::12";
+            location.href = "//partymusic://song/" + $(".songLinkClick").eq(0).attr("title") + ":::12";
             localStorage.nowp = $(".songLinkClick").eq(0).attr("title");
                             setTimeout(function() {
                                  socket.emit(localStorage.userID+"songChanged", {body: localStorage.nowp});
@@ -315,7 +315,7 @@
                                 setTimeout(rVote, 2500);
         }
         if (e === 2 && $(".songLinkClick").eq(0).attr("title") != undefined) {
-                    //location.href = "partymusic://song/" + $(".songLinkClick").eq(0).attr("title") + ":::12";
+                    //location.href = "//partymusic://song/" + $(".songLinkClick").eq(0).attr("title") + ":::12";
                     localStorage.nowp = $(".songLinkClick").eq(0).attr("title");
                                    setTimeout(function() {
                                         socket.emit(localStorage.userID+"songChanged", {body: localStorage.nowp});
@@ -327,13 +327,13 @@
     };
 
     window.reload = function() {
-        location.href = "partymusic://reload";
+        location.href = "//partymusic://reload";
     };
     window.playFirst = function() {
             if(!$("#song").attr("title")) {
                             increment(1);
                         } else {
-                            location.href = "partymusic://prettyprev/" + $("#song").attr("title");
+                            location.href = "//partymusic://prettyprev/" + $("#song").attr("title");
                         }
             localStorage.firstLoad = 1;
             //setTimeout(reload, 4000);
@@ -345,12 +345,12 @@
         }
     };
     window.prev = function() {
-        if (localStorage.nowp) location.href = "partymusic://song/" + localStorage.nowp + ":::";
+        if (localStorage.nowp) location.href = "//partymusic://song/" + localStorage.nowp + ":::";
     };
         window.pause = function() {
         //if(localStorage.firstLoad == 1) { prev(); localStorage.firstLoad = 2; }
         //else {
-        location.href = "partymusic://pause";// }
+        location.href = "//partymusic://pause";// }
         };
     window.nS = function() {
         if (!localStorage.songList) {
@@ -372,7 +372,7 @@
     };
     window.loader = function() {
         downVoteify();
-        location.href = "partymusic://updatePass";
+        location.href = "//partymusic://updatePass";
     }
     //setTimeout(downVoteify, 500);
     window.song = function() {
@@ -406,7 +406,7 @@
     }
     setTimeout(song, 7000);
     window.reload = function() {
-        location.href = "partymusic://reloader";
+        location.href = "//partymusic://reloader";
     }
     setTimeout(function () { if($("#song").text.length < 1) { increment(1); } }, 9000);
     setTimeout(function () { if($("#song").text.length < 1) { increment(1); } }, 12000);
