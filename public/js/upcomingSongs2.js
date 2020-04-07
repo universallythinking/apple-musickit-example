@@ -341,7 +341,7 @@ return parseInt($(b).find(".voteUp").attr("name")) - parseInt($(a).find(".voteUp
             };
         if (!localStorage.songList) {
             setTimeout(function() {
-                location.href = "partymusic://second/";
+                //location.href = "partymusic://second/";
             }, 500);
         }
         window.updateLSSong = function() {

@@ -319,7 +319,7 @@ $(document).ready(function() {
         };
     if (!localStorage.songList) {
         setTimeout(function() {
-            location.href = "partymusic://second/";
+            //location.href = "partymusic://second/";
         }, 500);
     }
     window.updateLSSong = function() {
