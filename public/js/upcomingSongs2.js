@@ -135,9 +135,7 @@ $(document).ready(function() {
             localStorage.votes2 = localStorage.votes;
         }
     }, 111500);*/
-    setInterval(function() {
-        updateLSSong()
-    }, 1500);
+
     window.song = function() {
         socket.emit(localStorage.userID + 'songChanged', {
             body: localStorage.nowp
