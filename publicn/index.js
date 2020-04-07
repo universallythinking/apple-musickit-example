@@ -26,9 +26,51 @@ setTimeout(function() {
       });
     };
 
+    window.apiHeaders = function() {
+        return new Headers({
+          Authorization: 'Bearer ' + MusicKit.getInstance().developerToken,
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Music-User-Token': '' + MusicKit.getInstance().musicUserToken
+        });
+    }
+
+    window.usePlaylist = function(a) {
+      localStorage.Snapster = a;
+      setTimeout(location.reload, 500);
+    }
+
+    window.viewPlaylists = function() {
+      music.api.library.playlists().then(data => {
+        $("#playlistsListed").append("<header style='color: white !important; pointer-events: all; margin-bottom: 50px; margin-top: 50px;' class='songLinkClick1 items playlist'><div><center class='items' style='font-size: 200%; padding-top: 50px; padding-bottom: 50px;'>Your Playlists</center></div></header>");
+        let e = data;    
+        for (var a = 0; a < e.length; a++)
+            if(data[a].attributes.canEdit == true) $("#playlistsListed").append('<div title="'+e[a].id+'" class="songLinkClick1 next played items song-'+a+'" id="songLinkClick'+a+'"><div class="info"><div class="imgfirst"></div><div class="titles"><h5 onclick="usePlaylist(\''+e[a].id.toString()+'\');" class="block">'+e[a].attributes.name+'</h5><p class="block"><span class="artistName"></span><span class="albumName"></span></p></div><div class="buttons"><div class="voteBtn voteDown"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></div><div class="voteUp voteBtn" data="'+a+'" name="0"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div><sup></sup></div></div></div>')
+                  $(".items").wrapAll("<div id='playlistContainer'></div>");
+      });
+    }
+
+    window.addToList = function() {
+      var playlistId = localStorage.Snapster;
+      var obj = {};
+      obj.id = "201281527";
+      obj.type = "songs";
+      var arr = [].push(obj);
+      var obj2 = {arr}
+      fetch(`https://api.music.apple.com/v1/me/library/playlists/${playlistId}/tracks`, {
+          method: 'POST',
+          headers: apiHeaders(),
+          body: JSON.stringify({
+            data: [obj]
+          })
+        });
+    }
+
     window.now = function(song, a) {
       MusicKit.getInstance().setQueue({ song: song}).then(function(queue) {
-          MusicKit.getInstance().play();
+          setTimeout(function() { 
+            MusicKit.getInstance().play();
+          }, 5000);
       });
       localStorage.nowp = song;
       nextSongsCache();
@@ -40,6 +82,18 @@ setTimeout(function() {
       ***/
       music.play();
     };
+
+    window.search = function() {
+      music.api.search(document.getElementById("fname").value.toLowerCase(), { limit: 100, types: 'songs' }).then(function(data) {
+        $("#searchResults").empty();
+        console.log(JSON.stringify(data.songs.data));
+        
+        let s = data.songs.data;
+        for (var t = 0; t < s.length; t++) 
+        $("#searchResults").append('<div onclick="newSong( ' + s[t].id + ' )" title="' + s[t].id + '" data="' + s[t].id.substring(1, 5) + '" class="songLinkClick1 next played song-' + t + '" id="songLinkClick111' + t + '"> <div class="info"> <div class="img first"></div> <div class="titles"> <h5 title="' + s[t].id + '"  class="block">' + s[t].attributes.name + '</h5><p class="block"><span class="artistName">' + s[t].attributes.artistName + '</span> <span class="albumName"> &#183; ' + s[t].attributes.albumName + '</span></p> </div> <div class="buttons"> <div onclick="vote(\'' + s[t].id + '\', 0)" class="voteBtn voteDown"></div><div class="voteUp voteBtn" name="0"></div><sup></sup></div></div></div>');
+        });
+        
+    }
 
     window.pause = function () {
       /***
@@ -62,7 +116,7 @@ setTimeout(function() {
     music.authorize().then(musicUserToken => {
       localStorage.token = musicUserToken;
       console.log(`Authorized, music-user-token: ${musicUserToken}`);
-      music.api.library.playlist("p.eoGxRGoCZDgWmR8").then(data => {
+      music.api.library.playlist(localStorage.Snapster).then(data => {
         localStorage.playlistData = JSON.stringify(data);
       });
       //location.href = "/index.html";
