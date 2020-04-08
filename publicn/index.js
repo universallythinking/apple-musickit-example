@@ -188,7 +188,6 @@ setTimeout(function() {
       });
     }
     if(!location.hash && !localStorage.token) auth();
-    if(localStorage.token) loaded();
     // expose our instance globally for testing
     window.music = music;
   });

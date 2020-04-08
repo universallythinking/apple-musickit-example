@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
-  <title>Swagger Jukebox</title>
-<meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
-<script src="js/jquery-ui.js"></script>
-<style>
-    html *, html {background: #000000 !important;}
-</style>
-<script>
-    localStorage.clear();
-    var urlParts = window.location.toString().split("/public/")[0] + "/public";
-    location.href = urlParts + "/app2.html";
-</script>
+    <meta charset="UTF-8">
+    <title>Swagger Jukebox</title>
+    <script>
+        localStorage.token = location.hash;
+        location.href = "/index.html";
+    </script>
 </head>
 <body>
+
 </body>
 </html>
