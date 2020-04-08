@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>PartyMusic</title>
+    <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+    <script type="text/javascript" src="/index.js"></script>
+    <script type="text/javascript" src="js/passwords.js"></script>
+	<script type="text/javascript" src="js/create.js"></script>
+	<script>
+		// listen for MusicKit Loaded callback
+setTimeout(function() {
+  // MusicKit global is now defined
+  fetch('/token').then(response => response.json()).then(res => {
+    /***
+      Configure our MusicKit instance with the signed token from server, returns a configured MusicKit Instance
+      https://developer.apple.com/documentation/musickitjs/musickit/musickitinstance
+    ***/
+   localStorage.token = res.token;
+    const music = MusicKit.configure({
+      developerToken: res.token,
+      app: {
+        name: 'AppleMusicKitExample',
+        build: '1978.4.1'
+      }
+    });
 	
-	</head>
-<body>
-	<script>localStorage.clear();
-		setInterval(function() { 
-			window.location.href = "http://paywallios.herokuapp.com/app.html";	
-	        }, 100);
+    window.auth = function () {
+      music.authorize().then(musicUserToken => {
+        localStorage.token = musicUserToken;
+		localStorage.userID = musicUserToken;
+		location.href = "partymusic://token:::" + localStorage.token;
+        console.log(`Authorized, music-user-token: ${musicUserToken}`);
+        
+        if(!localStorage.Snapster) viewPlaylists();
+        //location.href = "/index.html";
+      });
+    }
+  auth();
+    // expose our instance globally for testing
+    window.music = music;
+  });
+}, 1000);
+
 	</script>
+</head>
+
 </body>
+
 </html>

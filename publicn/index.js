@@ -159,6 +159,22 @@ setTimeout(function() {
       });
     }
 
+    window.auth = function () {
+      music.authorize().then(musicUserToken => {
+        localStorage.token = musicUserToken;
+        if(!localStorage.Snapster) {
+          viewPlaylists();
+        } else {
+        music.api.library.playlist(localStorage.Snapster).then(data => {
+          localStorage.playlistData = JSON.stringify(data);
+          setTimeout(firstSong, 1000);
+          nextSongsCache();
+        });
+        
+              }
+      });
+    }
+
     window.getList = function () {
       music.authorize().then(musicUserToken => {
         localStorage.token = musicUserToken;
@@ -171,7 +187,8 @@ setTimeout(function() {
         //location.href = "/index.html";
       });
     }
-  auth();
+    if(!location.hash && !localStorage.token) auth();
+    if(localStorage.token) loaded();
     // expose our instance globally for testing
     window.music = music;
   });
