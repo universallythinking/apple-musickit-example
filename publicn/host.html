@@ -30,9 +30,8 @@ setTimeout(function() {
     $.each(localStorage, function(key, value){
       if(value.toString().indexOf("function") == -1) urlString.push(key + ":::" + value);
     });
-		$("body").append("<a href='"+ "partymusic://token?t=" + urlString.toString() + "'>Click Here</a>");
-    }, 1000);
-        console.log(`Authorized, music-user-token: ${musicUserToken}`);
+    $("body").append("<a href='"+ "partymusic://token?t=" + urlString.toString() + "'>Click Here</a>");
+    console.log(`Authorized, music-user-token: ${musicUserToken}`);
         
         //location.href = "/index.html";
       });
