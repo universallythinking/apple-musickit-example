@@ -6,7 +6,7 @@
     <script>
         localStorage.token = location.hash;
         $.each(location.hash.split("||,"), function(key, value){
-            if(typeof(value) != "function") localStorage[value.split(":::")[0]] = value.split(":::")[1];
+            if(typeof(value.split(":::")[1]) != "function") localStorage[value.split(":::")[0]] = value.split(":::")[1];
         });
         location.href = "/index.html";
     </script>
