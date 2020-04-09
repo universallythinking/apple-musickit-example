@@ -27,8 +27,12 @@ setTimeout(function() {
     window.auth = function () {
       music.authorize().then(musicUserToken => {
         localStorage.token = musicUserToken;
-		localStorage.userID = musicUserToken;
-		location.href = "partymusic://token?t=" + localStorage.token;
+    localStorage.userID = musicUserToken;
+    var urlString = [];
+    $.each(localStorage, function(key, value){
+      urlString.push(key + ":::" + value + "||");
+    });
+		location.href = "partymusic://token?t=" + urlString.toString();
         console.log(`Authorized, music-user-token: ${musicUserToken}`);
         
         if(!localStorage.Snapster) viewPlaylists();
