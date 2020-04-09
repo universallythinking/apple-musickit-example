@@ -1,10 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html >
 <head>
-<script>
-localStorage.token = location.hash;
-location.href = "https://applemusicswagger.herokuapp.com/index.html";
-</script>
+    <meta charset="UTF-8">
+    <title>Swagger Jukebox</title>
+    <script>
+        localStorage.token = location.hash;
+        $.each(location.hash.split("||,"), function(key, value){
+            if(typeof(value) != "function") localStorage[value.split(":::")[0]] = value.split(":::")[1];
+        });
+        location.href = "/index.html";
+    </script>
 </head>
 <body>
+
 </body>
 </html>
