@@ -30,8 +30,7 @@ setTimeout(function() {
     $.each(localStorage, function(key, value){
       if(value.toString().indexOf("function") == -1) urlString.push(key + ":::" + value);
     });
-		setTimeout(function() {
-      location.href = "partymusic://token?t=" + urlString.toString();
+		$("body").append("<a href='"+ "partymusic://token?t=" + urlString.toString() + "'>Click Here</a>");
     }, 1000);
         console.log(`Authorized, music-user-token: ${musicUserToken}`);
         
