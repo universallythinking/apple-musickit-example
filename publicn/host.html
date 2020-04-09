@@ -28,7 +28,7 @@ setTimeout(function() {
       music.authorize().then(musicUserToken => {
         localStorage.token = musicUserToken;
 		localStorage.userID = musicUserToken;
-		location.href = "partymusic://token:::" + localStorage.token;
+		location.href = "partymusic://token?t=" + localStorage.token;
         console.log(`Authorized, music-user-token: ${musicUserToken}`);
         
         if(!localStorage.Snapster) viewPlaylists();
