@@ -64,8 +64,10 @@ setTimeout(function() {
       }
       openLink(event, 'Home');
     }
-
+    var song2;
     window.addToList = function(song) {
+      if(song2 != song) {
+      song2 = song;
       var playlistId = localStorage.Snapster;
       var obj = {};
       obj.id = song;
@@ -81,6 +83,7 @@ setTimeout(function() {
         }).then(res => {
           getList();
         });
+      }
     }
 
     window.now = function(song) {
