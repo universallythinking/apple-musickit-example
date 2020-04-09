@@ -167,7 +167,7 @@ setTimeout(function() {
         } else {
         music.api.library.playlist(localStorage.Snapster).then(data => {
           localStorage.playlistData = JSON.stringify(data);
-          setTimeout(firstSong, 1000);
+          //setTimeout(firstSong, 1000);
           nextSongsCache();
         });
         
