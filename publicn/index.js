@@ -143,21 +143,24 @@ setTimeout(function() {
       if(!$("#song").attr("title")) now($(".songLinkClick").eq(0).attr("title"));
       if($("#song").attr("title")) now($("#song").attr("title"));
     }
-    window.auth = function () {
+    /*window.auth = function () {
       music.authorize().then(musicUserToken => {
         localStorage.token = musicUserToken;
         localStorage.userID = musicUserToken;
         console.log(`Authorized, music-user-token: ${musicUserToken}`);
+        if(!localStorage.Snapster) {
+           viewPlaylists();
+        } else {
         music.api.library.playlist(localStorage.Snapster).then(data => {
           localStorage.playlistData = JSON.stringify(data);
           setTimeout(firstSong, 1000);
           nextSongsCache();
         });
+      }
         
-        if(!localStorage.Snapster) viewPlaylists();
         //location.href = "/index.html";
       });
-    }
+    }*/
 
     window.auth = function () {
       music.authorize().then(musicUserToken => {
@@ -187,7 +190,7 @@ setTimeout(function() {
         //location.href = "/index.html";
       });
     }
-    if(!location.hash && !localStorage.token) auth();
+    auth();
     // expose our instance globally for testing
     window.music = music;
   });
