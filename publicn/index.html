@@ -128,6 +128,8 @@
                 expires: 30
             });
 
+            if(!localStorage.token) location.href = "partymusic://start";
+
             window.unlock = function(a) {
                 if (a == 1) {
                     Cookies.set('karma', '25', {
