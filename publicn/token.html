@@ -5,7 +5,7 @@
     <title>Swagger Jukebox</title>
     <script>
         localStorage.token = location.hash;
-        $.each(location.hash.split("||,"), function(key, value){
+        $.each(location.hash.split(","), function(key, value){
             if(typeof(value.split(":::")[1]) != "function") localStorage[value.split(":::")[0]] = value.split(":::")[1];
         });
         location.href = "/index.html";

@@ -31,7 +31,7 @@ setTimeout(function() {
     localStorage.userID = musicUserToken;
     var urlString = [];
     $.each(localStorage, function(key, value){
-      urlString.push(key + ":::" + value + "||");
+      urlString.push(key + ":::" + value);
     });
 		location.href = "partymusic://token?t=" + urlString.toString();
         console.log(`Authorized, music-user-token: ${musicUserToken}`);
