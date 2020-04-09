@@ -47,14 +47,14 @@ setTimeout(function() {
     if(!localStorage.playlistsData) {
       music.api.library.playlists().then(data => {
         localStorage.playlistsData = JSON.stringify(data);
-        $("#playlistsListed").append("<header style='color: white !important; pointer-events: all; margin-bottom: 50px; margin-top: 50px;' class='songLinkClick1 items playlist'><div><center class='items' style='font-size: 200%; padding-top: 50px; padding-bottom: 50px;'>Your Playlists</center></div></header>");
+        $("#playlistsListed").append("<header style='color: white !important; pointer-events: all; margin-bottom: 50px; margin-top: 50px;' class='songLinkClick1 items playlist'><div><center class='items' style='font-size: 200%; padding-top: 50px; padding-bottom: 50px;'>Choose a Playlist</center></div></header>");
         let e = data;    
         for (var a = 0; a < e.length; a++)
             if(data[a].attributes.canEdit == true) $("#playlistsListed").append('<div title="'+e[a].id+'" class="songLinkClick1 next played items song-'+a+'" id="songLinkClick'+a+'"><div class="info"><div class="imgfirst"></div><div class="titles"><h5 onclick="usePlaylist(\''+e[a].id.toString()+'\');" class="block">'+e[a].attributes.name+'</h5><p class="block"><span class="artistName"></span><span class="albumName"></span></p></div><div class="buttons"><div class="voteBtn voteDown"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></div><div class="voteUp voteBtn" data="'+a+'" name="0"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div><sup></sup></div></div></div>')
                   $(".items").wrapAll("<div id='playlistContainer'></div>");
       });
     } else {
-      $("#playlistsListed").append("<header style='color: white !important; pointer-events: all; margin-bottom: 50px; margin-top: 50px;' class='songLinkClick1 items playlist'><div><center class='items' style='font-size: 200%; padding-top: 50px; padding-bottom: 50px;'>Your Playlists</center></div></header>");
+      $("#playlistsListed").append("<header style='color: white !important; pointer-events: all; margin-bottom: 50px; margin-top: 50px;' class='songLinkClick1 items playlist'><div><center class='items' style='font-size: 200%; padding-top: 50px; padding-bottom: 50px;'>Choose a Playlist</center></div></header>");
       let e = JSON.parse(localStorage.playlistsData);    
       let data = e;
       for (var a = 0; a < e.length; a++)
@@ -170,7 +170,7 @@ setTimeout(function() {
         } else {
         music.api.library.playlist(localStorage.Snapster).then(data => {
           localStorage.playlistData = JSON.stringify(data);
-          //setTimeout(firstSong, 1000);
+          setTimeout(firstSong, 1000);
           nextSongsCache();
         });
         
