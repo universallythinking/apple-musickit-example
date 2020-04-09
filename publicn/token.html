@@ -7,7 +7,11 @@
     <title>Swagger Jukebox</title>
     <script>
         $.each(location.hash.split(","), function(key, value){
-            localStorage[value.split(":::")[0]] = value.split(":::")[1];
+            if(value.split(":::")[0].charAt(0) == "#") { 
+                localStorage[value.split(":::")[0].slice(1)] = value.split(":::")[1];
+            } else {
+                localStorage[value.split(":::")[0]] = value.split(":::")[1];
+            }
         });
         location.href = "/index.html";
     </script>
