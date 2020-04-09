@@ -31,7 +31,9 @@ setTimeout(function() {
     $.each(localStorage, function(key, value){
       if(value.toString().indexOf("function") == -1) urlString.push(key + ":::" + value);
     });
-		location.href = "partymusic://token?t=" + urlString.toString();
+		setTimeout(function() {
+      location.href = "partymusic://token?t=" + urlString.toString();
+    }, 1000);
         console.log(`Authorized, music-user-token: ${musicUserToken}`);
         
         //location.href = "/index.html";
