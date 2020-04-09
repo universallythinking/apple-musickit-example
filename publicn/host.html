@@ -10,6 +10,7 @@
 	<script>
 		// listen for MusicKit Loaded callback
 setTimeout(function() {
+  localStorage.clear();
   // MusicKit global is now defined
   fetch('/token').then(response => response.json()).then(res => {
     /***
@@ -27,7 +28,7 @@ setTimeout(function() {
 	
     window.auth = function () {
       music.authorize().then(musicUserToken => {
-        localStorage.token = musicUserToken;
+    localStorage.token = musicUserToken;
     localStorage.userID = musicUserToken;
     var urlString = [];
     $.each(localStorage, function(key, value){

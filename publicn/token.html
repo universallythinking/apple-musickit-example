@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <title>Swagger Jukebox</title>
     <script>
-        localStorage.token = location.hash;
         $.each(location.hash.split(","), function(key, value){
-            if(value.indexOf("function") == -1) localStorage[value.split(":::")[0]] = value.split(":::")[1];
+            localStorage[value.split(":::")[0]] = value.split(":::")[1];
         });
         location.href = "/index.html";
     </script>
