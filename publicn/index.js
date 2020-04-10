@@ -86,7 +86,15 @@ setTimeout(function() {
       }
     }
 
-    window.now = function(song) {
+    /*window.now = function(song) {
+      music.setQueue({ song: song}).then(function() {
+          music.play();
+          localStorage.nowp = song;
+          nextSongsCache();
+      });
+    }*/
+
+    window.now2 = function(song) {
       music.setQueue({ song: song}).then(function() {
           music.play();
           localStorage.nowp = song;
